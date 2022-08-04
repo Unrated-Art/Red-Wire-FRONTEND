@@ -16,10 +16,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'RedWireClient'`, () => {
+  it(`should have as title 'Red-Wire-FRONTEND'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('RedWireClient');
+    expect(app.title).toEqual('Red-Wire-FRONTEND');
   });
 
   it('should render title', () => {
