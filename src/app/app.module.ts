@@ -3,40 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AccueilComponent } from './pages/accueil/accueil.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { CatalogueComponent } from './pages/catalogue/catalogue.component';
-import { ListFormationsComponent } from './pages/list-formations/list-formations.component';
-import { DetailFormationComponent } from './pages/detail-formation/detail-formation.component';
-import { FooterComponent } from './pages/footer/footer.component';
-import { HeaderComponent } from './pages/header/header.component';
-import { AuthenticationComponent } from './components/authentication/authentication.component';
-import { AccountComponent } from './pages/account/account.component';
-import { ListSessionsComponent } from './pages/list-sessions/list-sessions.component';
-import { ListCataloguesComponent } from './pages/list-catalogues/list-catalogues.component';
-import { FormationService } from 'src/services/formation.service';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { SearchBarComponent } from './pages/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AccueilComponent,
-    DashboardComponent,
-    CatalogueComponent,
-    ListFormationsComponent,
-    DetailFormationComponent,
-    FooterComponent,
-    HeaderComponent,
-    AuthenticationComponent,
-    AccountComponent,
-    ListSessionsComponent,
-    ListCataloguesComponent,
-    SearchBarComponent,
+    AppComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [FormationService],
-  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
