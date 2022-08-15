@@ -1,0 +1,314 @@
+<!--<div class="container" id="main-container">
+<div class="collapse navbar-collapse" id="navbarColor02">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link" (click)="onOpenModal(formations[0], 'add')">Ajouter Formation <span class="sr-only">(current)</span></a>
+    </li>
+  </ul>
+  <form class="form-inline my-2 my-lg-0">
+    <input type="search" (ngModelChange)="searchFormations(key.value)" #key="ngModel" ngModel
+      name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search trainings..." required>
+  </form>
+</div>
+-->
+<h1 *ngIf="formations">Liste des formations</h1>
+<div *ngIf="formations" class="accordion" id="accordionExample">
+  <div *ngFor="let formation of formations" class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne"
+      >
+        <tr>
+          <td>
+            <h3>{{ formation?.reference }}:</h3>
+          </td>
+          <td>
+            <h2>{{ formation?.titref }}</h2>
+          </td>
+        </tr>
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse show"
+      aria-labelledby="headingOne"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <tr>
+          {{
+            formation?.lieu
+          }}
+        </tr>
+        <tr>
+          {{
+            formation?.interFormation
+          }}
+        </tr>
+        <tr>
+          {{
+            formation?.duree
+          }}
+        </tr>
+        <tr>
+          {{
+            formation?.prerequis
+          }}
+        </tr>
+        <tr>
+          {{
+            formation?.publicVise
+          }}
+        </tr>
+        <tr>
+          {{
+            formation?.programmeDetaille
+          }}
+        </tr>
+      </div>
+    </div>
+  </div>
+</div>
+<!---->
+
+<h1 *ngIf="formations">Liste des formations</h1>
+<table *ngIf="formations" class="table table-hover">
+  <thead>
+    <tr>
+      <th class="table-dark" scope="col">#</th>
+      <th class="table-dark" scope="col">Réference</th>
+      <th class="table-dark" scope="col">Lieu</th>
+      <th class="table-dark" scope="col">Formation inter-entreprise</th>
+      <th class="table-dark" scope="col">Durée</th>
+      <th class="table-dark" scope="col">Prérequis</th>
+      <th class="table-dark" scope="col">Objectif</th>
+      <th class="table-dark" scope="col">Public visé</th>
+      <th class="table-dark" scope="col">Programme détaillé</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let formation of formations">
+      <th scope="row">{{ formation.idFormation }}</th>
+      <td>{{ formation?.reference }}</td>
+      <td>{{ formation?.titref }}</td>
+      <td>{{ formation?.lieu }}</td>
+      <td>{{ formation?.interFormation }}</td>
+      <td>{{ formation?.duree }}</td>
+      <td>{{ formation?.prerequis }}</td>
+      <td>{{ formation?.publicVise }}</td>
+      <td>{{ formation?.programmeDetaille }}</td>
+      <td>
+        <button class="btn btn-secondary" type="submit" id="updateBtn">
+          Modifier
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-warning" type="submit" id="deleteBtn">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+  {{ errorMessage }}
+</div>
+<!-- </div>-->
+
+<!-- Add Training Modal -->
+<div
+  class="modal fade"
+  id="addTrainingModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="addTrainingModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addEmployeeModalLabel">
+          Ajouter formation
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddFormation(addForm)">
+          <div class="form-group">
+            <label for="ref">Référence</label>
+            <input
+              type="text"
+              ngModel
+              name="ref"
+              class="form-control"
+              id="ref"
+              placeholder="XB156"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="titref">Intitulé</label>
+            <input
+              type="text"
+              ngModel
+              name="title"
+              class="form-control"
+              id="titref"
+              placeholder="Type the title here"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="location" class="form-label">Lieu de formation</label>
+            <select
+              name="location"
+              class="form-select"
+              aria-label="Default select example"
+            >
+              <option value="Paris La défense" selected>
+                Paris La défense
+              </option>
+              <option value="Lyon">Lyon</option>
+              <option value="Sophia Antipolis">Sophia Antipolis</option>
+              <option value="Aix-en-provence">Aix-en-provence</option>
+              <option value="Toulouse">Toulouse</option>
+              <option value="Bordeaux">Bordeaux</option>
+              <option value="Nantes">Nantes</option>
+              <option value="Rennes">Rennes</option>
+              <option value="Rouen">Rouen</option>
+              <option value="Lille">Lille</option>
+              <option value="Starsbourg">Starsbourg</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <!-- Formation inter-entreprises/Formation intra-entreprise -->
+            <div>
+              <label for="exampleFormControlInput1" class="form-label"
+                >Type de formation:
+              </label>
+            </div>
+
+            <label class="form-check-label" for="inlineRadio1"
+              >Formation inter</label
+            >
+            <input
+              name="interIntra"
+              class="form-check-input"
+              type="radio"
+              value="true"
+              id="inter"
+              checked="checked"
+            />
+
+            <label class="form-check-label" for="inlineRadio2"
+              >Formation intra</label
+            >
+            <input
+              name="interIntra"
+              class="form-check-input"
+              type="radio"
+              value="false"
+              id="intra"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="duration">Durée</label>
+            <input
+              type="text"
+              ngModel
+              name="duration"
+              class="form-control"
+              id="duration"
+              placeholder="Nombre de jours"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="prerequis">Prerequis</label>
+            <input
+              type="text"
+              ngModel
+              name="prerequis"
+              class="form-control"
+              id="prerequis"
+              placeholder="prerequis"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Objectif">Objectif</label>
+            <textarea
+              name="goal"
+              class="form-control"
+              id="Objectif"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="tragetpublic">Public visé</label>
+            <textarea
+              name="targetPublic"
+              class="form-control"
+              id="targetPublic"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="details">Programme détaillé</label>
+            <textarea
+              name="details"
+              class="form-control"
+              id="details"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="add-employee-form"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              [disabled]="addForm.invalid"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Sauvegarder
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Notification for no trainings -->
+<div *ngIf="formations?.length === 0" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">No trainings!</h4>
+    <p>No trainings were found.</p>
+  </div>
+</div>
