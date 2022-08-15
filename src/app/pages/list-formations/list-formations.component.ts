@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Formation } from 'src/models/Formation';
+import { Formation } from 'src/models/formation';
 import { FormationService } from 'src/services/formation.service';
 import { NgForm } from '@angular/forms';
 

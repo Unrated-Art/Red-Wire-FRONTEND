@@ -1,4 +1,4 @@
-import { PreTest } from './PreTest';
+import { PreTest } from './preTest';
 import { Theme } from './theme';
 
 export interface Formation {
