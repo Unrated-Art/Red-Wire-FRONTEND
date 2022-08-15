@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormationComponent } from './formation/formation.component';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
@@ -12,15 +11,17 @@ import { DetailFormationComponent } from './pages/detail-formation/detail-format
 import { FooterComponent } from './pages/footer/footer.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
-import { TrainingSearchBarComponent } from './training-search-bar/training-search-bar.component';
 import { AccountComponent } from './pages/account/account.component';
 import { ListSessionsComponent } from './pages/list-sessions/list-sessions.component';
 import { ListCataloguesComponent } from './pages/list-catalogues/list-catalogues.component';
+import { FormationService } from 'src/services/formation.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { SearchBarComponent } from './pages/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormationComponent,
     AccueilComponent,
     DashboardComponent,
     CatalogueComponent,
@@ -29,13 +30,13 @@ import { ListCataloguesComponent } from './pages/list-catalogues/list-catalogues
     FooterComponent,
     HeaderComponent,
     AuthenticationComponent,
-    TrainingSearchBarComponent,
     AccountComponent,
     ListSessionsComponent,
     ListCataloguesComponent,
+    SearchBarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  providers: [FormationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
