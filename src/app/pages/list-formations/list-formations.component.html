@@ -11,6 +11,37 @@
   </form>
 </div>
 -->
+
+<!-- search Bar temporaire-->
+<div id="searchContainer" class="container justify-content-center">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Trouver une formation à distance ou en présentiel</h3>
+      <div class="input-group mb-3">
+        <input
+          id="searchBar1"
+          type="text"
+          name="key"
+          class="form-control input-text"
+          placeholder="référence, mot clé, thème..."
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-info btn-lg"
+            type="button"
+            (click)="searchFormations()"
+          >
+            <i class="fa fa-search">Search</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END search Bar-->
+
 <h1 *ngIf="formations">Liste des formations</h1>
 <div *ngIf="formations" class="accordion" id="accordionExample">
   <div *ngFor="let formation of formations" class="accordion-item">
@@ -120,6 +151,13 @@
   {{ errorMessage }}
 </div>
 <!-- </div>-->
+
+<!-- add formation button-->
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button class="btn btn-secondary" type="submit" id="updateBtn" onclick="">
+    Ajouter formation
+  </button>
+</div>
 
 <!-- Add Training Modal -->
 <div

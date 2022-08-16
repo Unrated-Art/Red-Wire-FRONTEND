@@ -1,8 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Formation } from 'src/models/formation';
 import { FormationService } from 'src/services/formation.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Formation } from 'src/models/formation';
 
 @Component({
   selector: 'app-list-formations',
@@ -16,7 +17,10 @@ export class ListFormationsComponent implements OnInit {
 
   errorMessage?: HttpErrorResponse;
 
-  constructor(private formationService: FormationService) {}
+  constructor(
+    private formationService: FormationService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getFormations();
@@ -78,7 +82,7 @@ export class ListFormationsComponent implements OnInit {
     });
   }
 
-  public searchFormations(key: string): void {
+  /* public searchFormations(key: string): void {
     console.log(key);
     const keyword = document.getElementById('searchBar')?.innerText;
     console.log(key);
@@ -102,13 +106,27 @@ export class ListFormationsComponent implements OnInit {
           })) //#!TODO: vérifier dernière condition (avec thème)??
       ) {
         results.push(f);
+        console.log("on a trouvé une formation correspondant à vos critères de recherche! ")
       }
     }
     this.formations = results;
     if (results.length === 0 || !key) {
       this.getFormations();
+      console.log("aucune formation ne correspond à vos critères de recherche")
     }
   }
+  */
+  public searchFormations(): void {
+    const key = document.getElementById('searchBar1')?.nodeValue;
+    alert(key);
+  }
+
+  /*
+  addTraining = () =>{
+
+    this.router.navigate(['/app/pages/addFormation.html']);
+    };
+*/
 
   public onOpenModal(f: Formation, mode: string): void {
     const container = document.getElementById('main-container');

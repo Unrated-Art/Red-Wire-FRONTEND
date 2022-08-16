@@ -14,14 +14,17 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public searchFormations(key: string): void {
-    console.log(key);
+  public searchFormations(/*key: string*/): void {
+    /*console.log(key);*/
     const keyword = document.getElementById('searchBar')?.innerText;
-    console.log(key);
-    if (keyword) {
+    console.log(keyword);
+    /*if (keyword) {
       key = keyword;
+    }*/
+    var key!: String;
+    if (keyword) {
+      let key = keyword;
     }
-
     const results: Formation[] = [];
     for (const f of this.formations) {
       if (
@@ -43,6 +46,7 @@ export class SearchBarComponent implements OnInit {
     this.formations = results;
     if (results.length === 0 || !key) {
       console.log('ici on doit afficher toutes les formations');
+      this.formationService.getFormations();
       //this.getFormations();
     }
     //return this.formationService.getFormations();
