@@ -1,2 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import './styles/bootstrap.scss';
+
+
+@font-face {
+  font-family: "Shrikhand";
+  src: url("./shrikhand/Shrikhand-Regular.otf");
+}
+//Code couleur
+
+$color-primary: #9356dc;
+$color-secondary: #ff79da;
+$color-tertiary: #99e2d0;
+$color-quaternary: #f3f3f3;
+$color-quinary: #ececec;
+
+
+h1 {
+  font-family: "Shrikhand", "Roboto", sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
