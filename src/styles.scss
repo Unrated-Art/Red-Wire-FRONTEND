@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'bootstrap';
+@import 'variables';
+
+a,
+a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+}
