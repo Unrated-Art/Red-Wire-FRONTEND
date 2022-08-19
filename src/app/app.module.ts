@@ -18,6 +18,7 @@ import { FormationService } from 'src/services/formation.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SearchBarComponent } from './pages/search-bar/search-bar.component';
+import { AccordionComponent } from './components/accordion/accordion.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SearchBarComponent } from './pages/search-bar/search-bar.component';
     ListSessionsComponent,
     ListCataloguesComponent,
     SearchBarComponent,
+    AccordionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [FormationService],

@@ -1,352 +1,195 @@
-<!--<div class="container" id="main-container">
-<div class="collapse navbar-collapse" id="navbarColor02">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-        <a class="nav-link" (click)="onOpenModal(formations[0], 'add')">Ajouter Formation <span class="sr-only">(current)</span></a>
-    </li>
-  </ul>
-  <form class="form-inline my-2 my-lg-0">
-    <input type="search" (ngModelChange)="searchFormations(key.value)" #key="ngModel" ngModel
-      name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search trainings..." required>
-  </form>
-</div>
--->
-
-<!-- search Bar temporaire-->
-<div id="searchContainer" class="container justify-content-center">
-  <div class="row">
-    <div class="col-md-8">
-      <h3>Trouver une formation à distance ou en présentiel</h3>
-      <div class="input-group mb-3">
-        <input
-          id="searchBar1"
-          type="text"
-          name="key"
-          class="form-control input-text"
-          placeholder="référence, mot clé, thème..."
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
-        <div class="input-group-append">
+<div
+  class="container-md d-flex pb-3 justify-content-center justify-content-between"
+>
+  <div class="flex-fill mx-3">
+    <div class="input-group">
+      <select class="form-select flex-auto" aria-label="">
+        <option selected>All Trainings</option>
+        <option value="true">Active Trainings</option>
+        <option value="false">Inactive Trainings</option>
+      </select>
+      <input class="form-control" type="search" name="Search" #keyword />
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="searchFormations(keyword.value)"
+      >
+        search
+      </button>
+    </div>
+    <br />
+    <!--All trainings-->
+    <h1><strong>Test1</strong></h1>
+    <div class="accordion" *ngIf="formations">
+      <div
+        class="accordion-item"
+        *ngFor="let formation of formations; let i = index"
+      >
+        <h2 class="accordion-header" [attr.id]="'heading' + i">
           <button
-            class="btn btn-outline-info btn-lg"
+            class="accordion-button"
             type="button"
-            (click)="searchFormations()"
+            (click)="openAccordion[i] = !openAccordion[i]"
+            data-bs-toggle="collapse"
+            [attr.data-target]="'#collapse' + i"
+            aria-expanded="true"
+            [attr.aria-controls]="'collapse' + i"
           >
-            <i class="fa fa-search">Search</i>
+            {{ formation.titref }}
           </button>
+        </h2>
+        <div
+          [attr.id]="'collapse' + i"
+          class="accordion-collapse collapse"
+          [class.show]="openAccordion[i]"
+          [attr.aria-labelledby]="'heading' + i"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body" *ngIf="formation.themes">
+            <ul>
+              <li *ngFor="let theme of formation.themes">
+                {{ theme.nomTheme }}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- END search Bar-->
-
-<h1 *ngIf="formations">Liste des formations</h1>
-<div *ngIf="formations" class="accordion" id="accordionExample">
-  <div *ngFor="let formation of formations" class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button
-        class="accordion-button"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseOne"
-        aria-expanded="true"
-        aria-controls="collapseOne"
-      >
-        <tr>
-          <td>
-            <h3>{{ formation?.reference }}:</h3>
-          </td>
-          <td>
-            <h2>{{ formation?.titref }}</h2>
-          </td>
-        </tr>
-      </button>
-    </h2>
-    <div
-      id="collapseOne"
-      class="accordion-collapse collapse show"
-      aria-labelledby="headingOne"
-      data-bs-parent="#accordionExample"
-    >
-      <div class="accordion-body">
-        <tr>
-          {{
-            formation?.lieu
-          }}
-        </tr>
-        <tr>
-          {{
-            formation?.interFormation
-          }}
-        </tr>
-        <tr>
-          {{
-            formation?.duree
-          }}
-        </tr>
-        <tr>
-          {{
-            formation?.prerequis
-          }}
-        </tr>
-        <tr>
-          {{
-            formation?.publicVise
-          }}
-        </tr>
-        <tr>
-          {{
-            formation?.programmeDetaille
-          }}
-        </tr>
+    <div class="alert alert-danger" *ngIf="noTrainingsFound">
+      {{ noTrainingsFound }}
+    </div>
+    <!-- END test -->
+    <h1><strong>Test2</strong></h1>
+    <div class="accordion" *ngFor="let formation of formations; index as i">
+      <div class="accordion-item">
+        <h2
+          class="accordion-header"
+          id="panelsStayOpen{{ formation.idFormation }}"
+        >
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            [attr.id]="'collapse' + i"
+            data-bs-target="#panelsStayOpen-collapseOne"
+            aria-expanded="true"
+            aria-controls="panelsStayOpen-collapseOne"
+          >
+            <!--ici on met l'ID et le nom du catalogue-->
+            {{ formation.titref }}
+            <span class="badge">{{ formation?.reference }}</span>
+          </button>
+        </h2>
+        <div
+          id="panelsStayOpen-collapseOne"
+          class="accordion-collapse collapse show"
+          aria-labelledby="panelsStayOpen"
+        >
+          <div class="accordion-body">
+            <a class="dropdown-item" href="#"
+              ><strong>Lieu: </strong>{{ formation.lieu }}</a
+            >
+            <a class="dropdown-item active" href="#"
+              ><strong>Lieu: </strong>{{ formation.lieu }}</a
+            >
+            <a class="dropdown-item active" href="#"
+              ><strong>Lieu: </strong>{{ formation.lieu }}</a
+            >
+            <a class="dropdown-item active" href="#"
+              ><strong>Lieu: </strong>{{ formation.lieu }}</a
+            >
+            <a class="dropdown-item active" href="#"
+              ><strong>Lieu: </strong>{{ formation.lieu }}</a
+            >
+            <a class="dropdown-item active" href="#"
+              ><strong>Lieu: </strong>{{ formation.lieu }}</a
+            >
+            <a class="dropdown-item active" href="#"
+              ><strong>Lieu: </strong>{{ formation.lieu }}</a
+            >
+            <a class="dropdown-item active" href="#"
+              ><strong>Lieu: </strong>{{ formation.lieu }}</a
+            >
+          </div>
+        </div>
       </div>
     </div>
+    <!--END all trainings-->
   </div>
 </div>
-<!---->
 
-<h1 *ngIf="formations">Liste des formations</h1>
-<table *ngIf="formations" class="table table-hover">
-  <thead>
-    <tr>
-      <th class="table-dark" scope="col">#</th>
-      <th class="table-dark" scope="col">Réference</th>
-      <th class="table-dark" scope="col">Lieu</th>
-      <th class="table-dark" scope="col">Formation inter-entreprise</th>
-      <th class="table-dark" scope="col">Durée</th>
-      <th class="table-dark" scope="col">Prérequis</th>
-      <th class="table-dark" scope="col">Objectif</th>
-      <th class="table-dark" scope="col">Public visé</th>
-      <th class="table-dark" scope="col">Programme détaillé</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let formation of formations">
-      <th scope="row">{{ formation.idFormation }}</th>
-      <td>{{ formation?.reference }}</td>
-      <td>{{ formation?.titref }}</td>
-      <td>{{ formation?.lieu }}</td>
-      <td>{{ formation?.interFormation }}</td>
-      <td>{{ formation?.duree }}</td>
-      <td>{{ formation?.prerequis }}</td>
-      <td>{{ formation?.publicVise }}</td>
-      <td>{{ formation?.programmeDetaille }}</td>
-      <td>
-        <button class="btn btn-secondary" type="submit" id="updateBtn">
-          Modifier
-        </button>
-      </td>
-      <td>
-        <button class="btn btn-warning" type="submit" id="deleteBtn">
-          Supprimer
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-  {{ errorMessage }}
+<!--<div class="w-100 d-flex justify-content-center">
+  <table class="table table-striped rounded-3">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Location</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Target Audience</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of trainings">
+        <th scope="row">
+          <a [routerLink]="['training', item.ref]">
+            {{ item.ref }}
+          </a>
+        </th>
+        <td>{{ item.title }}</td>
+        <td>{{ item.location }}</td>
+        <td>{{ item.duration }}</td>
+        <td>{{ item.target }}</td>
+        <td>
+          <div class="white-space">
+            <button class="btn btn-info btn-sm d-inline-block">
+              <a [routerLink]="[item.ref, 'edit']"> edit </a></button
+            >&nbsp;
+            <button
+              class="btn btn-danger btn-sm d-inline-block"
+              data-bs-toggle="modal"
+              data-bs-target="#removeTrainingModal"
+            >
+              remove
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-<!-- </div>-->
+-->
 
-<!-- add formation button-->
-<div class="btn-group" role="group" aria-label="Basic example">
-  <button class="btn btn-secondary" type="submit" id="updateBtn" onclick="">
-    Ajouter formation
-  </button>
-</div>
-
-<!-- Add Training Modal -->
 <div
   class="modal fade"
-  id="addTrainingModal"
+  id="removeTrainingModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
   tabindex="-1"
-  role="dialog"
-  aria-labelledby="addTrainingModalLabel"
+  aria-labelledby="removeTrainingModal"
   aria-hidden="true"
 >
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addEmployeeModalLabel">
-          Ajouter formation
-        </h5>
+        <h5 class="modal-title" id="exampleModalLabel">Remove Training</h5>
         <button
           type="button"
-          class="close"
-          data-dismiss="modal"
+          class="btn-close"
+          data-bs-dismiss="modal"
           aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
+        ></button>
       </div>
       <div class="modal-body">
-        <form #addForm="ngForm" (ngSubmit)="onAddFormation(addForm)">
-          <div class="form-group">
-            <label for="ref">Référence</label>
-            <input
-              type="text"
-              ngModel
-              name="ref"
-              class="form-control"
-              id="ref"
-              placeholder="XB156"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="titref">Intitulé</label>
-            <input
-              type="text"
-              ngModel
-              name="title"
-              class="form-control"
-              id="titref"
-              placeholder="Type the title here"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="location" class="form-label">Lieu de formation</label>
-            <select
-              name="location"
-              class="form-select"
-              aria-label="Default select example"
-            >
-              <option value="Paris La défense" selected>
-                Paris La défense
-              </option>
-              <option value="Lyon">Lyon</option>
-              <option value="Sophia Antipolis">Sophia Antipolis</option>
-              <option value="Aix-en-provence">Aix-en-provence</option>
-              <option value="Toulouse">Toulouse</option>
-              <option value="Bordeaux">Bordeaux</option>
-              <option value="Nantes">Nantes</option>
-              <option value="Rennes">Rennes</option>
-              <option value="Rouen">Rouen</option>
-              <option value="Lille">Lille</option>
-              <option value="Starsbourg">Starsbourg</option>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <!-- Formation inter-entreprises/Formation intra-entreprise -->
-            <div>
-              <label for="exampleFormControlInput1" class="form-label"
-                >Type de formation:
-              </label>
-            </div>
-
-            <label class="form-check-label" for="inlineRadio1"
-              >Formation inter</label
-            >
-            <input
-              name="interIntra"
-              class="form-check-input"
-              type="radio"
-              value="true"
-              id="inter"
-              checked="checked"
-            />
-
-            <label class="form-check-label" for="inlineRadio2"
-              >Formation intra</label
-            >
-            <input
-              name="interIntra"
-              class="form-check-input"
-              type="radio"
-              value="false"
-              id="intra"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="duration">Durée</label>
-            <input
-              type="text"
-              ngModel
-              name="duration"
-              class="form-control"
-              id="duration"
-              placeholder="Nombre de jours"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="prerequis">Prerequis</label>
-            <input
-              type="text"
-              ngModel
-              name="prerequis"
-              class="form-control"
-              id="prerequis"
-              placeholder="prerequis"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="Objectif">Objectif</label>
-            <textarea
-              name="goal"
-              class="form-control"
-              id="Objectif"
-              rows="2"
-            ></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="tragetpublic">Public visé</label>
-            <textarea
-              name="targetPublic"
-              class="form-control"
-              id="targetPublic"
-              rows="2"
-            ></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="details">Programme détaillé</label>
-            <textarea
-              name="details"
-              class="form-control"
-              id="details"
-              rows="2"
-            ></textarea>
-          </div>
-
-          <div class="modal-footer">
-            <button
-              type="button"
-              id="add-employee-form"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button
-              [disabled]="addForm.invalid"
-              type="submit"
-              class="btn btn-primary"
-            >
-              Sauvegarder
-            </button>
-          </div>
-        </form>
+        ⚠️&nbsp;This action is irreversible. Are you sure about this decision?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          cancel
+        </button>
+        <button type="button" class="btn btn-danger">remove</button>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Notification for no trainings -->
-<div *ngIf="formations?.length === 0" class="col-lg-12 col-md-12 col-xl-12">
-  <div class="alert alert-info" role="alert">
-    <h4 class="alert-heading">No trainings!</h4>
-    <p>No trainings were found.</p>
   </div>
 </div>
