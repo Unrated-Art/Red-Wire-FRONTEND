@@ -2,13 +2,20 @@
   class="container-md d-flex pb-3 justify-content-center justify-content-between"
 >
   <div class="flex-fill mx-3">
+    <div><h4>Trouver une formation</h4></div>
     <div class="input-group">
       <select class="form-select flex-auto" aria-label="">
         <option selected>All Trainings</option>
         <option value="true">Active Trainings</option>
         <option value="false">Inactive Trainings</option>
       </select>
-      <input class="form-control" type="search" name="Search" #keyword />
+      <input
+        class="form-control"
+        type="search"
+        name="Search"
+        #keyword
+        placeholder="Mot clé, thème.."
+      />
       <button
         class="btn btn-primary"
         type="button"
@@ -19,7 +26,9 @@
     </div>
     <br />
     <!--All trainings-->
-    <h1><strong>Test1</strong></h1>
+    <h2 *ngIf="formations && !noTrainingsFound">
+      Notre catalogue des formations
+    </h2>
     <div class="accordion" *ngIf="formations">
       <div
         class="accordion-item"
@@ -55,66 +64,11 @@
         </div>
       </div>
     </div>
-    <div class="alert alert-danger" *ngIf="noTrainingsFound">
+
+    <!-- show alert if No training was found-->
+    <div class="alert alert-info" *ngIf="noTrainingsFound">
       {{ noTrainingsFound }}
     </div>
-    <!-- END test -->
-    <h1><strong>Test2</strong></h1>
-    <div class="accordion" *ngFor="let formation of formations; index as i">
-      <div class="accordion-item">
-        <h2
-          class="accordion-header"
-          id="panelsStayOpen{{ formation.idFormation }}"
-        >
-          <button
-            class="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            [attr.id]="'collapse' + i"
-            data-bs-target="#panelsStayOpen-collapseOne"
-            aria-expanded="true"
-            aria-controls="panelsStayOpen-collapseOne"
-          >
-            <!--ici on met l'ID et le nom du catalogue-->
-            {{ formation.titref }}
-            <span class="badge">{{ formation?.reference }}</span>
-          </button>
-        </h2>
-        <div
-          id="panelsStayOpen-collapseOne"
-          class="accordion-collapse collapse show"
-          aria-labelledby="panelsStayOpen"
-        >
-          <div class="accordion-body">
-            <a class="dropdown-item" href="#"
-              ><strong>Lieu: </strong>{{ formation.lieu }}</a
-            >
-            <a class="dropdown-item active" href="#"
-              ><strong>Lieu: </strong>{{ formation.lieu }}</a
-            >
-            <a class="dropdown-item active" href="#"
-              ><strong>Lieu: </strong>{{ formation.lieu }}</a
-            >
-            <a class="dropdown-item active" href="#"
-              ><strong>Lieu: </strong>{{ formation.lieu }}</a
-            >
-            <a class="dropdown-item active" href="#"
-              ><strong>Lieu: </strong>{{ formation.lieu }}</a
-            >
-            <a class="dropdown-item active" href="#"
-              ><strong>Lieu: </strong>{{ formation.lieu }}</a
-            >
-            <a class="dropdown-item active" href="#"
-              ><strong>Lieu: </strong>{{ formation.lieu }}</a
-            >
-            <a class="dropdown-item active" href="#"
-              ><strong>Lieu: </strong>{{ formation.lieu }}</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--END all trainings-->
   </div>
 </div>
 

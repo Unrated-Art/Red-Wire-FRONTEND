@@ -17,7 +17,7 @@ export class ListFormationsComponent implements OnInit {
   public deleteFormation!: Formation;
   allThemes?: Theme[];
 
-  openAccordion = ([] = [true]);
+  openAccordion = ([] = [false]);
 
   errorMessage?: HttpErrorResponse;
   noTrainingsFound?: string;
@@ -106,6 +106,9 @@ export class ListFormationsComponent implements OnInit {
 
     const results: Formation[] = [];
     for (const f of this.formations) {
+      if (!key) {
+        this.getFormations();
+      }
       if (
         f.reference.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         f.titref.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
@@ -120,15 +123,15 @@ export class ListFormationsComponent implements OnInit {
           })) //#!TODO: vérifier dernière condition (avec thème)??
       ) {
         results.push(f);
-        this.noTrainingsFound = 'No trainings found!';
         console.log(
           'on a trouvé une formation correspondant à vos critères de recherche! '
         );
+        this.formations = results;
       }
     }
-    this.formations = results;
-    if (results.length === 0 || !key) {
-      this.getFormations();
+
+    if (results.length === 0 /*|| !key*/) {
+      this.noTrainingsFound = 'No trainings were found!';
       console.log('aucune formation ne correspond à vos critères de recherche');
     }
   }
