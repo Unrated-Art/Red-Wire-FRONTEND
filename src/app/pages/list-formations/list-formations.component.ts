@@ -1,8 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Formation } from 'src/models/formation';
 import { FormationService } from 'src/services/formation.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Formation } from 'src/models/formation';
+import { Theme } from 'src/models/theme';
 
 @Component({
   selector: 'app-list-formations',
@@ -13,23 +15,44 @@ export class ListFormationsComponent implements OnInit {
   public formations!: Formation[];
   public editFormation!: Formation;
   public deleteFormation!: Formation;
+  allThemes?: Theme[];
+
+  openAccordion = ([] = [false]);
 
   errorMessage?: HttpErrorResponse;
+  noTrainingsFound?: string;
 
-  constructor(private formationService: FormationService) {}
+  isHidden = true;
+
+  constructor(
+    private formationService: FormationService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getFormations();
+    this.getThemes();
+  }
+
+  public getThemes(): void {
+    for (var f in this.formationService.getFormations()) {
+      console.log(f);
+    }
+  }
+
+  public showMessage(idBtn: string): void {
+    alert(idBtn);
+    //alert(document.getElementById("idBtn")?.innerText);
   }
 
   public getFormations(): void {
     this.formationService.getFormations().subscribe({
-      next: (Response) => {
-        this.formations = Response;
+      next: (response: Formation[]) => {
+        this.formations = response;
         console.log(this.formations);
       },
-      error: (HttpErrorResponse) => {
-        this.errorMessage = HttpErrorResponse.message;
+      error: (httpErrorResponse) => {
+        this.errorMessage = httpErrorResponse.message;
         alert(this.errorMessage);
       },
       complete: () => console.log('DONE!'),
@@ -80,20 +103,18 @@ export class ListFormationsComponent implements OnInit {
 
   public searchFormations(key: string): void {
     console.log(key);
-    const keyword = document.getElementById('searchBar')?.innerText;
-    console.log(key);
-    if (keyword) {
-      key = keyword;
-    }
 
     const results: Formation[] = [];
     for (const f of this.formations) {
+      if (!key) {
+        this.getFormations();
+      }
       if (
         f.reference.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         f.titref.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         f.lieu.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         f.prerequis.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
-        f.publicVise.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        //f.objectif.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         f.publicVise.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         f.programmeDetaille.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         (f.themes.length !== 0 &&
@@ -102,13 +123,24 @@ export class ListFormationsComponent implements OnInit {
           })) //#!TODO: vérifier dernière condition (avec thème)??
       ) {
         results.push(f);
+        console.log(
+          'on a trouvé une formation correspondant à vos critères de recherche! '
+        );
+        this.formations = results;
       }
     }
-    this.formations = results;
-    if (results.length === 0 || !key) {
-      this.getFormations();
+
+    if (results.length === 0 /*|| !key*/) {
+      this.noTrainingsFound = 'No trainings were found!';
+      console.log('aucune formation ne correspond à vos critères de recherche');
     }
   }
+
+  /*
+  addTraining = () =>{
+    this.router.navigate(['/app/pages/addFormation.html']);
+    };
+*/
 
   public onOpenModal(f: Formation, mode: string): void {
     const container = document.getElementById('main-container');

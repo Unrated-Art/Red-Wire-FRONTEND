@@ -3,8 +3,20 @@
   position: relative;
 
   &__logo {
-    font-family: "Shrikhand", "cursive";
+   // font-family: "Shrikhand", "cursive";
     margin: 0;
     text-align: center;
   }
+  nav .icon {
+    display: flex;
+    align-items:flex-end;
+    justify-content:space-around;
+    padding-left: 20px;
+    list-style-type: none;
+    font-size: 20px;
+    //width: 20%;
+  }
+
 }
+
+

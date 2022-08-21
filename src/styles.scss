@@ -2,21 +2,17 @@
 @import './styles/bootstrap.scss';
 
 
-@font-face {
-  font-family: "Shrikhand";
-  src: url("./shrikhand/Shrikhand-Regular.otf");
-}
 //Code couleur
 
-$color-primary: #9356dc;
+$color-primary: #02399f;
 $color-secondary: #ff79da;
-$color-tertiary: #99e2d0;
+$color-tertiary: #6c8fcf;
 $color-quaternary: #f3f3f3;
 $color-quinary: #ececec;
 
 
 h1 {
-  font-family: "Shrikhand", "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 body,

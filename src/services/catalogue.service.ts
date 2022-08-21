@@ -6,14 +6,14 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class ServiceCatalogue {
+export class CatalogueService {
   private apiServerUrl = '';
 
   constructor(private http: HttpClient) {}
 
   public getCatalogues(): Observable<Catalogue[]> {
     return this.http.get<Catalogue[]>(
-      '${this.apiServerUrl}/catalogue/allcatalogue'
+      '${this.apiServerUrl}/catalogue/all'
     );
   }
 

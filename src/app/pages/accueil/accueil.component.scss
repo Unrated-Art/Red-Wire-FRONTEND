@@ -1,17 +1,30 @@
 
+@import "/src/styles.scss";
+
 .formations {
   background: $color-quaternary;
   padding: 1rem;
 }
 
 .cards {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  column-gap: 2rem;
-  row-gap: 2rem;
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-between;
+
+  //display: grid;
+  //grid-template-columns: repeat(1, 1fr);
+  //column-gap: 2rem;
+  //row-gap: 2rem;
 }
 
 .card {
+
+  @media (min-width: 64rem) {
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-between;
+  }
+  width: 30%;
   background-color: white;
   border-radius: 1rem;
   position: relative;

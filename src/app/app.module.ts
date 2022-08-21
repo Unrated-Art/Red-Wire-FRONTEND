@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { CatalogueComponent } from './pages/catalogue/catalogue.component';
+
 import { ListFormationsComponent } from './pages/list-formations/list-formations.component';
 import { DetailFormationComponent } from './pages/detail-formation/detail-formation.component';
 import { FooterComponent } from './pages/footer/footer.component';
@@ -18,13 +18,14 @@ import { FormationService } from 'src/services/formation.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SearchBarComponent } from './pages/search-bar/search-bar.component';
+import { CatalogueService } from 'src/services/catalogue.service';
+import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
     DashboardComponent,
-    CatalogueComponent,
     ListFormationsComponent,
     DetailFormationComponent,
     FooterComponent,
@@ -34,9 +35,10 @@ import { SearchBarComponent } from './pages/search-bar/search-bar.component';
     ListSessionsComponent,
     ListCataloguesComponent,
     SearchBarComponent,
+    CatalogueComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [FormationService],
+  providers: [FormationService,CatalogueService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
