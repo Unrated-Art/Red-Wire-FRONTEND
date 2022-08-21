@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './pages/accueil/accueil.component';
@@ -18,15 +17,14 @@ import { FormationService } from 'src/services/formation.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SearchBarComponent } from './pages/search-bar/search-bar.component';
-import { AccordionComponent } from './components/accordion/accordion.component';
 import { AddFormationComponent } from './pages/formation/add-formation/add-formation.component';
+import { CatalogueService } from 'src/services/catalogue.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
     DashboardComponent,
-    CatalogueComponent,
     ListFormationsComponent,
     DetailFormationComponent,
     FooterComponent,
@@ -36,11 +34,11 @@ import { AddFormationComponent } from './pages/formation/add-formation/add-forma
     ListSessionsComponent,
     ListCataloguesComponent,
     SearchBarComponent,
-    AccordionComponent,
     AddFormationComponent,
+    CatalogueComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [FormationService],
+  providers: [FormationService, CatalogueService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

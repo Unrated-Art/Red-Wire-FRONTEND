@@ -1,1 +1,124 @@
-<p>list-catalogues works!</p>
+<app-header></app-header>
+
+<div class="container" id="main-container">
+  <div class="row">
+    <div *ngFor="let catalogue of catalogues" class="col-md-6 col-xl-3">
+      <div class="card m-b-30">
+        <div class="card-body row">
+          <!-- <div class="col-6">
+                <a href=""><img src="{{catalogue?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+             </div> -->
+          <div class="col-6 card-title align-self-center mb-0">
+            <h5>{{ catalogue?.titre }}</h5>
+            <p class="m-0">{{ catalogue?.auteur }}</p>
+          </div>
+        </div>
+        <!-- <ul class="list-group list-group-flush">
+             <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{catalogue?.email}}</li>
+             <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{catalogue?.phone}}</li>
+          </ul> -->
+        <div class="card-body">
+          <div class="float-right btn-group btn-group-sm">
+            <a
+              (click)="onOpenModal(catalogue, 'edit')"
+              class="btn btn-primary tooltips"
+              data-placement="top"
+              data-original-title="Edit"
+              ><i class="fa fa-pencil"></i>
+            </a>
+            <a
+              (click)="onOpenModal(catalogue, 'delete')"
+              class="btn btn-secondary tooltips"
+              data-placement="top"
+              data-original-title="Delete"
+              ><i class="fa fa-times"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="modal fade"
+    id="addCatalogueModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="addCatalogueModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addCatalogueModalLabel">Add Catalogue</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddCatalogue(addForm)">
+            <div class="form-group">
+              <label for="titre">Titre</label>
+              <input
+                type="text"
+                ngModel
+                name="name"
+                class="form-control"
+                id="titre"
+                placeholder="Titre"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="auteur">Auteur</label>
+              <input
+                type="auteur"
+                ngModel
+                name="auteur"
+                class="form-control"
+                id="auteur"
+                placeholder="Auteur"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="date">Date de création</label>
+              <input
+                type="date"
+                ngModel
+                name="date"
+                class="form-control"
+                id="date"
+                placeholder="Date"
+                required
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                id="add-catalogue-form"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                [disabled]="addForm.invalid"
+                type="submit"
+                class="btn btn-primary"
+              >
+                Save changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

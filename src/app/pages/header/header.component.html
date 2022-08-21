@@ -1,3 +1,73 @@
+<head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+  />
+  <link href="header.component.scss" rel="stylesheet" />
+</head>
+
 <header class="header">
-  <a class="header__logo">Saturne</a>
+  <a href="index.html" class="header__logo">Saturne</a>
+  <ul class="icon">
+    <li class="icon__desc align-middle list-unstyled">
+      <a href=""><i class="fas fa-user-circle"></i></a>
+    </li>
+    <li class="icon__desc align-middle list-unstyled">
+      <a href="cart.html"
+        ><i class="fas fa-cart-arrow-down"></i>
+        <div class="item__number"></div
+      ></a>
+    </li>
+  </ul>
+  <nav class="navbar navbar-light bg-light">
+    <li class="nav-item dropdown list-unstyled">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdownMenuLink"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Nos Formations
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </li>
+    <li class="nav-item list-unstyled">
+      <a class="nav-link" routerLink="/dashboard"> Votre Espace </a>
+    </li>
+    <li class="nav-item list-unstyled">
+      <a class="nav-link" href="#" href="#"> A propos de nous </a>
+    </li>
+    <li class="nav-item list-unstyled">
+      <a class="nav-link" href="#" href="#"> Contacts </a>
+    </li>
+    <form class="form-inline">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+  </nav>
+  <router-outlet></router-outlet>
 </header>

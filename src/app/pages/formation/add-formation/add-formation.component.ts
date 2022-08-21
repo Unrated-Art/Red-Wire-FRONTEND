@@ -13,27 +13,30 @@ import { FormationService } from 'src/services/formation.service';
 })
 export class AddFormationComponent implements OnInit {
   formation!: Formation;
-  themes: string[] = [
-    'Développement',
-    'Big Data, Data Science et IA',
-    'Informatique décicionnelle',
-    'Bases de données',
-    'Réseaux et Télécoms',
-    'Cybersécurité',
-    'Cloud computing',
-    'Virtualisation',
-    'Windows et System Center',
-    'Linux, Unix, Mac',
-    'Solutions collaboratives Microsoft',
-    'IBM',
-    'SAP',
-    'Tests',
-    'Développement web et mobilité',
-    'IoT, Systèmes embarquées, Robotic Process Automation',
-    'DevOps, industrialisation et gestion de production',
-    'PAO, CAO, DAO, BIM',
-  ];
-  //themes: Theme[] = [];
+  // themes: string[] = [
+  //                   "Développement",
+  //                   "Big Data, Data Science et IA",
+  //                   "Informatique décicionnelle",
+  //                   "Bases de données",
+  //                   "Réseaux et Télécoms",
+  //                   "Cybersécurité",
+  //                   "Cloud computing",
+  //                   "Virtualisation",
+  //                   "Windows et System Center",
+  //                   "Linux, Unix, Mac",
+  //                   "Solutions collaboratives Microsoft",
+  //                   "IBM",
+  //                   "SAP",
+  //                   "Tests",
+  //                   "Développement web et mobilité",
+  //                   "IoT, Systèmes embarquées, Robotic Process Automation",
+  //                   "DevOps, industrialisation et gestion de production",
+  //                   "PAO, CAO, DAO, BIM"
+  //                 ];
+
+  //themes: Theme[] = [{1,"Développement web et mobilité"},
+
+  //];
   //themes: Array<Theme> = [];
 
   @Input()
