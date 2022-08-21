@@ -10,6 +10,7 @@ export interface Formation {
   interFormation: boolean;
   duree: number;
   prerequis: string;
+  objectif: string;
   publicVise: string;
   programmeDetaille: string;
   themes: Theme[];

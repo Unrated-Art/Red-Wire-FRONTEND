@@ -1,22 +1,71 @@
-<div class="container justify-content-center">
+<div id="searchContainer" class="container justify-content-center">
   <div class="row">
     <div class="col-md-8">
-      <h3>Trouver une formation à distance ou en présentiel</h3>
+      <h3>
+        Trouver une formation à distance ou en présentiel //component search bar
+      </h3>
       <div class="input-group mb-3">
         <input
+          id="searchBar"
           type="text"
+          name="key"
           class="form-control input-text"
           placeholder="référence, mot clé, thème..."
-          onkeyup="searchFormations(document.getElementById(searchBar).innerText)"
-          aria-label="Recipient's username"
+          aria-label="search-criteria"
           aria-describedby="basic-addon2"
         />
+        <!--onkeyup="searchFormations(key.value)"-->
         <div class="input-group-append">
-          <button class="btn btn-outline-info btn-lg" type="button">
+          <button
+            name="b1"
+            class="btn btn-outline-info btn-lg"
+            type="button"
+            onclick="searchTraining()"
+          >
             <i class="fa fa-search">Search</i>
           </button>
+          <p id="demo"></p>
+          <script>
+            function searchTraining() {
+              document.getElementById('searchBar').value = 'hello';
+
+              alert(keyu);
+            }
+          </script>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+Search: <input type="search" id="mySearch" value="Food" />
+
+<p>
+  Click the button to change the value of the value attribute of the search
+  field.
+</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+  function myFonction() {
+    this.getChild('searchBar').getElementById('search').value =
+      'nourhenemahahzjej';
+  }
+  function myFunction() {
+    document.getChild().getElementById('mySearch').value = 'Muscle Cars';
+    document.getChild().getElementById; //
+    if (document.hasChildNodes()) {
+      var children = document.childNodes;
+
+      for (var i = 0; i < children.length; i++) {
+        children[i].appendChild(myFonction());
+
+        // faire quelque chose avec chaque enfant[i]
+        // NOTE: La liste est en ligne, l'ajout ou la suppression des enfants changera la liste
+      }
+    }
+  }
+</script>
