@@ -142,4 +142,59 @@
       </div>
     </div>
   </div>
+
+  <!-- CARD EXAMPLE -->
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Détail formation</h5>
+        <div class="bd-example">
+          <nav>
+            <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+              <button
+                class="nav-link active"
+                id="nav-inter-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-inter"
+                type="button"
+                role="tab"
+                aria-controls="nav-inter"
+                aria-selected="true"
+              >
+                Inter
+              </button>
+              <button
+                class="nav-link"
+                id="nav-intra-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-intra"
+                type="button"
+                role="tab"
+                aria-controls="nav-intra"
+                aria-selected="false"
+              >
+                Intra
+              </button>
+            </div>
+          </nav>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <i>prix: </i>3500 £ : formation.getSessions().firstElement().prix
+          </li>
+          <li class="list-group-item">
+            <i>Référence: </i> formation.reference
+          </li>
+        </ul>
+        <div class="card-body">
+          <button type="button" class="btn btn-light">S'inscrire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END CARD EXAMPLE -->
 </div>

@@ -33,11 +33,11 @@ export class SearchBarComponent implements OnInit {
         f.prerequis.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         f.publicVise.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
         f.publicVise.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
-        f.programmeDetaille.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
-        (f.themes.length !== 0 &&
-          f.themes.forEach((t) => {
-            t.nomTheme.toLowerCase().indexOf(key.toLowerCase()) !== -1;
-          })) //#!TODO: vérifier dernière condition (avec thème)??
+        f.programmeDetaille.toLowerCase().indexOf(key.toLowerCase()) !== -1 // ||
+        // (f.themes.length !== 0 &&
+        //   f.themes.forEach((t) => {
+        //     t.nomTheme.toLowerCase().indexOf(key.toLowerCase()) !== -1;
+        //   })) //#!TODO: vérifier dernière condition (avec thème)??
       ) {
         results.push(f);
       }

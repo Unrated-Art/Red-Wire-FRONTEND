@@ -12,8 +12,8 @@ export interface Formation {
   objectif: string;
   publicVise: string;
   programmeDetaille: string;
-  themes: Theme[];
-  chapitres: [];
-  sessions: [];
-  pretest: PreTest;
+  themes?: Theme[];
+  chapitres?: [];
+  sessions?: [];
+  pretest?: PreTest;
 }
