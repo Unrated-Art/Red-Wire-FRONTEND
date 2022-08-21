@@ -155,7 +155,7 @@
                 class="nav-link active"
                 id="nav-inter-tab"
                 data-bs-toggle="tab"
-                data-bs-target="#nav-inter"
+                data-bs-target="#nav_inter"
                 type="button"
                 role="tab"
                 aria-controls="nav-inter"
@@ -167,7 +167,7 @@
                 class="nav-link"
                 id="nav-intra-tab"
                 data-bs-toggle="tab"
-                data-bs-target="#nav-intra"
+                data-bs-target="#nav_intra"
                 type="button"
                 role="tab"
                 aria-controls="nav-intra"
@@ -177,19 +177,91 @@
               </button>
             </div>
           </nav>
-          <p class="card-text">
+          <p class="card-text" #nav_inter>
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
+          <p class="card-text" #nav_intra>
+            <strong
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptate, quos perferendis tempora officia ullam iure quam maxime
+              aperiam harum ipsa ipsum dignissimos, neque non laudantium
+              assumenda rerum a amet. Odio?</strong
+            >
+          </p>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <i>prix: </i>3500 £ : formation.getSessions().firstElement().prix
+
+        <!-- begin region TEst-->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="nav_inter-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#nav_inter"
+              type="button"
+              role="tab"
+              aria-controls="inter"
+              aria-selected="true"
+            >
+              Inter
+            </button>
           </li>
-          <li class="list-group-item">
-            <i>Référence: </i> formation.reference
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="nav_intra-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#nav_intra"
+              type="button"
+              role="tab"
+              aria-controls="intra"
+              aria-selected="false"
+            >
+              Intra
+            </button>
           </li>
         </ul>
+        <div class="tab-content" id="myTabContent">
+          <!-- inter -->
+          <div
+            class="tab-pane fade show active"
+            id="nav-inter"
+            role="tabpanel"
+            aria-labelledby="nav_inter-tab"
+          >
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i>prix: </i>3500 £ :
+                formation.getSessions().firstElement().prix
+              </li>
+              <li class="list-group-item">
+                <i>Référence: </i> formation.reference
+              </li>
+            </ul>
+          </div>
+          <!-- intra -->
+          <div
+            class="tab-pane fade"
+            id="nav_intra"
+            role="tabpanel"
+            aria-labelledby="nav_intra-tab"
+          >
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i>Durée: </i>x jours ":
+                formation.getSessions().firstElement().Duree"
+              </li>
+              <li class="list-group-item">
+                <i>Référence: </i> formation.reference
+              </li>
+              <button class="btn btn-secondary">Demander devis</button>
+            </ul>
+          </div>
+        </div>
+        <!-- end region Test-->
+
+        <!-- button s'incrire -->
         <div class="card-body">
           <button type="button" class="btn btn-light">S'inscrire</button>
         </div>
