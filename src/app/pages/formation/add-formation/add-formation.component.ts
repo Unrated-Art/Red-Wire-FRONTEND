@@ -1,9 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Formation } from 'src/models/formation';
-import { Theme } from 'src/models/theme';
 import { FormationService } from 'src/services/formation.service';
 
 @Component({
@@ -13,26 +11,26 @@ import { FormationService } from 'src/services/formation.service';
 })
 export class AddFormationComponent implements OnInit {
   formation!: Formation;
-  // themes: string[] = [
-  //                   "Développement",
-  //                   "Big Data, Data Science et IA",
-  //                   "Informatique décicionnelle",
-  //                   "Bases de données",
-  //                   "Réseaux et Télécoms",
-  //                   "Cybersécurité",
-  //                   "Cloud computing",
-  //                   "Virtualisation",
-  //                   "Windows et System Center",
-  //                   "Linux, Unix, Mac",
-  //                   "Solutions collaboratives Microsoft",
-  //                   "IBM",
-  //                   "SAP",
-  //                   "Tests",
-  //                   "Développement web et mobilité",
-  //                   "IoT, Systèmes embarquées, Robotic Process Automation",
-  //                   "DevOps, industrialisation et gestion de production",
-  //                   "PAO, CAO, DAO, BIM"
-  //                 ];
+  themes: string[] = [
+    'Développement',
+    'Big Data, Data Science et IA',
+    'Informatique décicionnelle',
+    'Bases de données',
+    'Réseaux et Télécoms',
+    'Cybersécurité',
+    'Cloud computing',
+    'Virtualisation',
+    'Windows et System Center',
+    'Linux, Unix, Mac',
+    'Solutions collaboratives Microsoft',
+    'IBM',
+    'SAP',
+    'Tests',
+    'Développement web et mobilité',
+    'IoT, Systèmes embarquées, Robotic Process Automation',
+    'DevOps, industrialisation et gestion de production',
+    'PAO, CAO, DAO, BIM',
+  ];
 
   //themes: Theme[] = [{1,"Développement web et mobilité"},
 
