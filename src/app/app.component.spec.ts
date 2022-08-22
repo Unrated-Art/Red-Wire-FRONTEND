@@ -6,7 +6,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AppComponent]
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -16,16 +16,18 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'red-wire-client'`, () => {
+  it(`should have as title 'Red-Wire-FRONTEND'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('red-wire-client');
+    expect(app.title).toEqual('Red-Wire-FRONTEND');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('red-wire-client app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain(
+      'RedWireClient app is running!'
+    );
   });
 });

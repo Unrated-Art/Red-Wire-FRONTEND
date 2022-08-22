@@ -1,52 +1,44 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './layouts/header/header.component';
-import { ContentComponent } from './layouts/content/content.component';
-import { SidebarComponent } from './layouts/sidebar/sidebar.component';
-import { FooterComponent } from './layouts/footer/footer.component';
-
-import { SessionComponent } from './components/session/session.component';
-import { FormComponent as SessionFormComponent } from './components/session/form/form.component';
-import { OverviewComponent as SessionOverviewComponent } from './components/session/overview/overview.component';
-
+import { AccueilComponent } from './pages/accueil/accueil.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
-import { OverviewComponent as CatalogueOverviewComponent } from './pages/catalogue/overview/overview.component';
-import { EditComponent as CatalogueEditComponent } from './pages/catalogue/edit/edit.component';
-
-import { TrainingComponent } from './pages/training/training.component';
-import { EditComponent as TrainingEditComponent } from './pages/training/edit/edit.component';
-import { OverviewComponent as TrainingOverviewComponent } from './pages/training/overview/overview.component';
-
-import { WorkDaysPipe } from './filters/work-days.pipe';
+import { ListFormationsComponent } from './pages/formation/list-formations/list-formations.component';
+import { DetailFormationComponent } from './pages/formation/detail-formation/detail-formation.component';
+import { FooterComponent } from './pages/footer/footer.component';
+import { HeaderComponent } from './pages/header/header.component';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { AccountComponent } from './pages/account/account.component';
+import { ListSessionsComponent } from './pages/list-sessions/list-sessions.component';
+import { ListCataloguesComponent } from './pages/list-catalogues/list-catalogues.component';
+import { FormationService } from 'src/services/formation.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { SearchBarComponent } from './pages/search-bar/search-bar.component';
+import { AddFormationComponent } from './pages/formation/add-formation/add-formation.component';
+import { CatalogueService } from 'src/services/catalogue.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    SidebarComponent,
-    ContentComponent,
+    AccueilComponent,
+    DashboardComponent,
+    ListFormationsComponent,
+    DetailFormationComponent,
     FooterComponent,
-    //
-    SessionComponent,
-    SessionOverviewComponent,
-    SessionFormComponent,
-    //
+    HeaderComponent,
+    AuthenticationComponent,
+    AccountComponent,
+    ListSessionsComponent,
+    ListCataloguesComponent,
+    SearchBarComponent,
+    AddFormationComponent,
     CatalogueComponent,
-    CatalogueOverviewComponent,
-    CatalogueEditComponent,
-
-    TrainingComponent,
-    TrainingOverviewComponent,
-    TrainingEditComponent,
-    WorkDaysPipe
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  providers: [FormationService, CatalogueService],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
