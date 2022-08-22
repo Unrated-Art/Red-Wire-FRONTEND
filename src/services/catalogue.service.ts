@@ -13,9 +13,7 @@ export class CatalogueService {
   constructor(private http: HttpClient) {}
 
   public getCatalogues(): Observable<Catalogue[]> {
-    return this.http.get<Catalogue[]>(
-      `${this.apiServerUrl}/api/catalogue/all`
-    );
+    return this.http.get<Catalogue[]>(`${this.apiServerUrl}/api/catalogue/all`);
   }
 
   public addCatalogue(catalogue: Catalogue): Observable<Catalogue> {

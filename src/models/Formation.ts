@@ -1,6 +1,5 @@
-import { PreTest } from "./preTest";
-import { Theme } from "./theme";
-
+import { PreTest } from './preTest';
+import { Theme } from './theme';
 
 export interface Formation {
   idFormation: number;
@@ -13,8 +12,8 @@ export interface Formation {
   objectif: string;
   publicVise: string;
   programmeDetaille: string;
-  themes: Theme[];
-  chapitres: [];
-  sessions: [];
-  pretest: PreTest;
+  themes?: Theme[];
+  chapitres?: [];
+  sessions?: [];
+  pretest?: PreTest;
 }

@@ -1,0 +1,30 @@
+<img class="clickable" height="42" src="/assets/images/avatar.png"
+data-bs-toggle="modal"
+data-bs-target="#authModal"
+/>
+
+<div
+  class="modal fade"
+  id="authModal"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="authModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 separator">
+              <app-auth-login (loginEvent)="userLogin($event)"></app-auth-login>
+            </div>
+            <div class="col-6">
+              <app-auth-register (registerEvent)="userRegister($event)"></app-auth-register>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,201 @@
+<div
+  class="container-md d-flex pb-3 justify-content-center justify-content-between"
+  role="document"
+>
+  <div class="flex-fill mx-3">
+    <article class="my-3" id="floating-labels">
+      <div
+        class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2"
+      >
+        <h3>Ajouter formation</h3>
+      </div>
+
+      <div>
+        <div class="bd-example">
+          <!-- <form #addForm="ngForm" (ngSubmit)="addFormation(addForm)"  id="add-training-form""> -->
+          <form id="add-training-form">
+            <!-- reference -->
+            <div class="mb-3">
+              <label for="ref" class="form-label">Référence</label>
+              <input
+                name="ref"
+                type="text"
+                class="form-control is-valid"
+                placeholder="XX123"
+                required
+                id="ref"
+              />
+            </div>
+            <!-- Intitulé -->
+            <div class="mb-3">
+              <label for="title" class="form-label">Intitulé</label>
+              <input
+                name="title"
+                type="text"
+                class="form-control is-valid"
+                placeholder=""
+                required
+              />
+            </div>
+            <!-- dropdown menu of locations -->
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Lieu de la formation
+              </label>
+              <select
+                name="location"
+                class="form-select mb-3"
+                aria-label=".form-select example"
+              >
+                <option value="Paris La défense" selected>
+                  Paris - La Défense
+                </option>
+                <option value="Lyon">Lyon</option>
+                <option value="Sophia Antipolis">Sophia Antipolis</option>
+                <option value="Aix-en-provence">Aix-en-provence</option>
+                <option value="Toulouse">Toulouse</option>
+                <option value="Bordeaux">Bordeaux</option>
+                <option value="Nantes">Nantes</option>
+                <option value="Rennes">Rennes</option>
+                <option value="Rouen">Rouen</option>
+                <option value="Lille">Lille</option>
+                <option value="Starsbourg">Starsbourg</option>
+              </select>
+            </div>
+            <!-- Formation inter-entreprises/Formation intra-entreprise -->
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Type de formation:
+              </label>
+              <label
+                class="form-check-label"
+                for="inlineRadio1"
+                id="inter-label"
+                >inter-entreprise</label
+              >
+              <input
+                name="interIntra"
+                class="form-check-input"
+                type="radio"
+                value="true"
+                id="inter"
+                checked="checked"
+              />
+              <label
+                class="form-check-label"
+                for="inlineRadio2"
+                id="intra-label"
+                >intra-entreprise</label
+              >
+              <input
+                name="interIntra"
+                class="form-check-input"
+                type="radio"
+                value="false"
+                id="intra"
+              />
+            </div>
+            <!-- durée -->
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Durée</label
+              >
+              <input
+                name="duration"
+                type="text"
+                class="form-control"
+                placeholder="nbre de jours"
+              />
+            </div>
+            <!-- prérequis -->
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label"
+                >Pré-requis</label
+              >
+              <textarea
+                name="prerequis"
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="2"
+              ></textarea>
+            </div>
+            <!-- objectif -->
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Objectif de cette formation</label
+              >
+              <textarea
+                name="goal"
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="2"
+              ></textarea>
+            </div>
+            <!-- public visé -->
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label"
+                >Public visé</label
+              >
+              <textarea
+                name="targetPublic"
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="2"
+              ></textarea>
+            </div>
+            <!-- programme détaillé -->
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label"
+                >Programme détaillé</label
+              >
+              <textarea
+                name="details"
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+              ></textarea>
+            </div>
+            <!-- themes[] -->
+            <!-- dropdown menu of locations -->
+            <div class="mb-3" *ngIf="themes">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Thème</label
+              >
+              <select
+                name="theme"
+                class="form-select mb-3"
+                aria-label=".form-select example"
+              >
+                <option selected>--</option>
+                <option
+                  *ngFor="let theme of themes"
+                  value="{{ theme }}"
+                >
+                  {{ theme }}
+                </option>
+                <!-- <option *ngFor="let theme of themes; index i;" value={{theme.nomTheme}}>{{theme.nomTheme}}</option> -->
+              </select>
+            </div>
+
+            <!--
+        chapitres: [];
+        sessions: [];
+        pretest: PreTest; -->
+
+            <!-- btn Enregistrer-->
+            <div>
+              <!-- <input type="submit" value="Enregistrer" class="btn btn-outline-info"
+        (click)="showMessage('this button is supposed to persist the training in the database');" /> -->
+              <input
+                type="submit"
+                value="Enregistrer"
+                class="btn btn-outline-info"
+                (click)="addFormation()"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
