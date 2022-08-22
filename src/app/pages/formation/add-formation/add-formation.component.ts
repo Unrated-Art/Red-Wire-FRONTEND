@@ -2,10 +2,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Formation } from 'src/models/formation';
-import { FormationService } from 'src/services/formation.service';
+import { FormationService } from 'src/app/services/formation.service';
 
 @Component({
-  selector: 'app-add-formation',
+  selector: 'app-formation-add',
   templateUrl: './add-formation.component.html',
   styleUrls: ['./add-formation.component.scss'],
 })
