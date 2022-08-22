@@ -1,63 +1,61 @@
 @import '/src/styles.scss';
 
-// .formations {
-//   background: $color-quaternary;
-//   padding: 1rem;
-// }
+.formations {
+  background: $color-quaternary;
+  padding: 1rem;
+}
 
-// .cards {
-//   display: flex;
-//   align-content: flex-start;
-//   justify-content: space-between;
+.cards {
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-between;
 
-//   //display: grid;
-//   //grid-template-columns: repeat(1, 1fr);
-//   //column-gap: 2rem;
-//   //row-gap: 2rem;
-// }
+  //display: grid;
+  //grid-template-columns: repeat(1, 1fr);
+  //column-gap: 2rem;
+  //row-gap: 2rem;
+}
 
-// .card {
+.card {
+  @media (min-width: 64rem) {
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-between;
+  }
+  width: 30%;
+  background-color: white;
+  border-radius: 1rem;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 
-//   @media (min-width: 64rem) {
-//     display: flex;
-//     align-content: flex-start;
-//     justify-content: space-between;
-//   }
-//   width: 30%;
-//   background-color: white;
-//   border-radius: 1rem;
-//   position: relative;
-//   text-decoration: none;
-//   color: inherit;
-//   display: block;
+  &img {
+    height: 12rem;
+    width: 100%;
+    border: transparent solid 0px;
+    border-radius: 1rem 1rem 0 0;
+    box-shadow: none;
+    object-fit: cover;
+  }
 
-//   &img {
-//     height: 12rem;
-//     width: 100%;
-//     border: transparent solid 0px;
-//     border-radius: 1rem 1rem 0 0;
-//     box-shadow: none;
-//     object-fit: cover;
-//   }
-
-//   &badge {
-//     background-color: $color-tertiary;
-//     color: darken($color-tertiary, 50%);
-//     padding: 0.5rem;
-//     border-radius: 0.125rem;
-//     position: absolute;
-//     bottom: 45%;
-//     right: 0.75rem;
-//     animation: bounce 2s infinite;
-//   }
-//   &footer {
-//     padding: 1rem;
-//     position: relative;
-//     display: flex;
-//     align-items: center;
-//   }
-// &content {
-//   flex: 1;
-// }
-
-//}
+  &badge {
+    background-color: $color-tertiary;
+    color: darken($color-tertiary, 50%);
+    padding: 0.5rem;
+    border-radius: 0.125rem;
+    position: absolute;
+    bottom: 45%;
+    right: 0.75rem;
+    animation: bounce 2s infinite;
+  }
+  &footer {
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  &content {
+    flex: 1;
+  }
+}

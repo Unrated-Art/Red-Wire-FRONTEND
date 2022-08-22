@@ -10,7 +10,6 @@ import { FormationService } from 'src/services/formation.service';
   styleUrls: ['./add-formation.component.scss'],
 })
 export class AddFormationComponent implements OnInit {
-  formation!: Formation;
   themes: string[] = [
     'Développement',
     'Big Data, Data Science et IA',
@@ -59,6 +58,7 @@ export class AddFormationComponent implements OnInit {
   theme!: string;
 
   errorMessage?: HttpErrorResponse;
+  formation!: Formation;
 
   constructor(
     private formationService: FormationService,
@@ -72,16 +72,18 @@ export class AddFormationComponent implements OnInit {
   }
 
   public addFormation(/*addForm: NgForm*/): void {
-    //document.getElementById("add-training-form")?.click();
-    this.formation.reference = this.ref;
-    this.formation.titref = this.title;
-    this.formation.lieu = this.location;
-    this.formation.interFormation = this.interIntra;
-    this.formation.duree = this.duration;
-    this.formation.prerequis = this.prerequis;
-    this.formation.objectif = this.goal;
-    this.formation.publicVise = this.targetPublic;
-    this.formation.programmeDetaille = this.details;
+    //alert("coucou");
+    // document.getElementById("add-training-form")?.click();
+    alert(document.getElementById('ref')?.nodeValue);
+    // this.formation.reference = this.ref;
+    // this.formation.titref = this.title
+    // this.formation.lieu = this.location;
+    // this.formation.interFormation = this.interIntra;
+    // this.formation.duree = this.duration;
+    // this.formation.prerequis = this.prerequis;
+    // this.formation.objectif = this.goal;
+    // this.formation.publicVise = this.targetPublic;
+    // this.formation.programmeDetaille = this.details;
     //this.formation.themes.push(/*new Theme(this.theme)*/);
 
     // this.formationService.addFormation(this.formation).subscribe({
@@ -97,7 +99,7 @@ export class AddFormationComponent implements OnInit {
     //   },
     // });
 
-    // this.formationService.addFormation(this.formation);
+    //this.formationService.addFormation(this.formation);
     // alert(this.formation.reference+";"
     //       + this.formation.titref +";"
     //       + this.formation.lieu +";"

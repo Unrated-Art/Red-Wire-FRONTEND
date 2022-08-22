@@ -1,5 +1,6 @@
 <div
   class="container-md d-flex pb-3 justify-content-center justify-content-between"
+  role="document"
 >
   <div class="flex-fill mx-3">
     <article class="my-3" id="floating-labels">
@@ -22,6 +23,7 @@
                 class="form-control is-valid"
                 placeholder="XX123"
                 required
+                id="ref"
               />
             </div>
             <!-- Intitulé -->
@@ -165,10 +167,7 @@
                 aria-label=".form-select example"
               >
                 <option selected>--</option>
-                <option
-                  *ngFor="let theme of themes; index: i"
-                  value="{{ theme }}"
-                >
+                <option *ngFor="let theme of themes" value="{{ theme }}">
                   {{ theme }}
                 </option>
                 <!-- <option *ngFor="let theme of themes; index i;" value={{theme.nomTheme}}>{{theme.nomTheme}}</option> -->
