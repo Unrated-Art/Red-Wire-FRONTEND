@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormationService } from 'src/app/services/formation.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Formation } from 'src/models/Formation';
+import { Formation } from 'src/models/formation';
 import { Theme } from 'src/models/theme';
 
 @Component({

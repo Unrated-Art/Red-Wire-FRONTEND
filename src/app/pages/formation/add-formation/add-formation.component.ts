@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Formation } from 'src/models/Formation';
+import { Formation } from 'src/models/formation';
 import { FormationService } from 'src/services/formation.service';
 
 @Component({
