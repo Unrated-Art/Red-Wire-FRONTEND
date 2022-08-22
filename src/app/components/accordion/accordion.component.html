@@ -1,0 +1,31 @@
+<!--
+  accordion.component.html : As you can see, we have defined the shell for the accordion panel
+  i.e accordion panel header, body and footer. We also have encapsulated the logic in this
+  component to show and hide the panel body and footer. But the content that goes in the panel
+  body and footer will be decided by the component that consumes this accordion component.
+  The consuming component will also need to bind and pass data for the 3 input properties
+  (title, isHidden and hasJustViewed).
+-->
+<!-- Add panel-success class only if hasJustViewed property is true -->
+<div class="panel panel-secondary" [class.panel-success]="hasJustViewed">
+  <!-- pointerCursor class changes the cursor style to pointer when hovered
+      over the employee panel title. When clicked on the title, isHidden
+      boolean property is toggled from true to false & vice-versa. We use
+      this property to toggle the visibility of panel body & footer -->
+  <summary>
+    <div class="panel-heading pointerCursor" (click)="isHidden = !isHidden">
+      <h5 class="panel-title">{{ title | uppercase }}</h5>
+    </div>
+  </summary>
+  <div class="panel-body" [hidden]="isHidden">
+    <!-- ng-content specifies the slot into which the content will be projected
+        by the component that consumes this accordion component -->
+    <ng-content select=".myPanelBody"></ng-content>
+  </div>
+  <div class="panel-footer" [hidden]="isHidden">
+    <!-- Another slot into which the content can be projected. Since we have more
+          than one slot into which the content can be projected, this is called
+          multi-slot content projection-->
+    <ng-content select=".myPanelFooter"></ng-content>
+  </div>
+</div>

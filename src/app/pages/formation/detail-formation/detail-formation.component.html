@@ -1,0 +1,271 @@
+<div
+  class="container-md d-flex pb-3 justify-content-center justify-content-between"
+>
+  <div class="flex-fill mx-3">
+    <h2>Titre de la formation<!--{{formation.titref}}--></h2>
+    <!--Objectif de cette formation-->
+    <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" [attr.id]="'heading' + 1">
+          <button
+            class="accordion-button"
+            type="button"
+            (click)="openAccordion1 = !openAccordion1"
+            data-bs-toggle="collapse"
+            [attr.data-target]="'#collapse' + 1"
+            aria-expanded="true"
+            [attr.aria-controls]="'collapse' + 1"
+          >
+            Objectif de cette formation
+          </button>
+        </h2>
+        <div
+          [attr.id]="'collapse' + 1"
+          class="accordion-collapse collapse"
+          [class.show]="openAccordion1"
+          [attr.aria-labelledby]="'heading' + 1"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
+              suscipit culpa, illo officiis nemo perferendis reiciendis, ullam
+              recusandae dicta nobis maxime iusto aliquam assumenda eligendi
+              neque blanditiis velit autem laudantium.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--public-->
+    <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" [attr.id]="'heading' + 2">
+          <button
+            class="accordion-button"
+            type="button"
+            (click)="openAccordion2 = !openAccordion2"
+            data-bs-toggle="collapse"
+            [attr.data-target]="'#collapse' + 2"
+            aria-expanded="true"
+            [attr.aria-controls]="'collapse' + 2"
+          >
+            Public
+          </button>
+        </h2>
+        <div
+          [attr.id]="'collapse' + 2"
+          class="accordion-collapse collapse"
+          [class.show]="openAccordion2"
+          [attr.aria-labelledby]="'heading' + 2"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+              fuga ad sequi id culpa. Maxime dolor aliquam eos neque unde. Nemo
+              debitis reiciendis sequi, soluta natus esse sint fuga velit.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prérequis -->
+    <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" [attr.id]="'heading' + 3">
+          <button
+            class="accordion-button"
+            type="button"
+            (click)="openAccordion3 = !openAccordion3"
+            data-bs-toggle="collapse"
+            [attr.data-target]="'#collapse' + 3"
+            aria-expanded="true"
+            [attr.aria-controls]="'collapse' + 3"
+          >
+            Pré-requis
+          </button>
+        </h2>
+        <div
+          [attr.id]="'collapse' + 3"
+          class="accordion-collapse collapse"
+          [class.show]="openAccordion3"
+          [attr.aria-labelledby]="'heading' + 3"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui
+              laboriosam eaque harum iste tenetur et, reiciendis, saepe quo,
+              distinctio ipsam iusto. Et rerum modi tempora? At ea maxime
+              consequuntur vero.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Programme détaillé -->
+    <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" [attr.id]="'heading' + 4">
+          <button
+            class="accordion-button"
+            type="button"
+            (click)="openAccordion4 = !openAccordion4"
+            data-bs-toggle="collapse"
+            [attr.data-target]="'#collapse' + 4"
+            aria-expanded="true"
+            [attr.aria-controls]="'collapse' + 4"
+          >
+            Programme détaillé
+          </button>
+        </h2>
+        <div
+          [attr.id]="'collapse' + 4"
+          class="accordion-collapse collapse"
+          [class.show]="openAccordion4"
+          [attr.aria-labelledby]="'heading' + 4"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+              assumenda? Doloribus, ducimus tempore dolore enim maxime harum
+              tempora distinctio error ex perferendis odio maiores ullam omnis
+              facere? Molestiae, magnam nobis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD EXAMPLE -->
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Détail formation</h5>
+        <div class="bd-example">
+          <nav>
+            <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+              <button
+                class="nav-link active"
+                id="nav-inter-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav_inter"
+                type="button"
+                role="tab"
+                aria-controls="nav-inter"
+                aria-selected="true"
+              >
+                Inter
+              </button>
+              <button
+                class="nav-link"
+                id="nav-intra-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav_intra"
+                type="button"
+                role="tab"
+                aria-controls="nav-intra"
+                aria-selected="false"
+              >
+                Intra
+              </button>
+            </div>
+          </nav>
+          <p class="card-text" #nav_inter>
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <p class="card-text" #nav_intra>
+            <strong
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptate, quos perferendis tempora officia ullam iure quam maxime
+              aperiam harum ipsa ipsum dignissimos, neque non laudantium
+              assumenda rerum a amet. Odio?</strong
+            >
+          </p>
+        </div>
+
+        <!-- begin region TEst-->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="nav_inter-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#nav_inter"
+              type="button"
+              role="tab"
+              aria-controls="inter"
+              aria-selected="true"
+            >
+              Inter
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="nav_intra-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#nav_intra"
+              type="button"
+              role="tab"
+              aria-controls="intra"
+              aria-selected="false"
+            >
+              Intra
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <!-- inter -->
+          <div
+            class="tab-pane fade show active"
+            id="nav-inter"
+            role="tabpanel"
+            aria-labelledby="nav_inter-tab"
+          >
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i>prix: </i>3500 £ :
+                formation.getSessions().firstElement().prix
+              </li>
+              <li class="list-group-item">
+                <i>Référence: </i> formation.reference
+              </li>
+              <!-- button s'incrire -->
+              <div class="card-body">
+                <button type="button" class="btn btn-light">S'inscrire</button>
+              </div>
+            </ul>
+          </div>
+          <!-- intra -->
+          <div
+            class="tab-pane fade"
+            id="nav_intra"
+            role="tabpanel"
+            aria-labelledby="nav_intra-tab"
+          >
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i>Durée: </i>x jours ":
+                formation.getSessions().firstElement().Duree"
+              </li>
+              <li class="list-group-item">
+                <i>Référence: </i> formation.reference
+              </li>
+              <button class="btn btn-secondary">Demander devis</button>
+            </ul>
+          </div>
+        </div>
+        <!-- end region Test-->
+      </div>
+    </div>
+  </div>
+  <!-- END CARD EXAMPLE -->
+</div>

@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { CatalogueService } from 'src/services/catalogue.service';
+import { CatalogueService } from 'src/app/services/catalogue.service';
 import { NgForm } from '@angular/forms';
 import { Catalogue } from 'src/models/catalogue';
 import { Router } from '@angular/router';
@@ -17,7 +17,6 @@ export class ListCataloguesComponent implements OnInit {
 
   errorMessage?: HttpErrorResponse;
 
-
   constructor(
     private catalogueService: CatalogueService,
     private router: Router
@@ -25,7 +24,6 @@ export class ListCataloguesComponent implements OnInit {
 
   ngOnInit() {
     this.getCatalogues();
-
   }
 
   public getCatalogues(): void {
@@ -77,5 +75,4 @@ export class ListCataloguesComponent implements OnInit {
     container!.appendChild(button);
     button.click();
   }
-
 }

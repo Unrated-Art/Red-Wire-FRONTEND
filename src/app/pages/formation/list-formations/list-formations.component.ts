@@ -1,13 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormationService } from 'src/services/formation.service';
+import { FormationService } from 'src/app/services/formation.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Formation } from 'src/models/formation';
 import { Theme } from 'src/models/theme';
 
 @Component({
-  selector: 'app-list-formations',
+  selector: 'app-formation-list',
   templateUrl: './list-formations.component.html',
   styleUrls: ['./list-formations.component.scss'],
 })
