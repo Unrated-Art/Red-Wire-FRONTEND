@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Formation } from 'src/models/formation';
-import { FormationService } from 'src/services/formation.service';
+import { FormationService } from 'src/app/services/formation.service';
 
 @Component({
   selector: 'app-search-bar',

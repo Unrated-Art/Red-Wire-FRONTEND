@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Formation } from 'src/models/formation';
+import { Formation } from 'src/models/Formation';
 import { FormationService } from 'src/services/formation.service';
 
 @Component({
@@ -74,7 +74,7 @@ export class AddFormationComponent implements OnInit {
   public addFormation(/*addForm: NgForm*/): void {
     //alert("coucou");
     // document.getElementById("add-training-form")?.click();
-    alert(document.getElementById('ref')?.nodeValue);
+    //alert(document.get.
     // this.formation.reference = this.ref;
     // this.formation.titref = this.title
     // this.formation.lieu = this.location;

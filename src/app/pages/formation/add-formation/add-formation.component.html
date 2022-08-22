@@ -167,7 +167,10 @@
                 aria-label=".form-select example"
               >
                 <option selected>--</option>
-                <option *ngFor="let theme of themes" value="{{ theme }}">
+                <option
+                  *ngFor="let theme of themes; index: i"
+                  value="{{ theme }}"
+                >
                   {{ theme }}
                 </option>
                 <!-- <option *ngFor="let theme of themes; index i;" value={{theme.nomTheme}}>{{theme.nomTheme}}</option> -->

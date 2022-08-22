@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-detail-formation',
+  selector: 'app-formation-detail',
   templateUrl: './detail-formation.component.html',
   styleUrls: ['./detail-formation.component.scss'],
 })
