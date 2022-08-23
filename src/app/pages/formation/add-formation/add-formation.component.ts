@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Formation } from 'src/models/formation';
 import { FormationService } from 'src/services/formation.service';
@@ -10,6 +11,7 @@ import { FormationService } from 'src/services/formation.service';
   styleUrls: ['./add-formation.component.scss'],
 })
 export class AddFormationComponent implements OnInit {
+
   themes: string[] = [
     'Développement',
     'Big Data, Data Science et IA',
@@ -31,41 +33,101 @@ export class AddFormationComponent implements OnInit {
     'PAO, CAO, DAO, BIM',
   ];
 
+  //#region commented
   //themes: Theme[] = [{1,"Développement web et mobilité"},
 
   //];
   //themes: Array<Theme> = [];
 
-  @Input()
-  ref!: string;
-  @Input()
-  title!: string;
-  @Input()
-  location!: string;
-  @Input()
-  interIntra!: boolean; //ou inter?
-  @Input()
-  duration!: number;
-  @Input()
-  prerequis!: string;
-  @Input()
-  goal!: string;
-  @Input()
-  targetPublic!: string;
-  @Input()
-  details!: string;
-  @Input()
-  theme!: string;
+  // @Input()
+  // private _ref: string="";
+  // public get ref(): string {
+  //   return this._ref;
+  // }
+  // public set ref(value: string) {
+  //   this.errorMessage=undefined;
+  //   if(value.length>30){
+  //     this.errorMessage="Saisir une référence valide";
+  //     throw new Error("la longeur du nouveau item ne peut être >30");
+  //   }
+  //   this._ref = value;
+  // }
 
-  errorMessage?: HttpErrorResponse;
+  // @Input()
+  // title!: string;
+  // @Input()
+  // location!: string;
+  // @Input()
+  // interIntra!: boolean; //ou inter?
+  // @Input()
+  // duration!: number;
+  // @Input()
+  // prerequis!: string;
+  // @Input()
+  // goal!: string;
+  // @Input()
+  // targetPublic!: string;
+  // @Input()
+  // details!: string;
+  // @Input()
+  // theme!: string;
+  //#endregion
+
+  //#region declaration-variables
+  errorMessage?: string;
+
+  httperrorMessage?: HttpErrorResponse;
   formation!: Formation;
+
+  formations = this.formationService.getFormations();
+  //#endregion
+
+  //addTrainingForm!: FormGroup;
+  addTrainingForm = this.formBuilder.group({
+    // idFormation!: 90,
+    ref!: '',
+    title!: '',
+    location!: '',
+    interIntra!: true, //ou inter?
+    duration!: 0,
+    prerequis!: '',
+    goal!: '',
+    targetPublic!: '',
+    details!: ''
+    //,theme: []
+    //,chapter: ''
+  });
 
   constructor(
     private formationService: FormationService,
+    private formBuilder: FormBuilder,
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.addTrainingForm = new FormGroup({
+      // idFormation: new FormControl(this.formation.idFormation),
+      ref: new FormControl(this.formation.reference),
+      title: new FormControl(this.formation.titref),
+      location: new FormControl(this.formation.lieu),
+      interIntra: new FormControl(this.formation.interFormation),
+      duration: new FormControl(this.formation.duree),
+      prerequis : new FormControl(this.formation.prerequis),
+      goal: new FormControl(this.formation.objectif),
+      targetPublic: new FormControl(this.formation.publicVise),
+      details: new FormControl(this.formation.programmeDetaille),
+      //theme: new FormControl(this.formation.themes)
+    });
+  }
+
+  onSubmit(): void {
+    // Process addTraining data here
+    alert("Training submitted => va voir comment l'enregistrer dans la base :p");
+    //this.formation.reference=this.addTrainingForm.get("reference");
+    //this.formationService.addFormation(this.addTrainingForm.value);
+    console.warn('The training has been submitted', this.addTrainingForm.value);
+    this.addTrainingForm.reset();
+  }
 
   public showMessage(message: string) {
     alert(message);
@@ -111,8 +173,10 @@ export class AddFormationComponent implements OnInit {
     //       + this.formation.programmeDetaille
     // );
 
-    alert(
-      this.ref +
+
+    /* alert(
+
+        this.ref +
         ';' +
         this.title +
         ';' +
@@ -131,7 +195,7 @@ export class AddFormationComponent implements OnInit {
         this.details +
         ';' +
         this.theme
-    );
+    );*/
   }
 
   // public onAddEmloyee(addForm: NgForm): void {

@@ -27,6 +27,10 @@ const routes: Routes = [
         path: 'edit/:id',
         component: EditFormationComponent
       },
+      {
+        path: 'detail/:id',
+        component: DetailFormationComponent
+      },
     ]
   },
   { path: '**', pathMatch: 'full', redirectTo: 'formation' },
