@@ -74,6 +74,7 @@ export class AddFormationComponent implements OnInit, OnDestroy {
   public submit(): void {
     if (this.form.invalid) {
       // return
+       console.log("Invalid form");
     }
     const data: FormationType = {
       reference: this.reference.value,
@@ -87,14 +88,12 @@ export class AddFormationComponent implements OnInit, OnDestroy {
       programmeDetaille: this.details.value,
     }
     this.sub = this.formationService.addFormation(data).subscribe({
-      next: (response: Formation) => {
-        const formation: Formation = response;
-        console.log(formation);
-        console.info('IS GOOD')
+      next: (response: any) => {
+        console.log(response);
       },
       error: (httpErrorResponse) => {
         // this.errorMessage = httpErrorResponse.message;
-        alert("ERROR 50X");
+        alert(httpErrorResponse.message);
       },
       complete: () => {
         console.log(data);
