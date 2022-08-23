@@ -13,7 +13,7 @@
       <div>
         <div class="bd-example">
           <!-- #addTrainingForm="ngForm" (ngSubmit)="addFormation(addForm)"-->
-          <form  [formGroup]="addTrainingForm" (ngSubmit)="onSubmit()" id="add-training-form">
+          <form  [formGroup]="form" (ngSubmit)="submit()" id="add-training-form">
               <!-- idFormation
             <div class="mb-3">
               <label for="idFormation" class="form-label"
@@ -30,15 +30,15 @@
             -->
             <!-- reference -->
             <div class="mb-3">
-              <label for="ref" class="form-label">Référence</label>
+              <label for="reference" class="form-label">Référence</label>
               <input
-                name="ref"
+                name="reference"
                 type="text"
-                class="form-control is-valid"
+                class="form-control is-{{ !reference?.dirty ? 'empty' : (reference.valid ? 'valid' : 'invalid') }}"
                 placeholder="XX123"
+                id="reference"
+                formControlName="reference"
                 required
-                id="ref"
-                formControlName="ref"
               />
             </div>
             <!-- Intitulé -->
@@ -47,7 +47,7 @@
               <input
                 name="title"
                 type="text"
-                class="form-control is-valid"
+                class="form-control "
                 placeholder=""
                 formControlName="title"
                 required
@@ -121,7 +121,7 @@
               >
               <input
                 name="duration"
-                type="text"
+                type="number"
                 class="form-control"
                 placeholder="nbre de jours"
                 formControlName="duration"

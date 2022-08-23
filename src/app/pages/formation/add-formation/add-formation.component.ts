@@ -1,246 +1,109 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Formation } from 'src/models/formation';
 import { FormationService } from 'src/services/formation.service';
+
+// Formation (model) != des parametres GET/POST
+interface FormationType {
+  reference: string
+  titref: string
+  lieu: string
+  interFormation: boolean
+  duree: number
+  prerequis: string
+  objectif: string
+  publicVise: string
+  programmeDetaille: string
+}
 
 @Component({
   selector: 'app-add-formation',
   templateUrl: './add-formation.component.html',
   styleUrls: ['./add-formation.component.scss'],
 })
-export class AddFormationComponent implements OnInit {
+export class AddFormationComponent implements OnInit, OnDestroy {
+  sub?: Subscription
 
-  themes: string[] = [
-    'Développement',
-    'Big Data, Data Science et IA',
-    'Informatique décicionnelle',
-    'Bases de données',
-    'Réseaux et Télécoms',
-    'Cybersécurité',
-    'Cloud computing',
-    'Virtualisation',
-    'Windows et System Center',
-    'Linux, Unix, Mac',
-    'Solutions collaboratives Microsoft',
-    'IBM',
-    'SAP',
-    'Tests',
-    'Développement web et mobilité',
-    'IoT, Systèmes embarquées, Robotic Process Automation',
-    'DevOps, industrialisation et gestion de production',
-    'PAO, CAO, DAO, BIM',
-  ];
+  form = new FormGroup({
+    reference: new FormControl(null, Validators.required),
+    title: new FormControl(null, Validators.required),
+    location: new FormControl(null, Validators.required),
+    interIntra: new FormControl(null, Validators.required),
+    duration: new FormControl(null, Validators.required),
+    prerequis: new FormControl(null, Validators.required),
+    goal: new FormControl(null, Validators.required),
+    targetPublic: new FormControl(null, Validators.required),
+    details: new FormControl(null, Validators.required),
+    // theme: new FormControl(null, Validators.required),
+  })
 
-  //#region commented
-  //themes: Theme[] = [{1,"Développement web et mobilité"},
+  constructor(private formationService: FormationService, private router: Router) {}
+  ngOnInit(): void {}
 
-  //];
-  //themes: Array<Theme> = [];
-
-  // @Input()
-  // private _ref: string="";
-  // public get ref(): string {
-  //   return this._ref;
-  // }
-  // public set ref(value: string) {
-  //   this.errorMessage=undefined;
-  //   if(value.length>30){
-  //     this.errorMessage="Saisir une référence valide";
-  //     throw new Error("la longeur du nouveau item ne peut être >30");
-  //   }
-  //   this._ref = value;
-  // }
-
-  // @Input()
-  // title!: string;
-  // @Input()
-  // location!: string;
-  // @Input()
-  // interIntra!: boolean; //ou inter?
-  // @Input()
-  // duration!: number;
-  // @Input()
-  // prerequis!: string;
-  // @Input()
-  // goal!: string;
-  // @Input()
-  // targetPublic!: string;
-  // @Input()
-  // details!: string;
-  // @Input()
-  // theme!: string;
-  //#endregion
-
-  //#region declaration-variables
-  errorMessage?: string;
-
-  httperrorMessage?: HttpErrorResponse;
-  formation!: Formation;
-
-  formations = this.formationService.getFormations();
-  //#endregion
-
-  //addTrainingForm!: FormGroup;
-  addTrainingForm = this.formBuilder.group({
-    // idFormation!: 90,
-    ref!: '',
-    title!: '',
-    location!: '',
-    interIntra!: true, //ou inter?
-    duration!: 0,
-    prerequis!: '',
-    goal!: '',
-    targetPublic!: '',
-    details!: ''
-    //,theme: []
-    //,chapter: ''
-  });
-
-  constructor(
-    private formationService: FormationService,
-    private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.addTrainingForm = new FormGroup({
-      // idFormation: new FormControl(this.formation.idFormation),
-      ref: new FormControl(this.formation.reference),
-      title: new FormControl(this.formation.titref),
-      location: new FormControl(this.formation.lieu),
-      interIntra: new FormControl(this.formation.interFormation),
-      duration: new FormControl(this.formation.duree),
-      prerequis : new FormControl(this.formation.prerequis),
-      goal: new FormControl(this.formation.objectif),
-      targetPublic: new FormControl(this.formation.publicVise),
-      details: new FormControl(this.formation.programmeDetaille),
-      //theme: new FormControl(this.formation.themes)
-    });
+  get reference(): any {
+    return this.form.get('reference')
+  }
+  get title(): any {
+    return this.form.get('title')
+  }
+  get location(): any {
+    return this.form.get('location')
+  }
+  get interIntra(): any {
+    return this.form.get('interIntra')
+  }
+  get duration(): any {
+    return this.form.get('duration')
+  }
+  get prerequis(): any {
+    return this.form.get('prerequis')
+  }
+  get goal(): any {
+    return this.form.get('goal')
+  }
+  get targetPublic(): any {
+    return this.form.get('targetPublic')
+  }
+  get details(): any {
+    return this.form.get('details')
   }
 
-  onSubmit(): void {
-    // Process addTraining data here
-    alert("Training submitted => va voir comment l'enregistrer dans la base :p");
-    //this.formation.reference=this.addTrainingForm.get("reference");
-    //this.formationService.addFormation(this.addTrainingForm.value);
-    console.warn('The training has been submitted', this.addTrainingForm.value);
-    this.addTrainingForm.reset();
+  public submit(): void {
+    if (this.form.invalid) {
+      // return
+    }
+    const data: FormationType = {
+      reference: this.reference.value,
+      titref: this.title.value,
+      lieu: this.location.value,
+      interFormation: Boolean(this.interIntra.value),
+      duree: this.duration.value,
+      prerequis: this.prerequis.value,
+      objectif: this.goal.value,
+      publicVise: this.targetPublic.value,
+      programmeDetaille: this.details.value,
+    }
+    this.sub = this.formationService.addFormation(data).subscribe({
+      next: (response: Formation) => {
+        const formation: Formation = response;
+        console.log(formation);
+        console.info('IS GOOD')
+      },
+      error: (httpErrorResponse) => {
+        // this.errorMessage = httpErrorResponse.message;
+        alert("ERROR 50X");
+      },
+      complete: () => {
+        console.log(data);
+        console.log('DONE!')
+      },
+    })
   }
 
-  public showMessage(message: string) {
-    alert(message);
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
   }
-
-  public addFormation(/*addForm: NgForm*/): void {
-    //alert("coucou");
-    // document.getElementById("add-training-form")?.click();
-    //alert(document.get.
-    // this.formation.reference = this.ref;
-    // this.formation.titref = this.title
-    // this.formation.lieu = this.location;
-    // this.formation.interFormation = this.interIntra;
-    // this.formation.duree = this.duration;
-    // this.formation.prerequis = this.prerequis;
-    // this.formation.objectif = this.goal;
-    // this.formation.publicVise = this.targetPublic;
-    // this.formation.programmeDetaille = this.details;
-    //this.formation.themes.push(/*new Theme(this.theme)*/);
-
-    // this.formationService.addFormation(this.formation).subscribe({
-    //   next: (response) => {
-    //     console.log(response);
-    //     //this.getFormations();
-    //     addForm.reset();
-    //   },
-    //   error: (httpErrorResponse) => {
-    //     this.errorMessage = httpErrorResponse.message;
-    //     alert(this.errorMessage);
-    //     addForm.reset();
-    //   },
-    // });
-
-    //this.formationService.addFormation(this.formation);
-    // alert(this.formation.reference+";"
-    //       + this.formation.titref +";"
-    //       + this.formation.lieu +";"
-    //       + this.formation.interFormation+";"
-    //       + this.formation.duree +";"
-    //       + this.formation.prerequis +";"
-    //       + this.formation.objectif +";"
-    //       + this.formation.publicVise +";"
-    //       + this.formation.programmeDetaille
-    // );
-
-
-    /* alert(
-
-        this.ref +
-        ';' +
-        this.title +
-        ';' +
-        this.interIntra +
-        ';' +
-        this.location +
-        ';' +
-        this.duration +
-        ';' +
-        this.prerequis +
-        ';' +
-        this.goal +
-        ';' +
-        this.targetPublic +
-        ';' +
-        this.details +
-        ';' +
-        this.theme
-    );*/
-  }
-
-  // public onAddEmloyee(addForm: NgForm): void {
-  //   document.getElementById('add-employee-form').click();
-  //   this.employeeService.addEmployee(addForm.value).subscribe(
-  //     (response: Employee) => {
-  //       console.log(response);
-  //       this.getEmployees();
-  //       addForm.reset();
-  //     },
-  //     (error: HttpErrorResponse) => {
-  //       alert(error.message);
-  //       addForm.reset();
-  //     }
-  //   );
-  // }
-
-  // @Input("items")
-  // items : CourseItem[]=[];
-  // errorMessage?: string;
-
-  // //texte affiché dans la zone de texte
-  // @Input("Item")
-  // private _newItem: string = "";
-  // public get newItem(): string {
-  //   return this._newItem;
-  // }
-  // public set newItem(value: string) {
-  //   this.errorMessage=undefined;
-  //   if(value.length>30){
-  //     throw new Error("la longeur du nouveau item ne peut être >30")
-  //   }
-  //   this._newItem = value;
-  // }
-
-  // addCourseItem(){
-  //   try{
-  //   var newElement=new CourseItem(this.newItem);
-  //   this.items.push(newElement);
-  //   this.newItem="";
-  //   } catch (error){
-
-  //     this.errorMessage="votre libellé n'est pas correct";
-  //     // setTimeout(()=>{
-  //     //   this.errorMessage=undefined;
-  //     // },3000);
-  //   }
 }

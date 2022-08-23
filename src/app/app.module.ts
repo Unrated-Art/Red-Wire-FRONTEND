@@ -57,7 +57,13 @@ import { ContentComponent } from './layouts/content/content.component';
 
 
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [FormationService, CatalogueService],
   bootstrap: [AppComponent],
 })

@@ -35,10 +35,11 @@ export class FormationService {
   }
 
   public addFormation(formation: Formation): Observable<Formation> {
-    return this.http.post<Formation>(
-      `${this.apiServerUrl}/api/training/add`,
-      formation
-    );
+    return this.http.post<Formation>(`${this.apiServerUrl}/api/training/add`, JSON.stringify(formation), {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
   }
 
   public updateFormation(formation: Formation): Observable<Formation> {
