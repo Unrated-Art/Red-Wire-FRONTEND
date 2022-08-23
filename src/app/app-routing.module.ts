@@ -24,11 +24,11 @@ const routes: Routes = [
         component: AddFormationComponent
       },
       {
-        path: 'edit/:id',
+        path: 'edit/:ref',
         component: EditFormationComponent
       },
       {
-        path: 'detail/:id',
+        path: 'detail/:ref',
         component: DetailFormationComponent
       },
     ]

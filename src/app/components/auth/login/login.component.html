@@ -2,11 +2,13 @@
 
 <form (ngSubmit)="userLogin()" [formGroup]="form">
     <div class="form-group mb-3 mt-3">
-        <input formControlName="email" class="form-control" type="email" placeholder="Email" aria-label="" value="" required />
+        {{ email.invalid }}
+        {{ email.valid }}
+        <input formControlName="email" class="form-control is-{{ !email.dirty ? 'empty' : (email.valid ? 'valid' : 'invalid') }}" type="email" placeholder="Email" aria-label="" value="" required />
     </div>
 
     <div class="form-group mb-3 mt-3">
-        <input formControlName="password" class="form-control" type="password" placeholder="Password" aria-label="" value="" required />
+        <input formControlName="password" class="form-control is-{{ !password.dirty ? 'empty' : (password.valid ? 'valid' : 'invalid') }}" type="password" placeholder="Password" aria-label="" value="" required />
     </div>
 
     <button class="btn btn-primary" type="submit">Login</button>
