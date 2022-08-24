@@ -1,6 +1,9 @@
-<img class="clickable" height="42" src="/assets/images/avatar.png"
-data-bs-toggle="modal"
-data-bs-target="#authModal"
+<img
+  class="clickable"
+  height="42"
+  src="/assets/images/avatar.png"
+  data-bs-toggle="modal"
+  data-bs-target="#authModal"
 />
 
 <div
@@ -20,7 +23,9 @@ data-bs-target="#authModal"
               <app-auth-login (loginEvent)="userLogin($event)"></app-auth-login>
             </div>
             <div class="col-6">
-              <app-auth-register (registerEvent)="userRegister($event)"></app-auth-register>
+              <app-auth-register
+                (registerEvent)="userRegister($event)"
+              ></app-auth-register>
             </div>
           </div>
         </div>

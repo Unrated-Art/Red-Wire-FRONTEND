@@ -26,7 +26,6 @@ export class ListFormationsComponent implements OnInit {
 
   constructor(
     private formationService: FormationService,
-    private router: Router
   ) {}
 
   ngOnInit() {
@@ -57,6 +56,12 @@ export class ListFormationsComponent implements OnInit {
       },
       complete: () => console.log('DONE!'),
     });
+  }
+
+  public getAllChapiters(): void {
+    // Count (2)
+    // this.chapters: Chapters[] = this.serviceChapters.getAllChapiters();
+    // Count (3)
   }
 
   public onAddFormation(addForm: NgForm): void {
@@ -128,7 +133,7 @@ export class ListFormationsComponent implements OnInit {
           'on a trouvé une/des formations correspondant à vos critères de recherche! '
         );
         this.formations = results;
-        this.noTrainingsFound=null;
+        this.noTrainingsFound = null;
       }
     }
 

@@ -5,7 +5,7 @@ import { AuthLoginType } from 'src/models/auth-login';
 @Component({
   selector: 'app-auth-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   form = new FormGroup({
@@ -15,19 +15,18 @@ export class LoginComponent implements OnInit {
 
   @Output() loginEvent = new EventEmitter<AuthLoginType>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public userLogin(): void {
     if (this.form.invalid) {
-      return
+      return;
     }
     const data: AuthLoginType = {
       email: this.form.get('email')?.value,
-      password: this.form.get('password')?.value
-    }
-    this.loginEvent.emit(data)
+      password: this.form.get('password')?.value,
+    };
+    this.loginEvent.emit(data);
   }
 }

@@ -29,6 +29,7 @@ import { FormationComponent } from './pages/formation/formation.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { EditFormationComponent } from './pages/formation/edit-formation/edit-formation.component';
 import { ContentComponent } from './layouts/content/content.component';
+import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-catalogue.component';
 
 @NgModule({
   declarations: [
@@ -54,15 +55,14 @@ import { ContentComponent } from './layouts/content/content.component';
     FormationComponent,
     ErrorComponent,
     EditFormationComponent,
-
-
+    FormCatalogueComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [FormationService, CatalogueService],
   bootstrap: [AppComponent],
