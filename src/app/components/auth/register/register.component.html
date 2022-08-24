@@ -1,25 +1,60 @@
 <p>Register</p>
 
 <form (ngSubmit)="userRegister()" [formGroup]="form">
-    <div class="form-group mb-3 mt-3">
-        <input formControlName="firstName" class="form-control" type="text" placeholder="Name" aria-label="" value="" />
-    </div>
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="firstName"
+      class="form-control"
+      type="text"
+      placeholder="Name"
+      aria-label=""
+      value=""
+    />
+  </div>
 
-    <div class="form-group mb-3 mt-3">
-        <input formControlName="lastName" class="form-control" type="text" placeholder="Surname" aria-label="" value="" />
-    </div>
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="lastName"
+      class="form-control"
+      type="text"
+      placeholder="Surname"
+      aria-label=""
+      value=""
+    />
+  </div>
 
-    <div class="form-group mb-3 mt-3">
-        <input formControlName="email" class="form-control" type="email" placeholder="Email" aria-label="" value="" />
-    </div>
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="email"
+      class="form-control"
+      type="email"
+      placeholder="Email"
+      aria-label=""
+      value=""
+    />
+  </div>
 
-    <div class="form-group mb-3 mt-3">
-        <input formControlName="password" class="form-control" type="password" placeholder="Password" aria-label="" value="" />
-    </div>
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="password"
+      class="form-control"
+      type="password"
+      placeholder="Password"
+      aria-label=""
+      value=""
+    />
+  </div>
 
-    <div class="form-group mb-3 mt-3">
-        <input formControlName="passwordConfirmation" class="form-control is-valid" type="password" placeholder="Password Confirmation" aria-label="" value="" />
-    </div>
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="passwordConfirmation"
+      class="form-control is-valid"
+      type="password"
+      placeholder="Password Confirmation"
+      aria-label=""
+      value=""
+    />
+  </div>
 
-    <button class="btn btn-primary" type="submit">Register</button>
+  <button class="btn btn-primary" type="submit">Register</button>
 </form>

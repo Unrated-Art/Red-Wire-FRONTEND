@@ -7,9 +7,9 @@ describe('ListCataloguesComponent', () => {
   let fixture: ComponentFixture<ListCataloguesComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ListCataloguesComponent],
-    }).compileComponents();
+      declarations: [ ListCataloguesComponent ]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(ListCataloguesComponent);
     component = fixture.componentInstance;

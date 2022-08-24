@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './pages/accueil/accueil.component';
+import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ErrorComponent } from './pages/error/error.component';
 
@@ -21,9 +22,19 @@ const routes: Routes = [
     component: FormationComponent,
     children: [
       { path: '', component: ListFormationsComponent },
-      { path: 'add', component: AddFormationComponent},
-      { path: 'edit/:id',component: EditFormationComponent},
-    ]
+      {
+        path: 'add',
+        component: AddFormationComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: EditFormationComponent,
+      },
+      {
+        path: 'detail/:id',
+        component: DetailFormationComponent,
+      },
+    ],
   },
   {
     path: 'catalogue',
@@ -36,6 +47,7 @@ const routes: Routes = [
   { path: '**', pathMatch: 'full', redirectTo: 'formation' },
   // any other URL --(redirect)--> Error Page
   // { path: '**', component: ErrorComponent },
+
 ];
 
 @NgModule({
