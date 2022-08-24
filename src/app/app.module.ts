@@ -15,7 +15,6 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
@@ -55,7 +54,9 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
     FormationComponent,
     ErrorComponent,
     EditFormationComponent,
+    ContentComponent,
     FormCatalogueComponent,
+
   ],
   imports: [
     BrowserModule,

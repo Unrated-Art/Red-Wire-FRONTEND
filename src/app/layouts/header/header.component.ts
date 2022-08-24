@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
+
   navs: Array<NavType> = [
     {
       path: 'formation',
@@ -27,4 +28,5 @@ export class HeaderComponent implements OnInit {
       ],
     },
   ];
+
 }
