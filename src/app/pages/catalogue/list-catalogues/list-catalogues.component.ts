@@ -61,6 +61,7 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
     });
   }
 
+<<<<<<< HEAD
   // public onEditCatalogue(dataForm: Catalogue): void {
   //   this.catalogueService.updateCatalogue(dataForm).subscribe({
   //     next: (response) => {
@@ -73,6 +74,20 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
   //     },
   //   });
   // }
+=======
+  public onEditCatalogue(dataForm: Catalogue): void {
+    this.catalogueService.updateCatalogue(dataForm).subscribe({
+      next: (response) => {
+        this.getCatalogues();
+        // dataForm.reset();
+      },
+      error: (httpErrorResponse) => {
+        this.errorMessage = httpErrorResponse.message;
+        alert(this.errorMessage);
+      },
+    });
+  }
+>>>>>>> 3ef384d66bb37f5193a211ccbf7cbf09559a1b82
   public onAddCatalogue(dataForm: Catalogue): void {
     this.catalogueService.addCatalogue(dataForm).subscribe({
       next: (response) => {
@@ -86,6 +101,7 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
     });
   }
 
+<<<<<<< HEAD
   // public onDeleteCatalogue(idCatalogue: number): void {
   //   // const testModal = ModalBS.getInstance(this.modalDelete)
   //   // testModal?.hide()
@@ -103,6 +119,25 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
   //     }
   //   });
   // }
+=======
+  public onDeleteCatalogue(idCatalogue: number): void {
+    // const testModal = ModalBS.getInstance(this.modalDelete)
+    // testModal?.hide()
+    // #! TODO: A corriger
+    //testModal?.dispose()
+    // console.log(this.modalDelete.hide())
+    this.catalogueService.deleteCatalogue(idCatalogue).subscribe({
+      next: (response: any) => {
+        // this.modalDelete.hide();
+        this.getCatalogues();
+      },
+      error: (httpErrorResponse) => {
+        this.errorMessage = httpErrorResponse.message;
+        alert(this.errorMessage);
+      }
+    });
+  }
+>>>>>>> 3ef384d66bb37f5193a211ccbf7cbf09559a1b82
 
   public searchCatalogues(key: string): void {
     console.log(key);

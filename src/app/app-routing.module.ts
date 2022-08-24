@@ -9,7 +9,9 @@ import { AddFormationComponent } from './pages/formation/add-formation/add-forma
 import { DetailFormationComponent } from './pages/formation/detail-formation/detail-formation.component';
 import { EditFormationComponent } from './pages/formation/edit-formation/edit-formation.component';
 import { FormationComponent } from './pages/formation/formation.component';
+import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ListFormationsComponent } from './pages/formation/list-formations/list-formations.component';
+import { ListCataloguesComponent } from './pages/catalogue/list-catalogues/list-catalogues.component';
 
 const routes: Routes = [
   // Si vide --(redirection)-> '/formation'
@@ -20,6 +22,7 @@ const routes: Routes = [
     component: FormationComponent,
     children: [
       { path: '', component: ListFormationsComponent },
+<<<<<<< HEAD
       {
         path: 'add',
         component: AddFormationComponent,
@@ -33,6 +36,11 @@ const routes: Routes = [
         component: DetailFormationComponent,
       },
     ],
+=======
+      { path: 'add', component: AddFormationComponent},
+      { path: 'edit/:id',component: EditFormationComponent},
+    ]
+>>>>>>> 3ef384d66bb37f5193a211ccbf7cbf09559a1b82
   },
   {
     path: 'catalogue',
