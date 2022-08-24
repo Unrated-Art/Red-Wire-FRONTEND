@@ -1,1 +1,216 @@
-<p>edit-formation works!</p>
+<div
+  class="container-md d-flex pb-3 justify-content-center justify-content-between"
+  role="document"
+>
+  <div class="flex-fill mx-3">
+    <article class="my-3" id="floating-labels">
+      <div
+        class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2"
+      >
+        <h3>Modifier formation #{{ identifiant }}</h3>
+      </div>
+
+      <div>
+        <div class="bd-example">
+          <form
+            [formGroup]="editForm"
+            (ngSubmit)="editTraining()"
+            id="edit-training-form"
+          >
+            <!-- idFormation -->
+            <!-- <div class="mb-3">
+              <label for="idFormation" class="form-label"
+                >Identifiant de la formation</label>
+              <input
+                name="idFormation"
+                type="text"
+                class="form-control disabled"
+                formControlName="idFormation"
+              />
+            </div> -->
+
+            <!-- reference -->
+            <div class="mb-3">
+              <label for="ref" class="form-label">Référence</label>
+              <input
+                name="ref"
+                type="text"
+                class="form-control is-{{
+                  !ref.dirty ? 'empty' : ref.valid ? 'valid' : 'invalid'
+                }}"
+                placeholder="XX123"
+                id="ref"
+                formControlName="ref"
+                required
+              />
+            </div>
+            <!-- Intitulé -->
+            <div class="mb-3">
+              <label for="title" class="form-label">Intitulé</label>
+              <input
+                name="title"
+                type="text"
+                class="form-control"
+                placeholder=""
+                formControlName="title"
+                required
+              />
+            </div>
+            <!-- dropdown menu of locations -->
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Lieu de la formation
+              </label>
+              <select
+                name="location"
+                class="form-select mb-3"
+                aria-label=".form-select example"
+                formControlName="location"
+              >
+                <option value="Paris La défense" selected>
+                  Paris - La Défense
+                </option>
+                <option value="Lyon">Lyon</option>
+                <option value="Sophia Antipolis">Sophia Antipolis</option>
+                <option value="Aix-en-provence">Aix-en-provence</option>
+                <option value="Toulouse">Toulouse</option>
+                <option value="Bordeaux">Bordeaux</option>
+                <option value="Nantes">Nantes</option>
+                <option value="Rennes">Rennes</option>
+                <option value="Rouen">Rouen</option>
+                <option value="Lille">Lille</option>
+                <option value="Starsbourg">Starsbourg</option>
+              </select>
+            </div>
+            <!-- Formation inter-entreprises/Formation intra-entreprise -->
+            <div class="mb-3">
+              <label id="labelType" for="interIntra" class="form-label"
+                >Type de formation:
+              </label>
+
+              <input
+                name="interIntra"
+                class="form-check-input"
+                type="radio"
+                value="true"
+                id="inter"
+                formControlName="interIntra"
+                checked
+              />
+              <label class="form-check-label" for="inter" id="inter-label"
+                >inter-entreprise</label
+              >
+
+              <input
+                name="interIntra"
+                class="form-check-input"
+                type="radio"
+                value="false"
+                id="intra"
+                formControlName="interIntra"
+              />
+
+              <label class="form-check-label" for="intra" id="intra-label"
+                >intra-entreprise</label
+              >
+            </div>
+            <!-- durée -->
+            <div class="mb-3">
+              <label for="duration" class="form-label">Durée</label>
+              <input
+                name="duration"
+                type="number"
+                class="form-control"
+                placeholder="nbre de jours"
+                formControlName="duration"
+              />
+            </div>
+            <!-- prérequis -->
+            <div class="mb-3">
+              <label for="prerequis" class="form-label">Pré-requis</label>
+              <textarea
+                name="prerequis"
+                class="form-control"
+                id="prerequis"
+                rows="2"
+                formControlName="prerequis"
+              ></textarea>
+            </div>
+            <!-- objectif -->
+            <div class="mb-3">
+              <label for="goal" class="form-label"
+                >Objectif de cette formation</label
+              >
+              <textarea
+                name="goal"
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="2"
+                formControlName="goal"
+              ></textarea>
+            </div>
+            <!-- public visé -->
+            <div class="mb-3">
+              <label for="targetPublic" class="form-label">Public visé</label>
+              <textarea
+                name="targetPublic"
+                class="form-control"
+                id="targetPublic"
+                rows="2"
+                formControlName="targetPublic"
+              ></textarea>
+            </div>
+            <!-- programme détaillé -->
+            <div class="mb-3">
+              <label for="details" class="form-label">Programme détaillé</label>
+              <textarea
+                name="details"
+                class="form-control"
+                id="details"
+                rows="3"
+                formControlName="details"
+              ></textarea>
+            </div>
+            <!-- themes[] -->
+            <!--dropdown menu of themes -->
+            <div class="mb-3" *ngIf="themeChoices">
+              <label for="theme" class="form-label">Thème</label>
+              <select
+                name="theme"
+                class="form-select mb-3"
+                aria-label=".form-select example"
+                formControlName="theme"
+              >
+                <option selected>--</option>
+                <option *ngFor="let theme of themeChoices" value="{{ theme }}">
+                  {{ theme }}
+                </option>
+                <!-- #comment the next line when decommenting the rest of the section
+                 <option *ngFor="let theme of themes; index i;" value={{theme.nomTheme}}>{{theme.nomTheme}}</option>-->
+              </select>
+            </div>
+
+            <!--
+        chapitres: [];
+        sessions: [];
+        pretest: PreTest; -->
+
+            <!-- btn Enregistrer-->
+            <div>
+              <!-- <input type="submit" value="Enregistrer" class="btn btn-outline-info"
+        (click)="showMessage('this button is supposed to persist the training in the database');" /> -->
+              <button
+                type="submit"
+                value="Enregistrer"
+                class="btn btn-outline-info"
+                [disabled]="editForm.invalid"
+              >
+                update Training
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

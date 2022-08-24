@@ -15,7 +15,6 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
@@ -23,8 +22,7 @@ import { ListFormationsComponent } from './pages/formation/list-formations/list-
 import { DetailFormationComponent } from './pages/formation/detail-formation/detail-formation.component';
 import { AccountComponent } from './pages/account/account.component';
 import { ListSessionsComponent } from './pages/list-sessions/list-sessions.component';
-import { ListCataloguesComponent } from './pages/catalogue/list-catalogues/list-catalogues.component';
-import { SearchBarComponent } from './pages/search-bar/search-bar.component';
+import { ListCataloguesComponent } from './pages/list-catalogues/list-catalogues.component';
 import { AddFormationComponent } from './pages/formation/add-formation/add-formation.component';
 import { FormationComponent } from './pages/formation/formation.component';
 import { ErrorComponent } from './pages/error/error.component';
@@ -37,6 +35,7 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
     // layouts
     HeaderComponent,
     FooterComponent,
+    ContentComponent,
     // components
     AuthComponent,
     LoginComponent,
@@ -50,7 +49,6 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
     AccountComponent,
     ListSessionsComponent,
     ListCataloguesComponent,
-    SearchBarComponent,
     AddFormationComponent,
     CatalogueComponent,
     FormationComponent,
@@ -60,7 +58,13 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
     FormCatalogueComponent,
 
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [FormationService, CatalogueService],
   bootstrap: [AppComponent],
 })

@@ -12,18 +12,43 @@
 
       <div>
         <div class="bd-example">
-          <!-- <form #addForm="ngForm" (ngSubmit)="addFormation(addForm)"  id="add-training-form""> -->
-          <form id="add-training-form">
+          <!-- #addTrainingForm="ngForm" (ngSubmit)="addFormation(addForm)"-->
+          <form
+            [formGroup]="addForm"
+            (ngSubmit)="submit()"
+            id="add-training-form"
+          >
+            <!-- idFormation
+            <div class="mb-3">
+              <label for="idFormation" class="form-label"
+                >Id de la formation</label
+              >
+              <input
+                name="idFormation"
+                type="text"
+                class="form-control"
+                placeholder="Autoincremented"
+                formControlName="idFormation"
+              />
+            </div>
+            -->
             <!-- reference -->
             <div class="mb-3">
-              <label for="ref" class="form-label">Référence</label>
+              <label for="reference" class="form-label">Référence</label>
               <input
-                name="ref"
+                name="reference"
                 type="text"
-                class="form-control is-valid"
+                class="form-control is-{{
+                  !reference?.dirty
+                    ? 'empty'
+                    : reference.valid
+                    ? 'valid'
+                    : 'invalid'
+                }}"
                 placeholder="XX123"
+                id="reference"
+                formControlName="reference"
                 required
-                id="ref"
               />
             </div>
             <!-- Intitulé -->
@@ -32,8 +57,9 @@
               <input
                 name="title"
                 type="text"
-                class="form-control is-valid"
+                class="form-control"
                 placeholder=""
+                formControlName="title"
                 required
               />
             </div>
@@ -46,6 +72,7 @@
                 name="location"
                 class="form-select mb-3"
                 aria-label=".form-select example"
+                formControlName="location"
               >
                 <option value="Paris La défense" selected>
                   Paris - La Défense
@@ -64,64 +91,61 @@
             </div>
             <!-- Formation inter-entreprises/Formation intra-entreprise -->
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
+              <label id="labelType" for="interIntra" class="form-label"
                 >Type de formation:
               </label>
-              <label
-                class="form-check-label"
-                for="inlineRadio1"
-                id="inter-label"
-                >inter-entreprise</label
-              >
+
               <input
                 name="interIntra"
                 class="form-check-input"
                 type="radio"
                 value="true"
                 id="inter"
-                checked="checked"
+                formControlName="interIntra"
+                checked
               />
-              <label
-                class="form-check-label"
-                for="inlineRadio2"
-                id="intra-label"
-                >intra-entreprise</label
+              <label class="form-check-label" for="inter" id="inter-label"
+                >inter-entreprise</label
               >
+
               <input
                 name="interIntra"
                 class="form-check-input"
                 type="radio"
                 value="false"
                 id="intra"
+                formControlName="interIntra"
               />
+
+              <label class="form-check-label" for="intra" id="intra-label"
+                >intra-entreprise</label
+              >
             </div>
             <!-- durée -->
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Durée</label
-              >
+              <label for="duration" class="form-label">Durée</label>
               <input
                 name="duration"
-                type="text"
+                type="number"
                 class="form-control"
                 placeholder="nbre de jours"
+                formControlName="duration"
               />
             </div>
             <!-- prérequis -->
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label"
-                >Pré-requis</label
-              >
+              <label for="prerequis" class="form-label">Pré-requis</label>
               <textarea
                 name="prerequis"
                 class="form-control"
-                id="exampleFormControlTextarea1"
+                id="prerequis"
                 rows="2"
+                formControlName="prerequis"
               ></textarea>
             </div>
             <!-- objectif -->
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
+              <label for="goal" class="form-label"
                 >Objectif de cette formation</label
               >
               <textarea
@@ -129,51 +153,47 @@
                 class="form-control"
                 id="exampleFormControlTextarea1"
                 rows="2"
+                formControlName="goal"
               ></textarea>
             </div>
             <!-- public visé -->
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label"
-                >Public visé</label
-              >
+              <label for="targetPublic" class="form-label">Public visé</label>
               <textarea
                 name="targetPublic"
                 class="form-control"
-                id="exampleFormControlTextarea1"
+                id="targetPublic"
                 rows="2"
+                formControlName="targetPublic"
               ></textarea>
             </div>
             <!-- programme détaillé -->
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label"
-                >Programme détaillé</label
-              >
+              <label for="details" class="form-label">Programme détaillé</label>
               <textarea
                 name="details"
                 class="form-control"
-                id="exampleFormControlTextarea1"
+                id="details"
                 rows="3"
+                formControlName="details"
               ></textarea>
             </div>
             <!-- themes[] -->
-            <!-- dropdown menu of locations -->
-            <div class="mb-3" *ngIf="themes">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Thème</label
-              >
+            <!--dropdown menu of themes -->
+            <div class="mb-3" *ngIf="themeChoices">
+              <label for="theme" class="form-label">Thème</label>
               <select
                 name="theme"
                 class="form-select mb-3"
                 aria-label=".form-select example"
+                formControlName="theme"
               >
                 <option selected>--</option>
-                <option
-                  *ngFor="let theme of themes"
-                  value="{{ theme }}"
-                >
+                <option *ngFor="let theme of themeChoices" value="{{ theme }}">
                   {{ theme }}
                 </option>
-                <!-- <option *ngFor="let theme of themes; index i;" value={{theme.nomTheme}}>{{theme.nomTheme}}</option> -->
+                <!-- #comment the next line when decommenting the rest of the section
+                 <option *ngFor="let theme of themes; index i;" value={{theme.nomTheme}}>{{theme.nomTheme}}</option>-->
               </select>
             </div>
 
@@ -186,12 +206,14 @@
             <div>
               <!-- <input type="submit" value="Enregistrer" class="btn btn-outline-info"
         (click)="showMessage('this button is supposed to persist the training in the database');" /> -->
-              <input
+              <button
                 type="submit"
                 value="Enregistrer"
                 class="btn btn-outline-info"
-                (click)="addFormation()"
-              />
+                [disabled]="addForm.invalid"
+              >
+                Save changes
+              </button>
             </div>
           </form>
         </div>

@@ -20,13 +20,12 @@ export class ListFormationsComponent implements OnInit {
   openAccordion = ([] = [false]);
 
   errorMessage?: HttpErrorResponse;
-  noTrainingsFound?: string;
+  noTrainingsFound?: string | null;
 
   isHidden = true;
 
   constructor(
     private formationService: FormationService,
-    private router: Router
   ) {}
 
   ngOnInit() {
@@ -59,6 +58,12 @@ export class ListFormationsComponent implements OnInit {
     });
   }
 
+  public getAllChapiters(): void {
+    // Count (2)
+    // this.chapters: Chapters[] = this.serviceChapters.getAllChapiters();
+    // Count (3)
+  }
+
   public onAddFormation(addForm: NgForm): void {
     document.getElementById('add-training-form')!.click();
     this.formationService.addFormation(addForm.value).subscribe({
@@ -88,7 +93,7 @@ export class ListFormationsComponent implements OnInit {
     });
   }
 
-  public onDeleteEmloyee(formationId: number): void {
+  public onDeleteFormation(formationId: number): void {
     this.formationService.deleteFormation(formationId).subscribe({
       next: (response) => {
         console.log(response);
@@ -125,9 +130,10 @@ export class ListFormationsComponent implements OnInit {
       ) {
         results.push(f);
         console.log(
-          'on a trouvé une formation correspondant à vos critères de recherche! '
+          'on a trouvé une/des formations correspondant à vos critères de recherche! '
         );
         this.formations = results;
+        this.noTrainingsFound = null;
       }
     }
 

@@ -1,5 +1,5 @@
 export interface PreTest {
   idTest: number;
-  titre: string;
+  titre: string | null;
   questions: [];
 }

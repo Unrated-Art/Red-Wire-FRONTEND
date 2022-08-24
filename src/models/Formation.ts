@@ -2,7 +2,7 @@ import { PreTest } from './preTest';
 import { Theme } from './theme';
 
 export interface Formation {
-  idFormation: number;
+  idFormation?: number;
   reference: string;
   titref: string;
   lieu: string;

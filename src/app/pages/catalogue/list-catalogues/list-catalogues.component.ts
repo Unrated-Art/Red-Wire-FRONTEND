@@ -61,6 +61,7 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
     });
   }
 
+
   public onEditCatalogue(dataForm: Catalogue): void {
     this.catalogueService.updateCatalogue(dataForm).subscribe({
       next: (response) => {
@@ -73,6 +74,7 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
       },
     });
   }
+
   public onAddCatalogue(dataForm: Catalogue): void {
     this.catalogueService.addCatalogue(dataForm).subscribe({
       next: (response) => {
