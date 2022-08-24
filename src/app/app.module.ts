@@ -22,7 +22,16 @@ import { ListFormationsComponent } from './pages/formation/list-formations/list-
 import { DetailFormationComponent } from './pages/formation/detail-formation/detail-formation.component';
 import { AccountComponent } from './pages/account/account.component';
 import { ListSessionsComponent } from './pages/list-sessions/list-sessions.component';
+<<<<<<< HEAD
+<<<<<<< HEAD
 import { ListCataloguesComponent } from './pages/list-catalogues/list-catalogues.component';
+=======
+import { ListCataloguesComponent } from './pages/catalogue/list-catalogues/list-catalogues.component';
+import { SearchBarComponent } from './pages/search-bar/search-bar.component';
+>>>>>>> 3ef384d66bb37f5193a211ccbf7cbf09559a1b82
+=======
+import { ListCataloguesComponent } from './pages/list-catalogues/list-catalogues.component';
+>>>>>>> 674e03a9a74ca9e1c5c8ce9fdbd7b793f896cd53
 import { AddFormationComponent } from './pages/formation/add-formation/add-formation.component';
 import { FormationComponent } from './pages/formation/formation.component';
 import { ErrorComponent } from './pages/error/error.component';
@@ -54,9 +63,14 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
     FormationComponent,
     ErrorComponent,
     EditFormationComponent,
+<<<<<<< HEAD
+<<<<<<< HEAD
+    FormCatalogueComponent,
+=======
     ContentComponent,
     FormCatalogueComponent,
 
+>>>>>>> 674e03a9a74ca9e1c5c8ce9fdbd7b793f896cd53
   ],
   imports: [
     BrowserModule,
@@ -64,6 +78,14 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
+=======
+    ContentComponent,
+    FormCatalogueComponent,
+
+>>>>>>> 3ef384d66bb37f5193a211ccbf7cbf09559a1b82
+=======
+>>>>>>> 674e03a9a74ca9e1c5c8ce9fdbd7b793f896cd53
   ],
   providers: [FormationService, CatalogueService],
   bootstrap: [AppComponent],
