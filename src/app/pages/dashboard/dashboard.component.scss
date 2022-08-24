@@ -65,9 +65,14 @@ body {
   text-transform: uppercase;
 }
 
-/*
- * Navbar
+ /*
+ * Navbar Dashboard
  */
+ .navbar {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+ }
 
 .navbar-brand {
   padding-top: 0.75rem;

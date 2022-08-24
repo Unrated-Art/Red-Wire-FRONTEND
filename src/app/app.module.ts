@@ -15,7 +15,6 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
@@ -24,11 +23,15 @@ import { DetailFormationComponent } from './pages/formation/detail-formation/det
 import { AccountComponent } from './pages/account/account.component';
 import { ListSessionsComponent } from './pages/list-sessions/list-sessions.component';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ListCataloguesComponent } from './pages/list-catalogues/list-catalogues.component';
 =======
 import { ListCataloguesComponent } from './pages/catalogue/list-catalogues/list-catalogues.component';
 import { SearchBarComponent } from './pages/search-bar/search-bar.component';
 >>>>>>> 3ef384d66bb37f5193a211ccbf7cbf09559a1b82
+=======
+import { ListCataloguesComponent } from './pages/list-catalogues/list-catalogues.component';
+>>>>>>> 674e03a9a74ca9e1c5c8ce9fdbd7b793f896cd53
 import { AddFormationComponent } from './pages/formation/add-formation/add-formation.component';
 import { FormationComponent } from './pages/formation/formation.component';
 import { ErrorComponent } from './pages/error/error.component';
@@ -61,7 +64,13 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
     ErrorComponent,
     EditFormationComponent,
 <<<<<<< HEAD
+<<<<<<< HEAD
     FormCatalogueComponent,
+=======
+    ContentComponent,
+    FormCatalogueComponent,
+
+>>>>>>> 674e03a9a74ca9e1c5c8ce9fdbd7b793f896cd53
   ],
   imports: [
     BrowserModule,
@@ -69,11 +78,14 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
 =======
     ContentComponent,
     FormCatalogueComponent,
 
 >>>>>>> 3ef384d66bb37f5193a211ccbf7cbf09559a1b82
+=======
+>>>>>>> 674e03a9a74ca9e1c5c8ce9fdbd7b793f896cd53
   ],
   providers: [FormationService, CatalogueService],
   bootstrap: [AppComponent],
