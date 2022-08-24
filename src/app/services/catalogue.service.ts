@@ -18,8 +18,17 @@ export class CatalogueService {
 
   public addCatalogue(catalogue: Catalogue): Observable<Catalogue> {
     return this.http.post<Catalogue>(
-      `${this.apiServerUrl}/api/catalogue/add`,
-      catalogue
-    );
+      `${this.apiServerUrl}/api/catalogue/add`,catalogue);
   }
+
+  public updateCatalogue(catalogue: Catalogue): Observable<Catalogue> {
+    return this.http.put<Catalogue>(
+      `${this.apiServerUrl}/api/catalogue/update/${catalogue.idCatalogue}`,catalogue);
+  }
+
+  public deleteCatalogue(catalogueId: number): Observable<Catalogue> {
+    return this.http.delete<Catalogue>(
+      `${this.apiServerUrl}/api/catalogue/delete/${catalogueId}`);
+  }
+
 }
