@@ -12,8 +12,8 @@ export class SessionService {
 
   constructor(private http: HttpClient) {}
 
-  public getSessions(idTraining?: number | undefined): Observable<Session[]> {
-    return this.http.get<Session[]>(`${this.apiServerUrl}/api/session/`, (!!idTraining ? {params: {idTraining}} : {}));
+  public getSessions(idTraining?: number | undefined | null): Observable<Session[]> {
+    return this.http.get<Session[]>(`${this.apiServerUrl}/api/session/`, (idTraining ? {params: {idTraining}} : {}));
   }
 
   public getSession(idSession: number): Observable<Session> {
@@ -21,11 +21,11 @@ export class SessionService {
   }
 
   public addSession(session: Session): Observable<Session> {
-    return this.http.post<Session>(`${this.apiServerUrl}/api/session`, session);
+    return this.http.post<Session>(`${this.apiServerUrl}/api/session`, {session});
   }
 
   public editSession(session: Session): Observable<Session> {
-    return this.http.put<Session>(`${this.apiServerUrl}/api/session/${session.idSession}`, session);
+    return this.http.put<Session>(`${this.apiServerUrl}/api/session/${session.idSession}`, {session});
   }
 
   public removeSession(idSession: number): Observable<void> {

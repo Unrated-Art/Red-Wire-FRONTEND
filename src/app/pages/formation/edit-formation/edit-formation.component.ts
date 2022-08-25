@@ -47,7 +47,6 @@ export class EditFormationComponent implements OnInit {
       console.log(params['id']); //log the value of id
       this.identifiant = Number(params['id']);
     });
-
     console.log('Got the [id] from the url: ' + this.identifiant);
   }
 

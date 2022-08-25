@@ -1,36 +1,46 @@
 <p>{{ idSession ? 'Editer la' : 'Ajouter une' }} Session</p>
 
-<form (ngSubmit)="submit()" [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div *ngSwitch="session?.idSession" class="form-group mb-3 mt-3">
+      <input
+        formControlName="idSession"
+        class="form-control"
+        type="number"
+        placeholder="id Session"
+        aria-label="id Session"
+        [value]="session?.idSession"
+      />
+    </div>
     <div class="form-group mb-3 mt-3">
         <input
+        class="form-control is-{{ !dateDebut.dirty ? 'empty' : (dateDebut.valid ? 'valid' : 'invalid') }}"
           formControlName="dateDebut"
           class="form-control"
           type="date"
           placeholder="Start Date"
           aria-label="Start Date"
-          value=""
           required
         />
       </div>
       <div class="form-group mb-3 mt-3">
         <input
+        class="form-control is-{{ !dateFin.dirty ? 'empty' : (dateFin.valid ? 'valid' : 'invalid') }}"
           formControlName="dateFin"
           class="form-control"
           type="date"
           placeholder="End Date"
           aria-label="End Date"
-          value=""
           required
         />
       </div>
       <div class="form-group mb-3 mt-3">
         <input
+        class="form-control is-{{ !lieu.dirty ? 'empty' : (lieu.valid ? 'valid' : 'invalid') }}"
           formControlName="lieu"
           class="form-control"
           type="text"
           placeholder="Location"
           aria-label="Location"
-          value=""
           required
         />
       </div>
@@ -43,7 +53,6 @@
           step="1"
           placeholder="Price"
           aria-label="Price"
-          value=""
           required
         />
       </div>

@@ -42,7 +42,6 @@ export class SessionComponent implements OnInit {
         next: (response: any) => {
           this.sessions = []
           Object.assign(this.sessions, response);
-          console.log(this.sessions)
         },
         error: (err: any) => {
           console.error('ERROR: ', err)
@@ -61,7 +60,6 @@ export class SessionComponent implements OnInit {
   }
 
   addSession(data: any) {
-    console.log('AJOUTER => ', data)
     const subAddSession = this.sessionService.addSession(data).subscribe({
       next: (response: Session) => {
         this.loadSessions()
@@ -72,7 +70,6 @@ export class SessionComponent implements OnInit {
   }
 
   editSession(data: any) {
-    console.log('EDITER => ', data)
     const subEditSession = this.sessionService.editSession(data).subscribe({
       next: (response: Session) => {
         this.loadSessions()
@@ -83,7 +80,6 @@ export class SessionComponent implements OnInit {
   }
 
   removeSession() {
-    console.log(this.currentIdSession)
     const subRemoveSession = this.sessionService.removeSession(this.currentIdSession).subscribe({
       next: (response) => {
         this.loadSessions()
