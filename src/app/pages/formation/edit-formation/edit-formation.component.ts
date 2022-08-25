@@ -119,7 +119,8 @@ export class EditFormationComponent implements OnInit {
       programmeDetaille: String(this.details.value),
       //themes
     };
-    this.fToUpdate = this.formationService
+    //this.fToUpdate =
+    this.formationService
       .getFormationById(this.identifiant)
       .subscribe({
         next: (formation: Formation) => {
@@ -128,7 +129,18 @@ export class EditFormationComponent implements OnInit {
             .updateFormation(formation, this.identifiant)
             .subscribe({
               next(updatedTraining: Formation) {
-                console.log('UPDATE OK=> ' + updatedTraining);
+                console.log('UPDATE OK=> '
+                + updatedTraining.idFormation
+                +";"+updatedTraining.reference
+                +";"+updatedTraining.titref
+                +";"+updatedTraining.lieu
+                +";"+updatedTraining.interFormation
+                +";"+updatedTraining.duree
+                +";"+updatedTraining.prerequis
+                +";"+updatedTraining.objectif
+                +";"+updatedTraining.publicVise
+                +";"+updatedTraining.programmeDetaille
+                );
               },
               error(httpErrorResponse) {
                 alert('failed to update training due to: ' + httpErrorResponse);
@@ -142,34 +154,26 @@ export class EditFormationComponent implements OnInit {
         },
         complete: () => {
           console.error('BLABLABLA in COMPLETE of parentSubscribe');
-          console.log(
-            'newFContentDetails:' +
-              dataU.reference +
-              ';' +
-              dataU.lieu +
-              ';' +
-              dataU.duree +
-              ';' +
-              dataU.interFormation +
-              ';' +
-              dataU.programmeDetaille +
-              ';' +
-              dataU.objectif
-          );
-          console.log('newFContent:' + dataU);
+          // console.log(
+          //   'newFContentDetails:' +
+          //     dataU.reference +
+          //     ';' +
+          //     dataU.lieu +
+          //     ';' +
+          //     dataU.duree +
+          //     ';' +
+          //     dataU.interFormation +
+          //     ';' +
+          //     dataU.programmeDetaille +
+          //     ';' +
+          //     dataU.objectif
+          // );
+          // console.log('newFContent:' + dataU);
           console.log('DONE!');
           this.editForm.reset();
         },
       });
 
-    // Process editTraining data here
-    // alert("edit Training submitted => va voir comment l'enregistrer dans la base :p");
-    // console.info(this.editForm.get("ref"));
-    // //console.info('ref= '+this.updatedF.reference);
-    // //this.formation.reference=this.addTrainingForm.get("reference");
-    // //this.formationService.addFormation(this.addTrainingForm.value);
-    // console.warn('Training update loading..', dataU.reference);
-    // this.editForm.reset();
   }
 
   public showMessage(message: string) {
