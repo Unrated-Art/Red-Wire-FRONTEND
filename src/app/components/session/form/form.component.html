@@ -1,0 +1,51 @@
+<p>{{ idSession ? 'Editer la' : 'Ajouter une' }} Session</p>
+
+<form (ngSubmit)="submit()" [formGroup]="form">
+    <div class="form-group mb-3 mt-3">
+        <input
+          formControlName="dateDebut"
+          class="form-control"
+          type="date"
+          placeholder="Start Date"
+          aria-label="Start Date"
+          value=""
+          required
+        />
+      </div>
+      <div class="form-group mb-3 mt-3">
+        <input
+          formControlName="dateFin"
+          class="form-control"
+          type="date"
+          placeholder="End Date"
+          aria-label="End Date"
+          value=""
+          required
+        />
+      </div>
+      <div class="form-group mb-3 mt-3">
+        <input
+          formControlName="lieu"
+          class="form-control"
+          type="text"
+          placeholder="Location"
+          aria-label="Location"
+          value=""
+          required
+        />
+      </div>
+      <div class="form-group mb-3 mt-3">
+        <input
+          formControlName="prix"
+          class="form-control"
+          type="number"
+          min="1"
+          step="1"
+          placeholder="Price"
+          aria-label="Price"
+          value=""
+          required
+        />
+      </div>
+  <button class="btn btn-primary" type="submit">{{ idSession === 0 ?  'Ajouter' : 'Editer' }}</button>
+</form>

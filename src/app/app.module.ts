@@ -25,6 +25,8 @@ import { ErrorComponent } from './pages/error/error.component';
 import { EditFormationComponent } from './pages/formation/edit-formation/edit-formation.component';
 import { ContentComponent } from './layouts/content/content.component';
 import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-catalogue.component';
+import { SessionComponent } from './components/session/session.component';
+import { FormComponent } from './components/session/form/form.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
     EditFormationComponent,
     ContentComponent,
     FormCatalogueComponent,
+    SessionComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,

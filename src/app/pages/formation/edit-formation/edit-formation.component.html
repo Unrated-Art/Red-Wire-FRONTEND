@@ -199,7 +199,8 @@
             <div>
               <!-- <input type="submit" value="Enregistrer" class="btn btn-outline-info"
         (click)="showMessage('this button is supposed to persist the training in the database');" /> -->
-              <button
+        <app-session [idTraining]="identifiant"></app-session>
+        <button
                 type="submit"
                 value="Enregistrer"
                 class="btn btn-outline-info"
@@ -214,3 +215,5 @@
     </article>
   </div>
 </div>
+
+

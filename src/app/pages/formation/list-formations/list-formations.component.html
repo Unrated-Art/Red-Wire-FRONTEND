@@ -80,9 +80,9 @@
               <!-- <li>
                 Détails: <strong>{{ formation.programmeDetaille }}</strong>
               </li> -->
-              <li *ngIf="!formation.themes">
+              <!-- <li *ngIf="!formation.themes">
                 Theme: non défini!!
-              </li>
+              </li> -->
               <li *ngFor="let theme of formation.themes">
                 {{ theme.nomTheme }}
               </li>
