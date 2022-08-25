@@ -12,29 +12,23 @@ export class SessionService {
 
   constructor(private http: HttpClient) {}
 
-  public getSessions(): Observable<Session[]> {
-    return this.http.get<Session[]>(`${this.apiServerUrl}/api/session`);
+  public getSessions(idTraining?: number | undefined): Observable<Session[]> {
+    return this.http.get<Session[]>(`${this.apiServerUrl}/api/session/`, (!!idTraining ? {params: {idTraining}} : {}));
   }
 
-  public getSession(id: number): Observable<Session> {
-    return this.http.get<Session>(`${this.apiServerUrl}/api/session/${id}`);
+  public getSession(idSession: number): Observable<Session> {
+    return this.http.get<Session>(`${this.apiServerUrl}/api/session/${idSession}`);
   }
 
-  public addSession(dataSession: any): Observable<Session> {
-    return this.http.post<Session>(
-      `${this.apiServerUrl}/api/session`,
-      dataSession
-    );
+  public addSession(session: Session): Observable<Session> {
+    return this.http.post<Session>(`${this.apiServerUrl}/api/session`, session);
   }
 
   public editSession(session: Session): Observable<Session> {
-    return this.http.put<Session>(
-      `${this.apiServerUrl}/api/session/${session.idSession}`,
-      session
-    );
+    return this.http.put<Session>(`${this.apiServerUrl}/api/session/${session.idSession}`, session);
   }
 
-  public removeSession(id: number): Observable<Session> {
-    return this.http.delete<Session>(`${this.apiServerUrl}/api/session/${id}`);
+  public removeSession(idSession: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiServerUrl}/api/session/${idSession}`);
   }
 }

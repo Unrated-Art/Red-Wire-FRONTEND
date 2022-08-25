@@ -1,11 +1,13 @@
+import { Formation } from "src/models/formation";
+
 export interface Session {
   idSession: number;
-  dateDebut: Date;
-  dateFin: Date;
+  dateDebut: Date | string;
+  dateFin: Date | string;
   lieu: string;
   prix: number;
   salle: null;
-  formation: null;
+  formation?: Formation;
   formateur: null;
   evalSessions: [];
   stagiaires: [];

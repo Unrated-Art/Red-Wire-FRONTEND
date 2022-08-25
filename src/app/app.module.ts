@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormationService } from 'src/app/services/formation.service';
@@ -25,6 +26,8 @@ import { ErrorComponent } from './pages/error/error.component';
 import { EditFormationComponent } from './pages/formation/edit-formation/edit-formation.component';
 import { ContentComponent } from './layouts/content/content.component';
 import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-catalogue.component';
+import { SessionComponent } from './components/session/session.component';
+import { FormComponent as SessionFormComponent } from './components/session/form/form.component';
 
 @NgModule({
   declarations: [
@@ -52,8 +55,11 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
     EditFormationComponent,
     ContentComponent,
     FormCatalogueComponent,
+    SessionComponent,
+    SessionFormComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
