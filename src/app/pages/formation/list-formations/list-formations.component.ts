@@ -2,7 +2,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormationService } from 'src/app/services/formation.service';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Formation } from 'src/models/formation';
 import { Theme } from 'src/models/theme';
 
@@ -24,9 +23,7 @@ export class ListFormationsComponent implements OnInit {
 
   isHidden = true;
 
-  constructor(
-    private formationService: FormationService,
-  ) {}
+  constructor(private formationService: FormationService) {}
 
   ngOnInit() {
     this.getFormations();

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Formation } from 'src/models/formation';
 import { FormationService } from 'src/services/formation.service';
@@ -131,9 +131,7 @@ export class EditFormationComponent implements OnInit {
                 console.log('UPDATE OK=> ' + updatedTraining);
               },
               error(httpErrorResponse) {
-                alert(
-                  'failed to update training due to: ' + httpErrorResponse.class
-                );
+                alert('failed to update training due to: ' + httpErrorResponse);
               },
             });
           console.log('id of the training to update: ' + formation.idFormation);

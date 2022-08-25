@@ -12,36 +12,33 @@ import { FormationService } from 'src/services/formation.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  catalogues!:Catalogue[];
-  formations!:Formation[];
-  sessions!:Session[];
+  catalogues!: Catalogue[];
+  formations!: Formation[];
+  sessions!: Session[];
 
   constructor(
     private serviceCatalogue: CatalogueService,
-    private serviceFormations : FormationService,
-    private serviceSession : SessionService
+    private serviceFormations: FormationService,
+    private serviceSession: SessionService
   ) {}
 
   ngOnInit(): void {
     this.serviceCatalogue.getCatalogues().subscribe({
-      next:(responseCat: Catalogue[])=>{
-        this.catalogues=responseCat;
-      }
+      next: (responseCat: Catalogue[]) => {
+        this.catalogues = responseCat;
+      },
     });
 
     this.serviceFormations.getFormations().subscribe({
-      next:(responseForm: Formation[])=>{
-        this.formations=responseForm;
-      }
+      next: (responseForm: Formation[]) => {
+        this.formations = responseForm;
+      },
     });
 
     this.serviceSession.getSessions().subscribe({
-      next:(responseSess:Session[])=>{
-        this.sessions=responseSess;
-      }
+      next: (responseSess: Session[]) => {
+        this.sessions = responseSess;
+      },
     });
-
   }
-
-
 }

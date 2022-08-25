@@ -54,6 +54,12 @@
         >
           <div class="accordion-body" *ngIf="formation.themes">
             <ul>
+              <li>
+                Référence: <strong>{{ formation.reference }}</strong>
+              </li>
+              <li>
+                Durée: <strong>{{ formation.duree }} jours</strong>
+              </li>
               <li *ngFor="let theme of formation.themes">
                 {{ theme.nomTheme }}
               </li>
