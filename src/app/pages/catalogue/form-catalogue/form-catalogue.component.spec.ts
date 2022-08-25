@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccordionComponent } from './accordion.component';
+import { FormCatalogueComponent } from './form-catalogue.component';
 
-describe('AccordionComponent', () => {
-  let component: AccordionComponent;
-  let fixture: ComponentFixture<AccordionComponent>;
+describe('FormCatalogueComponent', () => {
+  let component: FormCatalogueComponent;
+  let fixture: ComponentFixture<FormCatalogueComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AccordionComponent],
+      declarations: [FormCatalogueComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AccordionComponent);
+    fixture = TestBed.createComponent(FormCatalogueComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

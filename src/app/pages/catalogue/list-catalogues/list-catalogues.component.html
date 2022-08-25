@@ -1,0 +1,199 @@
+<body>
+  <h1>Catalogues</h1>
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" style="color:white;">Employee Manager</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button> -->
+
+  <nav class="navbar navbar-expand-lg">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarColor02"
+      aria-controls="navbarColor02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <button
+            class="nav-link"
+            data-bs-toggle="modal"
+            data-bs-target="#formCatalogueModal"
+            data-original-title="Add"
+            (click)="setTmpIdCatalogue(0)"
+          >
+            Ajouter catalogue <span class="sr-only">(current)</span>
+          </button>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input
+          type="search"
+          (ngModelChange)="searchCatalogues(key.value)"
+          #key="ngModel"
+          ngModel
+          name="key"
+          id="searchName"
+          class="form-control mr-sm-2"
+          placeholder="Search catalogues..."
+          required
+        />
+      </form>
+    </div>
+  </nav>
+  <!-- </nav> -->
+  {{ tmpIdCatalogue }}
+  DISPLAY
+
+  <div class="container" id="main-container">
+    <div class="row">
+      <div *ngFor="let catalogue of catalogues" class="col-md-6 col-xl-3">
+        <div *ngIf="!!catalogue" class="card m-b-30">
+          <div class="card-body row">
+            <!-- <div class="col-6">
+                <a href=""><img src="{{catalogue?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+            </div> -->
+            <div class="col-6 card-title align-self-center mb-0">
+              <h5>{{ catalogue.titre }}</h5>
+              <p class="m-0">{{ catalogue.auteur }}</p>
+            </div>
+          </div>
+          <!-- <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{catalogue?.email}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{catalogue?.phone}}</li>
+          </ul> -->
+
+          <div class="card-body">
+            <div class="float-right btn-group btn-group-sm">
+              <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#formCatalogueModal"
+                data-original-title="Edit"
+                data-id="{{ catalogue.idCatalogue }}"
+                (click)="setTmpIdCatalogue(catalogue.idCatalogue)"
+              >
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button
+                class="btn btn-secondary tooltips"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteCatalogueModal"
+                data-original-title="Delete"
+                (click)="setTmpIdCatalogue(catalogue.idCatalogue)"
+              >
+                <i class="fa fa-times"></i>
+              </button>
+              <span>{{ catalogue.dateCreation }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="deleteCatalogueModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Delete Catalogue</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Do you want to delete this 'Calalogue'. This action is
+              irreversible.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onDeleteCatalogue(tmpIdCatalogue)"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="formCatalogueModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="formCatalogueModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="form">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="formCatalogueModalLabel">
+              {{ tmpIdCatalogue ? 'Edit' : 'Add' }} Catalogue
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <app-form-catalogue
+              *ngIf="tmpIdCatalogue === 0; else editFormCatalogue"
+              [status]="'add'"
+              (sendAddData)="onAddCatalogue($event)"
+            ></app-form-catalogue>
+            <ng-template #editFormCatalogue>
+              <app-form-catalogue
+                [status]="'edit'"
+                [idCatalogue]="tmpIdCatalogue"
+                (sendEditData)="onEditCatalogue($event)"
+              ></app-form-catalogue>
+            </ng-template>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="add-catalogue-form"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <!--
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Save changes
+          </button>
+          --></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

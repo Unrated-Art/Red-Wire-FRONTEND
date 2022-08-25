@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ErrorComponent } from './pages/error/error.component';
 
 import { AddFormationComponent } from './pages/formation/add-formation/add-formation.component';
 import { DetailFormationComponent } from './pages/formation/detail-formation/detail-formation.component';
 import { EditFormationComponent } from './pages/formation/edit-formation/edit-formation.component';
 import { FormationComponent } from './pages/formation/formation.component';
+import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ListFormationsComponent } from './pages/formation/list-formations/list-formations.component';
+import { ListCataloguesComponent } from './pages/catalogue/list-catalogues/list-catalogues.component';
 
 const routes: Routes = [
   // Si vide --(redirection)-> '/formation'
@@ -21,17 +22,22 @@ const routes: Routes = [
       { path: '', component: ListFormationsComponent },
       {
         path: 'add',
-        component: AddFormationComponent
+        component: AddFormationComponent,
       },
       {
-        path: 'edit/:ref',
-        component: EditFormationComponent
+        path: 'edit/:id',
+        component: EditFormationComponent,
       },
       {
-        path: 'detail/:ref',
-        component: DetailFormationComponent
+        path: 'detail/:id',
+        component: DetailFormationComponent,
       },
-    ]
+    ],
+  },
+  {
+    path: 'catalogue',
+    component: CatalogueComponent,
+    children: [{ path: '', component: ListCataloguesComponent }],
   },
   { path: '**', pathMatch: 'full', redirectTo: 'formation' },
   // any other URL --(redirect)--> Error Page

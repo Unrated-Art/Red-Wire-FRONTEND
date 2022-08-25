@@ -13,8 +13,13 @@
       <div>
         <div class="bd-example">
           <!-- #addTrainingForm="ngForm" (ngSubmit)="addFormation(addForm)"-->
-          <form  [formGroup]="addTrainingForm" (ngSubmit)="onSubmit()" id="add-training-form">
-              <!-- idFormation
+          <form
+            class="FormGroup"
+            [formGroup]="addForm"
+            (ngSubmit)="submit()"
+            id="add-training-form"
+          >
+            <!-- idFormation
             <div class="mb-3">
               <label for="idFormation" class="form-label"
                 >Id de la formation</label
@@ -30,15 +35,21 @@
             -->
             <!-- reference -->
             <div class="mb-3">
-              <label for="ref" class="form-label">Référence</label>
+              <label for="reference" class="form-label">Référence</label>
               <input
-                name="ref"
+                name="reference"
                 type="text"
-                class="form-control is-valid"
+                class="form-control is-{{
+                  !reference?.dirty
+                    ? 'empty'
+                    : reference.valid
+                    ? 'valid'
+                    : 'invalid'
+                }}"
                 placeholder="XX123"
+                id="reference"
+                formControlName="reference"
                 required
-                id="ref"
-                formControlName="ref"
               />
             </div>
             <!-- Intitulé -->
@@ -47,7 +58,7 @@
               <input
                 name="title"
                 type="text"
-                class="form-control is-valid"
+                class="form-control"
                 placeholder=""
                 formControlName="title"
                 required
@@ -81,30 +92,23 @@
             </div>
             <!-- Formation inter-entreprises/Formation intra-entreprise -->
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
+              <label id="labelType" for="interIntra" class="form-label"
                 >Type de formation:
               </label>
-              <label
-                class="form-check-label"
-                for="interIntra"
-                id="inter-label"
-                >inter-entreprise</label
-              >
+
               <input
                 name="interIntra"
                 class="form-check-input"
                 type="radio"
                 value="true"
                 id="inter"
-                checked="checked"
                 formControlName="interIntra"
+                checked
               />
-              <label
-                class="form-check-label"
-                for="inlineRadio2"
-                id="intra-label"
-                >intra-entreprise</label
+              <label class="form-check-label" for="inter" id="inter-label"
+                >inter-entreprise</label
               >
+
               <input
                 name="interIntra"
                 class="form-check-input"
@@ -113,15 +117,17 @@
                 id="intra"
                 formControlName="interIntra"
               />
+
+              <label class="form-check-label" for="intra" id="intra-label"
+                >intra-entreprise</label
+              >
             </div>
             <!-- durée -->
             <div class="mb-3">
-              <label for="duration" class="form-label"
-                >Durée</label
-              >
+              <label for="duration" class="form-label">Durée</label>
               <input
                 name="duration"
-                type="text"
+                type="number"
                 class="form-control"
                 placeholder="nbre de jours"
                 formControlName="duration"
@@ -129,9 +135,7 @@
             </div>
             <!-- prérequis -->
             <div class="mb-3">
-              <label for="prerequis" class="form-label"
-                >Pré-requis</label
-              >
+              <label for="prerequis" class="form-label">Pré-requis</label>
               <textarea
                 name="prerequis"
                 class="form-control"
@@ -155,9 +159,7 @@
             </div>
             <!-- public visé -->
             <div class="mb-3">
-              <label for="targetPublic" class="form-label"
-                >Public visé</label
-              >
+              <label for="targetPublic" class="form-label">Public visé</label>
               <textarea
                 name="targetPublic"
                 class="form-control"
@@ -168,9 +170,7 @@
             </div>
             <!-- programme détaillé -->
             <div class="mb-3">
-              <label for="details" class="form-label"
-                >Programme détaillé</label
-              >
+              <label for="details" class="form-label">Programme détaillé</label>
               <textarea
                 name="details"
                 class="form-control"
@@ -180,11 +180,9 @@
               ></textarea>
             </div>
             <!-- themes[] -->
-            <!-- dropdown menu of themes -->
-            <!-- <div class="mb-3" *ngIf="themes">
-              <label for="theme" class="form-label"
-                >Thème</label
-              >
+            <!--dropdown menu of themes -->
+            <div class="mb-3" *ngIf="themeChoices">
+              <label for="theme" class="form-label">Thème</label>
               <select
                 name="theme"
                 class="form-select mb-3"
@@ -192,16 +190,13 @@
                 formControlName="theme"
               >
                 <option selected>--</option>
-                <option
-                  *ngFor="let theme of themes"
-                  value="{{ theme }}"
-                >
+                <option *ngFor="let theme of themeChoices" value="{{ theme }}">
                   {{ theme }}
                 </option>
-                #comment the next line when decommenting the rest of the section
-                 <option *ngFor="let theme of themes; index i;" value={{theme.nomTheme}}>{{theme.nomTheme}}</option>
+                <!-- #comment the next line when decommenting the rest of the section
+                 <option *ngFor="let theme of themes; index i;" value={{theme.nomTheme}}>{{theme.nomTheme}}</option>-->
               </select>
-            </div> -->
+            </div>
 
             <!--
         chapitres: [];
@@ -216,8 +211,10 @@
                 type="submit"
                 value="Enregistrer"
                 class="btn btn-outline-info"
-              >Save changes</button>
-              <!-- (click)="addFormation()" -->
+                [disabled]="addForm.invalid"
+              >
+                Save changes
+              </button>
             </div>
           </form>
         </div>

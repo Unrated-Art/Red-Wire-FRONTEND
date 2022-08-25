@@ -3,10 +3,9 @@ import { AuthLoginType } from 'src/models/auth-login';
 import { AuthRegisterType } from 'src/models/auth-register';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   constructor() { }
 
   public login(data: AuthLoginType) {

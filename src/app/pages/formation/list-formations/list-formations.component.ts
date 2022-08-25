@@ -2,7 +2,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormationService } from 'src/app/services/formation.service';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Formation } from 'src/models/formation';
 import { Theme } from 'src/models/theme';
 
@@ -24,10 +23,7 @@ export class ListFormationsComponent implements OnInit {
 
   isHidden = true;
 
-  constructor(
-    private formationService: FormationService,
-    private router: Router
-  ) {}
+  constructor(private formationService: FormationService) {}
 
   ngOnInit() {
     this.getFormations();
@@ -57,6 +53,12 @@ export class ListFormationsComponent implements OnInit {
       },
       complete: () => console.log('DONE!'),
     });
+  }
+
+  public getAllChapiters(): void {
+    // Count (2)
+    // this.chapters: Chapters[] = this.serviceChapters.getAllChapiters();
+    // Count (3)
   }
 
   public onAddFormation(addForm: NgForm): void {
@@ -128,7 +130,7 @@ export class ListFormationsComponent implements OnInit {
           'on a trouvé une/des formations correspondant à vos critères de recherche! '
         );
         this.formations = results;
-        this.noTrainingsFound=null;
+        this.noTrainingsFound = null;
       }
     }
 

@@ -5,7 +5,7 @@ import { AuthRegisterType } from 'src/models/auth-register';
 @Component({
   selector: 'app-auth-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   form = new FormGroup({
@@ -18,10 +18,9 @@ export class RegisterComponent implements OnInit {
 
   @Output() registerEvent = new EventEmitter<AuthRegisterType>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   get firstName(): any {
     return this.form.get('firstName');
@@ -41,7 +40,7 @@ export class RegisterComponent implements OnInit {
   
   public userRegister(): void {
     if (this.form.invalid) {
-      return
+      return;
     }
     const data: AuthRegisterType = {
       firstName: this.firstName.value,

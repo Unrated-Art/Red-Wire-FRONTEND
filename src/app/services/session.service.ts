@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Session } from 'src/models/session';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SessionService {
   private apiServerUrl = environment.apiBaseUrl;
@@ -35,8 +35,6 @@ export class SessionService {
   }
 
   public removeSession(id: number): Observable<Session> {
-    return this.http.delete<Session>(
-      `${this.apiServerUrl}/api/session/${id}`
-    );
+    return this.http.delete<Session>(`${this.apiServerUrl}/api/session/${id}`);
   }
 }
