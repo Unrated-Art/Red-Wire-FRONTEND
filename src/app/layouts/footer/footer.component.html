@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer *ngIf="isAdmin && isNotDashboard" class="footer">
   <div class="container">
     <span class="footer__logo">Saturne Formation</span>
     <ul class="footer__tab">
@@ -21,6 +21,5 @@
         >
       </li>
     </ul>
-    n
   </div>
 </footer>

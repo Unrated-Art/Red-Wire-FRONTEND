@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { FormationService } from 'src/services/formation.service';
+import { FormationService } from 'src/app/services/formation.service';
 
 // Formation (model) != des parametres GET/POST
 interface FormationType {
@@ -60,9 +59,7 @@ export class AddFormationComponent implements OnInit, OnDestroy {
     theme: new FormControl(null, Validators.required),
   });
 
-  constructor(
-    private formationService: FormationService
-  ) {}
+  constructor(private formationService: FormationService) {}
   ngOnInit(): void {}
 
   get reference(): any {

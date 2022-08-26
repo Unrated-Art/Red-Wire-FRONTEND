@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Formation } from 'src/models/formation';
-import { FormationService } from 'src/services/formation.service';
+import { FormationService } from 'src/app/services/formation.service';
 
 @Component({
   selector: 'app-edit-formation',

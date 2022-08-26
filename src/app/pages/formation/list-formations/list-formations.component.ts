@@ -2,7 +2,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormationService } from 'src/app/services/formation.service';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Formation } from 'src/models/formation';
 import { Theme } from 'src/models/theme';
 
@@ -24,9 +23,7 @@ export class ListFormationsComponent implements OnInit {
 
   isHidden = true;
 
-  constructor(
-    private formationService: FormationService,
-  ) {}
+  constructor(private formationService: FormationService) {}
 
   ngOnInit() {
     this.getFormations();
@@ -80,18 +77,18 @@ export class ListFormationsComponent implements OnInit {
     });
   }
 
-  public onUpdateFormation(formation: Formation): void {
-    this.formationService.updateFormation(formation).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.getFormations();
-      },
-      error: (httpErrorResponse) => {
-        this.errorMessage = httpErrorResponse.message;
-        alert(this.errorMessage);
-      },
-    });
-  }
+  // public onUpdateFormation(formation: Formation): void {
+  //   this.formationService.updateFormation(formation).subscribe({
+  //     next: (response) => {
+  //       console.log(response);
+  //       this.getFormations();
+  //     },
+  //     error: (httpErrorResponse) => {
+  //       this.errorMessage = httpErrorResponse.message;
+  //       alert(this.errorMessage);
+  //     },
+  //   });
+  // }
 
   public onDeleteFormation(formationId: number): void {
     this.formationService.deleteFormation(formationId).subscribe({
@@ -144,9 +141,7 @@ export class ListFormationsComponent implements OnInit {
   }
 
   /*
-
   addTraining = () =>{
-
     this.router.navigate(['/app/pages/addFormation.html']);
     };
 */

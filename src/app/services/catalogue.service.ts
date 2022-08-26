@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Catalogue } from '../models/catalogue';
+import { Catalogue } from 'src/models/catalogue';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -18,17 +18,21 @@ export class CatalogueService {
 
   public addCatalogue(catalogue: Catalogue): Observable<Catalogue> {
     return this.http.post<Catalogue>(
-      `${this.apiServerUrl}/api/catalogue/add`,catalogue);
+      `${this.apiServerUrl}/api/catalogue/add`,
+      catalogue
+    );
   }
 
   public updateCatalogue(catalogue: Catalogue): Observable<Catalogue> {
     return this.http.put<Catalogue>(
-      `${this.apiServerUrl}/api/catalogue/update/${catalogue.idCatalogue}`,catalogue);
+      `${this.apiServerUrl}/api/catalogue/update/${catalogue.idCatalogue}`,
+      catalogue
+    );
   }
 
   public deleteCatalogue(catalogueId: number): Observable<Catalogue> {
     return this.http.delete<Catalogue>(
-      `${this.apiServerUrl}/api/catalogue/delete/${catalogueId}`);
+      `${this.apiServerUrl}/api/catalogue/delete/${catalogueId}`
+    );
   }
-
 }

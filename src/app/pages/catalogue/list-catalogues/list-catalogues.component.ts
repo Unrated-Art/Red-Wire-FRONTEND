@@ -16,10 +16,10 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
   public catalogues!: Catalogue[];
   public editCatalogue!: Catalogue;
   public deleteCatalogue!: Catalogue;
-  public tmpIdCatalogue: number = 0
-  public test: number = 0
-  modalDelete: any
-  modalForm: any
+  public tmpIdCatalogue: number = 0;
+  public test: number = 0;
+  modalDelete: any;
+  modalForm: any;
 
   errorMessage?: HttpErrorResponse;
 
@@ -29,7 +29,7 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
   ) {}
 
   setTmpIdCatalogue(tmpIdCatalogue: number) {
-    console.log(tmpIdCatalogue)
+    console.log(tmpIdCatalogue);
     this.tmpIdCatalogue = tmpIdCatalogue;
   }
 
@@ -37,14 +37,20 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
     this.getCatalogues();
 
     // Init Bootstrap Modal Event
-    this.tmpIdCatalogue = 0
-    this.modalDelete = document.getElementById('deleteCatalogueModal')
-    this.modalForm = document.getElementById('formCatalogueModal')
-    this.modalForm?.addEventListener('hide.bs.modal', () => this.tmpIdCatalogue = 0)
+    this.tmpIdCatalogue = 0;
+    this.modalDelete = document.getElementById('deleteCatalogueModal');
+    this.modalForm = document.getElementById('formCatalogueModal');
+    this.modalForm?.addEventListener(
+      'hide.bs.modal',
+      () => (this.tmpIdCatalogue = 0)
+    );
   }
 
   ngOnDestroy(): void {
-    this.modalForm?.removeEventListener('hide.bs.modal', () => this.tmpIdCatalogue = 0)
+    this.modalForm?.removeEventListener(
+      'hide.bs.modal',
+      () => (this.tmpIdCatalogue = 0)
+    );
   }
 
   public getCatalogues(): void {
@@ -61,8 +67,6 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
     });
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   // public onEditCatalogue(dataForm: Catalogue): void {
   //   this.catalogueService.updateCatalogue(dataForm).subscribe({
   //     next: (response) => {
@@ -75,10 +79,7 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
   //     },
   //   });
   // }
-=======
-=======
 
->>>>>>> 674e03a9a74ca9e1c5c8ce9fdbd7b793f896cd53
   public onEditCatalogue(dataForm: Catalogue): void {
     this.catalogueService.updateCatalogue(dataForm).subscribe({
       next: (response) => {
@@ -91,11 +92,7 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
       },
     });
   }
-<<<<<<< HEAD
->>>>>>> 3ef384d66bb37f5193a211ccbf7cbf09559a1b82
-=======
 
->>>>>>> 674e03a9a74ca9e1c5c8ce9fdbd7b793f896cd53
   public onAddCatalogue(dataForm: Catalogue): void {
     this.catalogueService.addCatalogue(dataForm).subscribe({
       next: (response) => {
@@ -109,8 +106,6 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
     });
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   // public onDeleteCatalogue(idCatalogue: number): void {
   //   // const testModal = ModalBS.getInstance(this.modalDelete)
   //   // testModal?.hide()
@@ -128,9 +123,7 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
   //     }
   //   });
   // }
-=======
-=======
->>>>>>> 674e03a9a74ca9e1c5c8ce9fdbd7b793f896cd53
+
   public onDeleteCatalogue(idCatalogue: number): void {
     // const testModal = ModalBS.getInstance(this.modalDelete)
     // testModal?.hide()
@@ -145,21 +138,19 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
       error: (httpErrorResponse) => {
         this.errorMessage = httpErrorResponse.message;
         alert(this.errorMessage);
-      }
+      },
     });
   }
-<<<<<<< HEAD
->>>>>>> 3ef384d66bb37f5193a211ccbf7cbf09559a1b82
-=======
->>>>>>> 674e03a9a74ca9e1c5c8ce9fdbd7b793f896cd53
 
   public searchCatalogues(key: string): void {
     console.log(key);
     const results: Catalogue[] = [];
     for (const catalogue of this.catalogues) {
-      if (catalogue.titre.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || catalogue.auteur.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || !!catalogue.dateCreation) {
+      if (
+        catalogue.titre.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        catalogue.auteur.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        !!catalogue.dateCreation
+      ) {
         results.push(catalogue);
       }
     }
@@ -168,9 +159,6 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
       this.getCatalogues();
     }
   }
-
-
-
 
   /*
   public onOpenModal(catalogue: Catalogue | any, mode: string): void {
