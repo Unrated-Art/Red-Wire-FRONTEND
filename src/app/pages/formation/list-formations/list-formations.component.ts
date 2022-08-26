@@ -52,7 +52,6 @@ export class ListFormationsComponent implements OnInit {
 
   public showMessage(idBtn: string): void {
     alert(idBtn);
-    //alert(document.getElementById("idBtn")?.innerText);
   }
 
   public getFormations(): void {
