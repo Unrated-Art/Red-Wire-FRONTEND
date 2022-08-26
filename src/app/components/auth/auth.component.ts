@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { AuthLoginType } from 'src/models/auth-login';
-import { AuthRegisterType } from 'src/models/auth-register';
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +16,7 @@ export class AuthComponent implements OnInit {
     // this.authService.login(eventData)
   }
 
-  public userRegister(eventData: AuthRegisterType) {
+  public userRegister(eventData: any) {
     // this.authService.register(eventData)
   }
 }

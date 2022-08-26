@@ -2,7 +2,7 @@
   class="container-md d-flex pb-3 justify-content-center justify-content-between"
 >
   <div class="flex-fill mx-3">
-    <h2>Titre de la formation<!--{{formation.titref}}--></h2>
+    <h2>{{formation.titref}}   <span class="badge bg-dark">{{formation.reference}} </span></h2>
     <!--Objectif de cette formation-->
     <div class="accordion">
       <div class="accordion-item">
@@ -28,10 +28,7 @@
         >
           <div class="accordion-body">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
-              suscipit culpa, illo officiis nemo perferendis reiciendis, ullam
-              recusandae dicta nobis maxime iusto aliquam assumenda eligendi
-              neque blanditiis velit autem laudantium.
+              {{formation.objectif}}
             </p>
           </div>
         </div>
@@ -63,9 +60,7 @@
         >
           <div class="accordion-body">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-              fuga ad sequi id culpa. Maxime dolor aliquam eos neque unde. Nemo
-              debitis reiciendis sequi, soluta natus esse sint fuga velit.
+              {{formation.publicVise}}
             </p>
           </div>
         </div>
@@ -97,10 +92,7 @@
         >
           <div class="accordion-body">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui
-              laboriosam eaque harum iste tenetur et, reiciendis, saepe quo,
-              distinctio ipsam iusto. Et rerum modi tempora? At ea maxime
-              consequuntur vero.
+              {{formation.prerequis}}
             </p>
           </div>
         </div>
@@ -132,10 +124,7 @@
         >
           <div class="accordion-body">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-              assumenda? Doloribus, ducimus tempore dolore enim maxime harum
-              tempora distinctio error ex perferendis odio maiores ullam omnis
-              facere? Molestiae, magnam nobis.
+              {{formation.programmeDetaille}}
             </p>
           </div>
         </div>
@@ -143,7 +132,7 @@
     </div>
   </div>
 
-  <!-- CARD EXAMPLE -->
+  <!-- CARD inscription session -->
   <div class="col">
     <div class="card">
       <div class="card-body">
@@ -236,7 +225,7 @@
                 formation.getSessions().firstElement().prix
               </li>
               <li class="list-group-item">
-                <i>Référence: </i> formation.reference
+                <i>Référence: </i> {{formation.reference}}
               </li>
               <!-- button s'incrire -->
               <div class="card-body">
@@ -253,11 +242,11 @@
           >
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <i>Durée: </i>x jours ":
+                <i>Durée: </i>{{formation.duree}} jours
                 formation.getSessions().firstElement().Duree"
               </li>
               <li class="list-group-item">
-                <i>Référence: </i> formation.reference
+                <i>Référence: </i> {{formation.reference}}
               </li>
               <button class="btn btn-secondary">Demander devis</button>
             </ul>

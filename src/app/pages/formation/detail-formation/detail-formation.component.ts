@@ -1,34 +1,49 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { Formation } from 'src/models/formation';
+import { FormationService } from 'src/services/formation.service';
 
 @Component({
   selector: 'app-detail-formation',
   templateUrl: './detail-formation.component.html',
   styleUrls: ['./detail-formation.component.scss'],
 })
-export class DetailFormationComponent implements OnInit, OnDestroy {
+export class DetailFormationComponent implements OnInit {
   openAccordion1 = false;
   openAccordion2 = false;
   openAccordion3 = false;
   openAccordion4 = false;
 
-  private subs: Subscription[] = [];
-  ref: string = ''
+  formation!: Formation;
+  identifiant!: number;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private serviceFormation: FormationService,
+    private  route: ActivatedRoute
+    ) {
+      this.route.params.subscribe((params) => {
+        console.log(params); //log the entire params object
+        console.log(params['id']); //log the value of id
+        this.identifiant = Number(params['id']);
+      });
+      console.log('Got the [id] from "formation/{id}" url: ' + this.identifiant);
+    }
 
   ngOnInit(): void {
-    const sub = this.route.params.subscribe((parameter) => {
-      this.ref = parameter['ref'];
-      const formation: Formation | null = null; // Request localhost:8080/api/training/findRef/{ref}
-      console.log(formation);
-    });
-    this.subs.push(sub);
-  }
+    this.serviceFormation
+    .getFormationById(this.identifiant)
+    .subscribe({
+      next:(f:Formation)=>{
+        this.formation=f;
+      },
+      error:(err:string)=>{
+        alert(err);
+      },
+      complete:()=>{
+        console.log("GetFormationById OK :)")
+      }
 
-  ngOnDestroy(): void {
-    this.subs.forEach((s) => s.unsubscribe());
+    });
+
   }
 }

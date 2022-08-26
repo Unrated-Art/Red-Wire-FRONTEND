@@ -60,6 +60,29 @@
               <li>
                 Durée: <strong>{{ formation.duree }} jours</strong>
               </li>
+              <!-- <li>
+                Lieu: <strong>{{ formation.lieu }}</strong>
+              </li> -->
+              <!-- <li>
+                Type de formation:
+                <strong *ngIf="formation.interFormation">inter-entreprise</strong>
+                <strong *ngIf="!formation.interFormation">intra-entreprise</strong>
+              </li> -->
+              <li>
+                Pré-requis: <strong>{{ formation.prerequis }}</strong>
+              </li>
+              <li>
+                Objectif de cette formation: <strong>{{ formation.objectif }}</strong>
+              </li>
+              <li>
+                Public: <strong>{{ formation.publicVise }}</strong>
+              </li>
+              <!-- <li>
+                Détails: <strong>{{ formation.programmeDetaille }}</strong>
+              </li> -->
+              <!-- <li *ngIf="!formation.themes">
+                Theme: non défini!!
+              </li> -->
               <li *ngFor="let theme of formation.themes">
                 {{ theme.nomTheme }}
               </li>
@@ -76,50 +99,7 @@
   </div>
 </div>
 
-<!--<div class="w-100 d-flex justify-content-center">
-  <table class="table table-striped rounded-3">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Location</th>
-        <th scope="col">Duration</th>
-        <th scope="col">Target Audience</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of trainings">
-        <th scope="row">
-          <a [routerLink]="['training', item.ref]">
-            {{ item.ref }}
-          </a>
-        </th>
-        <td>{{ item.title }}</td>
-        <td>{{ item.location }}</td>
-        <td>{{ item.duration }}</td>
-        <td>{{ item.target }}</td>
-        <td>
-          <div class="white-space">
-            <button class="btn btn-info btn-sm d-inline-block">
-              <a [routerLink]="[item.ref, 'edit']"> edit </a></button
-            >&nbsp;
-            <button
-              class="btn btn-danger btn-sm d-inline-block"
-              data-bs-toggle="modal"
-              data-bs-target="#removeTrainingModal"
-            >
-              remove
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
--->
-
-<div
+<!-- <div
   class="modal fade"
   id="removeTrainingModal"
   data-bs-backdrop="static"
@@ -150,4 +130,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

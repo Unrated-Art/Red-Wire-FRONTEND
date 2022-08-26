@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SessionService } from 'src/app/services/session.service';
 import { Session } from 'src/models/session';
@@ -8,7 +8,7 @@ import { Session } from 'src/models/session';
   templateUrl: './session.component.html',
   styleUrls: ['./session.component.scss']
 })
-export class SessionComponent implements OnInit {
+export class SessionComponent implements OnInit , OnDestroy{
   @Input() idTraining: number = 0;
 
   modalFormAdEdit: any
@@ -42,6 +42,7 @@ export class SessionComponent implements OnInit {
         next: (response: any) => {
           this.sessions = []
           Object.assign(this.sessions, response);
+          console.log(this.sessions);
         },
         error: (err: any) => {
           console.error('ERROR: ', err)
@@ -60,7 +61,9 @@ export class SessionComponent implements OnInit {
   }
 
   addSession(data: any) {
-    const subAddSession = this.sessionService.addSession(data).subscribe({
+    delete data.idSession;
+    console.log('AJOUTER => ', data)
+    const subAddSession = this.sessionService.addSession(data,this.idTraining).subscribe({
       next: (response: Session) => {
         this.loadSessions()
       },
@@ -70,6 +73,7 @@ export class SessionComponent implements OnInit {
   }
 
   editSession(data: any) {
+    console.log('EDITER => ', data)
     const subEditSession = this.sessionService.editSession(data).subscribe({
       next: (response: Session) => {
         this.loadSessions()
@@ -80,6 +84,7 @@ export class SessionComponent implements OnInit {
   }
 
   removeSession() {
+    console.log(this.currentIdSession)
     const subRemoveSession = this.sessionService.removeSession(this.currentIdSession).subscribe({
       next: (response) => {
         this.loadSessions()
