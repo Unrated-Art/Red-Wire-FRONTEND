@@ -1,12 +1,12 @@
-@import '/src/styles.scss';
+@import 'src/styles.scss';
 .formations {
   background: $color-quaternary;
   padding: 1rem;
 }
 
 .cards {
-  display: flex;
-  align-content: flex-start;
+  // // display: flex;
+  // align-content: flex-start;
   justify-content: space-between;
 
   //display: grid;
@@ -17,27 +17,31 @@
 
 .card {
 
-  @media (min-width: 64rem) {
-    display: flex;
-    align-content: flex-start;
-    justify-content: space-between;
-  }
-  width: 30%;
-  background-color: white;
-  border-radius: 1rem;
-  position: relative;
+//   @media (min-width: 64rem) {
+//     display: flex;
+//     align-content: flex-start;
+//     justify-content: space-between;
+//   }
+//   width: 30%;
+//   background-color: white;
+//   border-radius: 1rem;
+//   position: relative;
   text-decoration: none;
   color: inherit;
-  display: block;
+//   display: block;
 
-  &img {
-    height: 12rem;
-    width: 100%;
-    border: transparent solid 0px;
-    border-radius: 1rem 1rem 0 0;
-    box-shadow: none;
-    object-fit: cover;
-  }
+//   &img {
+//     height: 12rem;
+//     width: 100%;
+//     border: transparent solid 0px;
+//     border-radius: 1rem 1rem 0 0;
+//     box-shadow: none;
+//     object-fit: cover;
+
+//     @media (min-width: 64rem) {
+//     }
+
+//   }
 
   &badge {
     background-color: $color-tertiary;

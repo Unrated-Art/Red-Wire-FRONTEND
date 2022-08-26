@@ -9,7 +9,7 @@ import { AuthLoginType } from 'src/models/auth-login';
 })
 export class LoginComponent implements OnInit {
   form = new FormGroup({
-    email: new FormControl(null, Validators.required),
+    email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, Validators.required),
   });
 
@@ -19,13 +19,24 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  get email(): any {
+    return this.form.get('email')
+  }
+  get password(): any {
+    return this.form.get('password')
+  }
+
+  public resetForm() {
+    this.form.reset()
+  }
+
   public userLogin(): void {
     if (this.form.invalid) {
       return;
     }
     const data: AuthLoginType = {
-      email: this.form.get('email')?.value,
-      password: this.form.get('password')?.value,
+      email: this.email.value,
+      password: this.password.value,
     };
     this.loginEvent.emit(data);
   }

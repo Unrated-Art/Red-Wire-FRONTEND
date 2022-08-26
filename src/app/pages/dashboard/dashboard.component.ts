@@ -3,8 +3,8 @@ import { SessionService } from 'src/app/services/session.service';
 import { Catalogue } from 'src/models/catalogue';
 import { Formation } from 'src/models/formation';
 import { Session } from 'src/models/session';
-import { CatalogueService } from 'src/services/catalogue.service';
-import { FormationService } from 'src/services/formation.service';
+import { CatalogueService } from 'src/app/services/catalogue.service';
+import { FormationService } from 'src/app/services/formation.service';
 
 @Component({
   selector: 'app-dashboard',
