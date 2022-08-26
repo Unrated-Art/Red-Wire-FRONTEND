@@ -43,6 +43,7 @@
                 formControlName="ref"
                 required
               />
+              <!--value={{updatedF.reference}} -->
             </div>
             <!-- Intitulé -->
             <div class="mb-3">
@@ -55,6 +56,7 @@
                 formControlName="title"
                 required
               />
+              <!-- value={{updatedF.titref}} -->
             </div>
             <!-- dropdown menu of locations -->
             <div class="mb-3">
@@ -176,14 +178,18 @@
             <div class="mb-3" *ngIf="themeChoices">
               <label for="theme" class="form-label">Thème</label>
               <select
-                name="theme"
+                name="theme[]"
                 class="form-select mb-3"
                 aria-label=".form-select example"
                 formControlName="theme"
+                multiple
               >
                 <option selected>--</option>
-                <option *ngFor="let theme of themeChoices" value="{{ theme }}">
-                  {{ theme }}
+                <option
+                  *ngFor="let theme of themeChoices"
+                  value="{{ theme.idTheme }}"
+                >
+                  {{ theme.nomTheme }}
                 </option>
                 <!-- #comment the next line when decommenting the rest of the section
                  <option *ngFor="let theme of themes; index i;" value={{theme.nomTheme}}>{{theme.nomTheme}}</option>-->
@@ -199,21 +205,20 @@
             <div>
               <!-- <input type="submit" value="Enregistrer" class="btn btn-outline-info"
         (click)="showMessage('this button is supposed to persist the training in the database');" /> -->
-        <app-session [idTraining]="identifiant"></app-session>
-        <button
+
+              <button
                 type="submit"
                 value="Enregistrer"
                 class="btn btn-outline-info"
-                [disabled]="editForm.invalid"
               >
                 update Training
               </button>
+              <!-- [disabled]="editForm.invalid" -->
             </div>
           </form>
         </div>
       </div>
     </article>
+    <app-session [idTraining]="identifiant"></app-session>
   </div>
 </div>
-
-

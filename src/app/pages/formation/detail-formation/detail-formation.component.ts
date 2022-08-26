@@ -19,31 +19,33 @@ export class DetailFormationComponent implements OnInit {
 
   constructor(
     private serviceFormation: FormationService,
-    private  route: ActivatedRoute
-    ) {
-      this.route.params.subscribe((params) => {
-        console.log(params); //log the entire params object
-        console.log(params['id']); //log the value of id
-        this.identifiant = Number(params['id']);
-      });
-      console.log('Got the [id] from "formation/{id}" url: ' + this.identifiant);
-    }
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe((params) => {
+      console.log(params); //log the entire params object
+      console.log(params['id']); //log the value of id
+      this.identifiant = Number(params['id']);
+    });
+    console.log('Got the [id] from "formation/{id}" url: ' + this.identifiant);
+  }
+
+  // https://mailtolink.me
+  get mailTo(): string {
+    return 'mailto:contact@saturne.formation.com?subject=Demande%20de%20Devis%20Personnalis%C3%A9%20%23999';
+  }
 
   ngOnInit(): void {
-    this.serviceFormation
-    .getFormationById(this.identifiant)
-    .subscribe({
-      next:(f:Formation)=>{
-        this.formation=f;
+    this.serviceFormation.getFormationById(this.identifiant).subscribe({
+      next: (f: Formation) => {
+        this.formation = f;
+        console.warn(this.formation.sessions);
       },
-      error:(err:string)=>{
+      error: (err: string) => {
         alert(err);
       },
-      complete:()=>{
-        console.log("GetFormationById OK :)")
-      }
-
+      complete: () => {
+        console.log('GetFormationById OK :)');
+      },
     });
-
   }
 }

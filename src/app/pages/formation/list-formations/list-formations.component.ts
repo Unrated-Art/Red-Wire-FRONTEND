@@ -14,7 +14,7 @@ export class ListFormationsComponent implements OnInit {
   public formations!: Formation[];
   public editFormation!: Formation;
   public deleteFormation!: Formation;
-  allThemes?: Theme[]=[];
+  allThemes?: Theme[] = [];
   allThemesString?: String[];
 
   openAccordion = ([] = [false]);
@@ -28,29 +28,26 @@ export class ListFormationsComponent implements OnInit {
 
   ngOnInit() {
     this.getFormations();
-    if(!!this.allThemes){
-    this.allThemes?.forEach(t=>{
-      console.log("Hello from ngOnInit() :D");
-      console.log("theme"+t.idTheme+": "+t.nomTheme);
-    });
-    }
-    else
-    {
-      console.warn("la liste des thèmes est vide!!!");
+    if (!!this.allThemes) {
+      this.allThemes?.forEach((t) => {
+        console.log('Hello from ngOnInit() :D');
+        console.log('theme' + t.idTheme + ': ' + t.nomTheme);
+      });
+    } else {
+      console.warn('la liste des thèmes est vide!!!');
     }
     //this.getThemes();
   }
 
   public getThemes(): void {
-    this.formations.forEach(f =>{
-        console.log("f.objectif: "+ f.objectif);
-        f.themes?.forEach(t=>{
-          this.allThemes?.push(t);
-          console.warn("allThemes: "+this.allThemes);
-          console.log(t.nomTheme);
-        });
-    }
-  );
+    this.formations.forEach((f) => {
+      console.log('f.objectif: ' + f.objectif);
+      f.themes?.forEach((t) => {
+        this.allThemes?.push(t);
+        console.warn('allThemes: ' + this.allThemes);
+        console.log(t.nomTheme);
+      });
+    });
   }
 
   public showMessage(idBtn: string): void {
@@ -64,14 +61,13 @@ export class ListFormationsComponent implements OnInit {
         this.formations = response;
         console.log(this.formations);
         //#region alimenter la liste 'allThemes' (tous les thèmes de toutes les formations)
-        this.formations!.forEach(f =>{
-          console.log("f.objectif: "+ f.objectif);
-          f.themes?.forEach(t=>{
+        this.formations!.forEach((f) => {
+          console.log('f.objectif: ' + f.objectif);
+          f.themes?.forEach((t) => {
             this.allThemes?.push(t);
             console.log(t.nomTheme);
           });
-      }
-    );
+        });
         //#endregion
       },
       error: (httpErrorResponse) => {
@@ -79,17 +75,12 @@ export class ListFormationsComponent implements OnInit {
         alert(this.errorMessage);
       },
       complete: () => {
-        console.log('DONE!')
-        this.allThemes?.forEach(
-          th=>{
-            console.error("theme"+th.idTheme+": "+th.nomTheme);
-          }
-        );
-        }
+        console.log('DONE!');
+        this.allThemes?.forEach((th) => {
+          console.error('theme' + th.idTheme + ': ' + th.nomTheme);
+        });
+      },
     });
-
-
-
   }
 
   public getAllChapiters(): void {

@@ -6,12 +6,12 @@ import { AuthRegisterType } from 'src/models/auth-register';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() { }
+  constructor() {}
 
   public login(data: AuthLoginType) {
-    console.info(data)
+    console.info(data);
   }
   public register(data: AuthRegisterType) {
-    console.info(data)
+    console.info(data);
   }
 }

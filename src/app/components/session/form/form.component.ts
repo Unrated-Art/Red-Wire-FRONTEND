@@ -4,10 +4,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-session-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-
   form = new FormGroup({
     dateDebut: new FormControl(null, Validators.required),
     dateFin: new FormControl(null, Validators.required),
@@ -45,7 +44,7 @@ export class FormComponent implements OnInit {
       dateFin: this.dateFin.value,
       lieu: this.lieu.value,
       prix: this.prix.value,
-    }
-    this.sendData.emit(data)
+    };
+    this.sendData.emit(data);
   }
 }
