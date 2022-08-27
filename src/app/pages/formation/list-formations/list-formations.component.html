@@ -88,9 +88,9 @@
                 {{ theme.nomTheme }}
               </li>
             </ul>
-            <button type="button"
-                    class="btn btn-secondary"
-                    >Afficher détails</button>
+            <button type="button" class="btn btn-secondary" [attr.id]="'showDetails' + i" routerLink="formation/detail/${formation.idFormation}">
+              Afficher détails
+            </button>
           </div>
         </div>
       </div>
