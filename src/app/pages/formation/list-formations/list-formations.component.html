@@ -52,7 +52,7 @@
           [attr.aria-labelledby]="'heading' + i"
           data-bs-parent="#accordionExample"
         >
-          <div class="accordion-body" *ngIf="formation.themes">
+          <div class="accordion-body"> <!--  *ngIf="formation.themes"> -->
             <ul>
               <li>
                 Référence: <strong>{{ formation.reference }}</strong>
@@ -88,7 +88,7 @@
                 {{ theme.nomTheme }}
               </li>
             </ul>
-            <button type="button" class="btn btn-secondary" [attr.id]="'showDetails' + i" routerLink="formation/detail/${formation.idFormation}">
+            <button type="submit" class="btn btn-secondary" [attr.id]="'showDetails' + i" (click)="onClick(i, formation.idFormation)" >
               Afficher détails
             </button>
           </div>

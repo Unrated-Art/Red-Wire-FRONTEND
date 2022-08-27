@@ -4,6 +4,7 @@ import { FormationService } from 'src/app/services/formation.service';
 import { NgForm } from '@angular/forms';
 import { Formation } from 'src/models/formation';
 import { Theme } from 'src/models/theme';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formation-list',
@@ -23,8 +24,11 @@ export class ListFormationsComponent implements OnInit {
   noTrainingsFound?: string | null;
 
   isHidden = true;
+  router!: Router;
 
-  constructor(private formationService: FormationService) {}
+  constructor(private formationService: FormationService, router: Router) {
+    this.router=router;
+  }
 
   ngOnInit() {
     this.getFormations();
@@ -48,6 +52,11 @@ export class ListFormationsComponent implements OnInit {
         console.log(t.nomTheme);
       });
     });
+  }
+
+  public onClick(i: number,_id?: number){
+    //alert("Button "+i +" clicked");
+    this.router.navigate([`formation/detail/${_id}`]);
   }
 
   public showMessage(idBtn: string): void {
