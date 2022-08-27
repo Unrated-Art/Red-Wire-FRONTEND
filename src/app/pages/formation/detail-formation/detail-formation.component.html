@@ -195,7 +195,9 @@
               role="tab"
               aria-controls="inter"
               aria-selected="true"
-              (click)="openTabInter= !openTabInter; openTabIntra= !openTabIntra"
+              (click)="
+                openTabInter = !openTabInter; openTabIntra = !openTabIntra
+              "
             >
               Inter
             </button>
@@ -210,7 +212,9 @@
               role="tab"
               aria-controls="intra"
               aria-selected="false"
-              (click)="openTabIntra = !openTabIntra; openTabInter= !openTabInter "
+              (click)="
+                openTabIntra = !openTabIntra; openTabInter = !openTabInter
+              "
             >
               Intra
             </button>
@@ -219,22 +223,25 @@
         <div class="tab-content" id="myTabContent">
           <!-- inter -->
           <div
-          *ngIf="openTabInter"
+            *ngIf="openTabInter"
             class="tab-pane fade show active"
             id="nav-inter"
             role="tabpanel"
             aria-labelledby="nav_inter-tab"
-
           >
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <i>prix: </i>3500 £ :
-                {{ formation.sessions!.toString() }}
-                formation.getSessions().firstElement().prix
+              <li *ngIf="formation?.sessions?.length" class="list-group-item">
+                <i>prix: </i>
+                {{ firstSessionPrice }}
               </li>
               <li class="list-group-item">
                 <i>Référence: </i> {{ formation.reference }}
               </li>
+              <app-session-list
+                [idTraining]="identifiant"
+                (sendPriceEvent)="setSessionPrice($event)"
+              ></app-session-list>
+              <!-- ( -->
               <!-- button s'incrire -->
               <div class="card-body">
                 <button type="button" class="btn btn-light">S'inscrire</button>
@@ -251,7 +258,6 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <i>Durée: </i>{{ formation.duree }} jours
-                formation.getSessions().firstElement().Duree"
               </li>
               <li class="list-group-item">
                 <i>Référence: </i> {{ formation.reference }}

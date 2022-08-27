@@ -26,8 +26,16 @@ export class ListFormationsComponent implements OnInit {
   isHidden = true;
   router!: Router;
 
+  get isUser(): boolean {
+    return !this.router.url.startsWith('/formation');
+  }
+
+  get isAdmin(): boolean {
+    return !this.router.url.startsWith('dashboard/formation');
+  }
+
   constructor(private formationService: FormationService, router: Router) {
-    this.router=router;
+    this.router = router;
   }
 
   ngOnInit() {
@@ -54,7 +62,7 @@ export class ListFormationsComponent implements OnInit {
     });
   }
 
-  public onClick(i: number,_id?: number){
+  public onClick(i: number, _id?: number) {
     //alert("Button "+i +" clicked");
     this.router.navigate([`formation/detail/${_id}`]);
   }

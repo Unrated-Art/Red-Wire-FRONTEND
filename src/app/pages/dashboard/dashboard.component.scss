@@ -201,7 +201,6 @@ body {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
 }
 
-
 /*
  * Main
  */
@@ -209,20 +208,17 @@ body {
 main {
   padding-top: 60px;
 
+  .col {
+    padding: 10px;
+  }
 
-.col {
-  padding:10px;
+  .barre {
+    padding: 10 10 10 10px;
+  }
+  .progress {
+    height: 50px;
+  }
 }
-
-.barre {
-  padding: 10 10 10 10px;
-}
-.progress {
-  height: 50px;
-
-}
-}
-
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -237,4 +233,3 @@ main {
     font-size: 3.5rem;
   }
 }
-

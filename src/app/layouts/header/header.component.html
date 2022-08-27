@@ -1,61 +1,103 @@
 <header *ngIf="isAdmin && isNotDashboard" class="p-3 mb-3 border-bottom">
-    <nav class="navbar navbar-expand-lg ">
-      <div class="container-fluid">
-        <a href="index.html" class="navbar-brand" label="Saturne"><img src="assets/images/header__logo.ico"/> </a>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a href="index.html" class="navbar-brand" label="Saturne"
+        ><img src="assets/images/header__logo.ico" />
+      </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Formations
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a routerLink="/formation" class="dropdown-item" href="#">Liste des formations</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">A propos de nous</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Contacts</a>
-            </li>
-
-            <li class="nav-item">
-              <a routerLink="/dashboard" class="nav-link px-2 link-dark" tabindex="-1" aria-disabled="true">Votre Espace</a>
-            </li>
-
-          </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="fa fa-search btn btn-outline-dark" aria-hidden="true" type="submit"></button>
-          </form>
-        </div>
-      </div>
-
-        <div class="dropdown text-end">
-          <a><i class="far fa-user-alien dropdown-toggle d-flex align-items-center"
-              id="dropdownUser1"
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link active dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-            ></i
-          ></a>
+            >
+              Formations
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a routerLink="/formation" class="dropdown-item" href="#"
+                  >Liste des formations</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >A propos de nous</a
+            >
+          </li>
 
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">Mon compte</a></li>
-            <li><a class="dropdown-item" href="#">Modifier mon compte</a></li>
-            <li><a class="dropdown-item" href="#">Déconnection</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              href="#"
+              tabindex="-1"
+              aria-disabled="true"
+              >Contacts</a
+            >
+          </li>
 
-        </div>
+          <li class="nav-item">
+            <a
+              routerLink="/dashboard"
+              class="nav-link px-2 link-dark"
+              tabindex="-1"
+              aria-disabled="true"
+              >Votre Espace</a
+            >
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            class="fa fa-search btn btn-outline-dark"
+            aria-hidden="true"
+            type="submit"
+          ></button>
+        </form>
+      </div>
+    </div>
 
-    </nav>
+    <div class="dropdown text-end">
+      <a
+        ><i
+          class="far fa-user-alien dropdown-toggle d-flex align-items-center"
+          id="dropdownUser1"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        ></i
+      ></a>
 
+      <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" href="#">Mon compte</a></li>
+        <li><a class="dropdown-item" href="#">Modifier mon compte</a></li>
+        <li><a class="dropdown-item" href="#">Déconnection</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+  </nav>
 </header>

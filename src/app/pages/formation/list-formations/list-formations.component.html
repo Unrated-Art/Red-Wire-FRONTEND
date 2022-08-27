@@ -52,7 +52,8 @@
           [attr.aria-labelledby]="'heading' + i"
           data-bs-parent="#accordionExample"
         >
-          <div class="accordion-body"> <!--  *ngIf="formation.themes"> -->
+          <div class="accordion-body">
+            <!--  *ngIf="formation.themes"> -->
             <ul>
               <li>
                 Référence: <strong>{{ formation.reference }}</strong>
@@ -88,9 +89,18 @@
                 {{ theme.nomTheme }}
               </li>
             </ul>
-            <button type="submit" class="btn btn-secondary" [attr.id]="'showDetails' + i" (click)="onClick(i, formation.idFormation)" >
+            <button
+              type="submit"
+              class="btn btn-secondary"
+              [attr.id]="'showDetails' + i"
+              (click)="onClick(i, formation.idFormation)"
+            >
+              <!--  *ngIf="isUser" -->
               Afficher détails
             </button>
+            <!--<button *ngIf="isAdmin" type="submit" class="btn btn-warn" [attr.id]="'editFormation' + i" (click)="onClick(i, formation.idFormation)" >
+              Modifier
+            </button>-->
           </div>
         </div>
       </div>

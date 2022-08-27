@@ -14,10 +14,10 @@ interface NavType {
 })
 export class HeaderComponent implements OnInit {
   get isAdmin(): boolean {
-    return true
+    return true;
   }
   get isNotDashboard(): boolean {
-    return !this.route.url.startsWith('/dashboard')
+    return !this.route.url.startsWith('/dashboard');
   }
   constructor(private route: Router) {}
 
@@ -27,9 +27,7 @@ export class HeaderComponent implements OnInit {
     {
       path: 'formation',
       name: 'Formation',
-      child: [
-        { path: 'formation/list', name: 'Liste Formation' },
-      ],
+      child: [{ path: 'formation/list', name: 'Liste Formation' }],
     },
   ];
 }

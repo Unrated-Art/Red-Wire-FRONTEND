@@ -23,13 +23,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ListFormationsComponent
+        component: ListFormationsComponent,
       },
       {
         path: 'detail/:id',
-        component: DetailFormationComponent
-      }
-    ]
+        component: DetailFormationComponent,
+      },
+    ],
   },
   // Dashboard
   {
@@ -38,14 +38,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DashboardOverviewComponent
+        component: DashboardOverviewComponent,
       },
       {
         path: 'catalogue',
         component: CatalogueComponent,
-        children: [
-          { path: '', component: ListCataloguesComponent }
-        ],
+        children: [{ path: '', component: ListCataloguesComponent }],
       },
       {
         path: 'formation',
@@ -53,20 +51,20 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            component: ListFormationsComponent
+            component: ListFormationsComponent,
           },
           {
             path: 'add',
-            component: AddFormationComponent
+            component: AddFormationComponent,
           },
           {
             path: 'edit/:id',
-            component: EditFormationComponent
-          }
-        ]
-      }
-    ]
-  }
+            component: EditFormationComponent,
+          },
+        ],
+      },
+    ],
+  },
   // any other URL --(redirect)--> Error Page
   // { path: '**', component: ErrorComponent },
 ];
