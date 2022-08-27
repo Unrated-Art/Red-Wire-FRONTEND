@@ -140,7 +140,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Détail formation</h5>
-        <div class="bd-example">
+        <!-- <div class="bd-example">
           <nav>
             <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
               <button
@@ -181,7 +181,7 @@
               assumenda rerum a amet. Odio?</strong
             >
           </p>
-        </div>
+        </div> -->
 
         <!-- begin region TEst-->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -195,6 +195,7 @@
               role="tab"
               aria-controls="inter"
               aria-selected="true"
+              (click)="openTabInter= !openTabInter; openTabIntra= !openTabIntra"
             >
               Inter
             </button>
@@ -209,6 +210,7 @@
               role="tab"
               aria-controls="intra"
               aria-selected="false"
+              (click)="openTabIntra = !openTabIntra; openTabInter= !openTabInter "
             >
               Intra
             </button>
@@ -217,10 +219,12 @@
         <div class="tab-content" id="myTabContent">
           <!-- inter -->
           <div
+          *ngIf="openTabInter"
             class="tab-pane fade show active"
             id="nav-inter"
             role="tabpanel"
             aria-labelledby="nav_inter-tab"
+
           >
             <ul class="list-group list-group-flush">
               <li class="list-group-item">

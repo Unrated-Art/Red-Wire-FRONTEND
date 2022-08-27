@@ -14,6 +14,9 @@ export class DetailFormationComponent implements OnInit {
   openAccordion3 = false;
   openAccordion4 = false;
 
+  openTabInter = true;
+  openTabIntra = true;
+
   formation!: Formation;
   identifiant!: number;
 
