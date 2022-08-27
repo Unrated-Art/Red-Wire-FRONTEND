@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Formation } from 'src/models/formation';
 import { Theme } from 'src/models/theme';
-import { FormationService } from 'src/services/formation.service';
+import { FormationService } from 'src/app/services/formation.service';
 
 @Component({
   selector: 'app-edit-formation',
@@ -174,8 +174,8 @@ export class EditFormationComponent implements OnInit {
         // this.updatedF = Object.assign({}, updatedTraining)
         confirm('La formation a été mise à jour');
       },
-      error(httpErrorResponse) {
-        alert('failed to update training due to: ' + httpErrorResponse);
+      error(err: HttpErrorResponse) {
+        alert('failed to update training due to: ' + err);
       },
     });
     /*
