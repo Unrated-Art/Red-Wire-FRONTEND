@@ -1,31 +1,11 @@
-<head>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-    crossorigin="anonymous"
-  />
-  <!-- <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
-  />-->
-  <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-  />
-  <link href="header.component.scss" rel="stylesheet" />
-</head>
-
 <header *ngIf="isAdmin && isNotDashboard" class="p-3 mb-3 border-bottom">
     <nav class="navbar navbar-expand-lg ">
       <div class="container-fluid">
         <a href="index.html" class="navbar-brand" label="Saturne"><img src="assets/images/header__logo.ico"/> </a>
 
-        <div class="btn-group" role="group" aria-label="">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -57,7 +37,24 @@
         </div>
       </div>
 
-      <app-auth></app-auth>
+        <div class="dropdown text-end">
+          <a><i class="far fa-user-alien dropdown-toggle d-flex align-items-center"
+              id="dropdownUser1"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            ></i
+          ></a>
+
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">Mon compte</a></li>
+            <li><a class="dropdown-item" href="#">Modifier mon compte</a></li>
+            <li><a class="dropdown-item" href="#">Déconnection</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+
+        </div>
 
     </nav>
 

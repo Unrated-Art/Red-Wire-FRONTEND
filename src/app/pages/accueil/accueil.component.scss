@@ -1,4 +1,5 @@
 @import 'src/styles.scss';
+
 .formations {
   background: $color-quaternary;
   padding: 1rem;
@@ -16,7 +17,6 @@
 }
 
 .card {
-
 //   @media (min-width: 64rem) {
 //     display: flex;
 //     align-content: flex-start;
@@ -43,24 +43,23 @@
 
 //   }
 
-  &badge {
-    background-color: $color-tertiary;
-    color: darken($color-tertiary, 50%);
-    padding: 0.5rem;
-    border-radius: 0.125rem;
-    position: absolute;
-    bottom: 45%;
-    right: 0.75rem;
-    animation: bounce 2s infinite;
-  }
-  &footer {
-    padding: 1rem;
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-&content {
-  flex: 1;
-}
-
+//   &badge {
+//     background-color: $color-tertiary;
+//     color: darken($color-tertiary, 50%);
+//     padding: 0.5rem;
+//     border-radius: 0.125rem;
+//     position: absolute;
+//     bottom: 45%;
+//     right: 0.75rem;
+//     animation: bounce 2s infinite;
+//   }
+//   &footer {
+//     padding: 1rem;
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+//   }
+// &content {
+//   flex: 1;
+// }
 }

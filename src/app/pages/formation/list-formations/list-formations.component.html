@@ -72,7 +72,8 @@
                 Pré-requis: <strong>{{ formation.prerequis }}</strong>
               </li>
               <li>
-                Objectif de cette formation: <strong>{{ formation.objectif }}</strong>
+                Objectif de cette formation:
+                <strong>{{ formation.objectif }}</strong>
               </li>
               <li>
                 Public: <strong>{{ formation.publicVise }}</strong>
@@ -87,6 +88,9 @@
                 {{ theme.nomTheme }}
               </li>
             </ul>
+            <button type="button" class="btn btn-secondary" [attr.id]="'showDetails' + i" routerLink="formation/detail/${formation.idFormation}">
+              Afficher détails
+            </button>
           </div>
         </div>
       </div>

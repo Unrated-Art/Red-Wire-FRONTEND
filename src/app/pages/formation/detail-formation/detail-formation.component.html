@@ -2,7 +2,10 @@
   class="container-md d-flex pb-3 justify-content-center justify-content-between"
 >
   <div class="flex-fill mx-3">
-    <h2>{{formation.titref}}   <span class="badge bg-dark">{{formation.reference}} </span></h2>
+    <h2>
+      {{ formation.titref }}
+      <span class="badge bg-dark">{{ formation.reference }} </span>
+    </h2>
     <!--Objectif de cette formation-->
     <div class="accordion">
       <div class="accordion-item">
@@ -28,7 +31,7 @@
         >
           <div class="accordion-body">
             <p>
-              {{formation.objectif}}
+              {{ formation.objectif }}
             </p>
           </div>
         </div>
@@ -60,7 +63,7 @@
         >
           <div class="accordion-body">
             <p>
-              {{formation.publicVise}}
+              {{ formation.publicVise }}
             </p>
           </div>
         </div>
@@ -92,7 +95,7 @@
         >
           <div class="accordion-body">
             <p>
-              {{formation.prerequis}}
+              {{ formation.prerequis }}
             </p>
           </div>
         </div>
@@ -124,7 +127,7 @@
         >
           <div class="accordion-body">
             <p>
-              {{formation.programmeDetaille}}
+              {{ formation.programmeDetaille }}
             </p>
           </div>
         </div>
@@ -222,10 +225,11 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <i>prix: </i>3500 £ :
+                {{ formation.sessions!.toString() }}
                 formation.getSessions().firstElement().prix
               </li>
               <li class="list-group-item">
-                <i>Référence: </i> {{formation.reference}}
+                <i>Référence: </i> {{ formation.reference }}
               </li>
               <!-- button s'incrire -->
               <div class="card-body">
@@ -242,13 +246,15 @@
           >
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <i>Durée: </i>{{formation.duree}} jours
+                <i>Durée: </i>{{ formation.duree }} jours
                 formation.getSessions().firstElement().Duree"
               </li>
               <li class="list-group-item">
-                <i>Référence: </i> {{formation.reference}}
+                <i>Référence: </i> {{ formation.reference }}
               </li>
-              <button class="btn btn-secondary">Demander devis</button>
+              <a class="btn btn-secondary" [attr.href]="mailTo"
+                >Demander devis</a
+              >
             </ul>
           </div>
         </div>
