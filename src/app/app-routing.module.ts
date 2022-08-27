@@ -10,36 +10,63 @@ import { FormationComponent } from './pages/formation/formation.component';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ListFormationsComponent } from './pages/formation/list-formations/list-formations.component';
 import { ListCataloguesComponent } from './pages/catalogue/list-catalogues/list-catalogues.component';
+import { OverviewComponent as DashboardOverviewComponent } from './pages/dashboard/overview/overview.component';
 
 const routes: Routes = [
   // Si vide --(redirection)-> '/formation'
+  // Accueil
   { path: '', component: AccueilComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  // Formation
   {
     path: 'formation',
     component: FormationComponent,
     children: [
-      { path: '', component: ListFormationsComponent },
       {
-        path: 'add',
-        component: AddFormationComponent,
-      },
-      {
-        path: 'edit/:id',
-        component: EditFormationComponent,
+        path: '',
+        component: ListFormationsComponent
       },
       {
         path: 'detail/:id',
-        component: DetailFormationComponent,
-      },
-    ],
+        component: DetailFormationComponent
+      }
+    ]
   },
+  // Dashboard
   {
-    path: 'catalogue',
-    component: CatalogueComponent,
-    children: [{ path: '', component: ListCataloguesComponent }],
-  },
-  { path: '**', pathMatch: 'full', redirectTo: 'formation' },
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      {
+        path: '',
+        component: DashboardOverviewComponent
+      },
+      {
+        path: 'catalogue',
+        component: CatalogueComponent,
+        children: [
+          { path: '', component: ListCataloguesComponent }
+        ],
+      },
+      {
+        path: 'formation',
+        component: FormationComponent,
+        children: [
+          {
+            path: '',
+            component: ListFormationsComponent
+          },
+          {
+            path: 'add',
+            component: AddFormationComponent
+          },
+          {
+            path: 'edit/:id',
+            component: EditFormationComponent
+          }
+        ]
+      }
+    ]
+  }
   // any other URL --(redirect)--> Error Page
   // { path: '**', component: ErrorComponent },
 ];

@@ -104,18 +104,18 @@ export class ListFormationsComponent implements OnInit {
     });
   }
 
-  public onUpdateFormation(formation: Formation): void {
-    this.formationService.updateFormation(formation).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.getFormations();
-      },
-      error: (httpErrorResponse) => {
-        this.errorMessage = httpErrorResponse.message;
-        alert(this.errorMessage);
-      },
-    });
-  }
+  // public onUpdateFormation(formation: Formation): void {
+  //   this.formationService.updateFormation(formation).subscribe({
+  //     next: (response) => {
+  //       console.log(response);
+  //       this.getFormations();
+  //     },
+  //     error: (httpErrorResponse) => {
+  //       this.errorMessage = httpErrorResponse.message;
+  //       alert(this.errorMessage);
+  //     },
+  //   });
+  // }
 
   public onDeleteFormation(formationId: number): void {
     this.formationService.deleteFormation(formationId).subscribe({
@@ -168,9 +168,7 @@ export class ListFormationsComponent implements OnInit {
   }
 
   /*
-
   addTraining = () =>{
-
     this.router.navigate(['/app/pages/addFormation.html']);
     };
 */

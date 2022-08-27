@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface NavType {
   path: string;
@@ -12,7 +13,13 @@ interface NavType {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  get isAdmin(): boolean {
+    return true
+  }
+  get isNotDashboard(): boolean {
+    return !this.route.url.startsWith('/dashboard')
+  }
+  constructor(private route: Router) {}
 
   ngOnInit(): void {}
 
@@ -22,8 +29,6 @@ export class HeaderComponent implements OnInit {
       name: 'Formation',
       child: [
         { path: 'formation/list', name: 'Liste Formation' },
-        { path: 'formation/add', name: 'Ajouter Formation' },
-        { path: 'formation/edit/:id', name: 'Modifier Formation' },
       ],
     },
   ];

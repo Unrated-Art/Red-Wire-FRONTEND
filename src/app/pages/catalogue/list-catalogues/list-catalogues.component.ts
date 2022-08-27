@@ -79,6 +79,7 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
   //     },
   //   });
   // }
+
   public onEditCatalogue(dataForm: Catalogue): void {
     this.catalogueService.updateCatalogue(dataForm).subscribe({
       next: (response) => {
@@ -104,6 +105,24 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
       },
     });
   }
+
+  // public onDeleteCatalogue(idCatalogue: number): void {
+  //   // const testModal = ModalBS.getInstance(this.modalDelete)
+  //   // testModal?.hide()
+  //   // #! TODO: A corriger
+  //   //testModal?.dispose()
+  //   // console.log(this.modalDelete.hide())
+  //   this.catalogueService.deleteCatalogue(idCatalogue).subscribe({
+  //     next: (response: any) => {
+  //       // this.modalDelete.hide();
+  //       this.getCatalogues();
+  //     },
+  //     error: (httpErrorResponse) => {
+  //       this.errorMessage = httpErrorResponse.message;
+  //       alert(this.errorMessage);
+  //     }
+  //   });
+  // }
 
   public onDeleteCatalogue(idCatalogue: number): void {
     // const testModal = ModalBS.getInstance(this.modalDelete)
@@ -140,4 +159,27 @@ export class ListCataloguesComponent implements OnInit, OnDestroy {
       this.getCatalogues();
     }
   }
+
+  /*
+  public onOpenModal(catalogue: Catalogue | any, mode: string): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode === 'add') {
+      button.setAttribute('data-target', '#addCatalogueModal');
+    }
+    if (mode === 'edit') {
+      this.editCatalogue = catalogue;
+      button.setAttribute('data-target', '#updateCatalogueModal');
+    }
+    if (mode === 'delete') {
+      this.deleteCatalogue = catalogue;
+      button.setAttribute('data-target', '#deleteCatalogueModal');
+    }
+    container!.appendChild(button);
+    button.click();
+  }
+  */
 }

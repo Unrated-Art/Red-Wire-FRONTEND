@@ -24,7 +24,10 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "https://use.fontawesome.com/releases/v5.14.0/css/all.css",
+              "src/styles.scss"
+            ],
             "scripts": [
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"

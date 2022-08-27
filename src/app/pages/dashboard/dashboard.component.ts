@@ -3,8 +3,9 @@ import { SessionService } from 'src/app/services/session.service';
 import { Catalogue } from 'src/models/catalogue';
 import { Formation } from 'src/models/formation';
 import { Session } from 'src/models/session';
-import { CatalogueService } from 'src/services/catalogue.service';
-import { FormationService } from 'src/services/formation.service';
+import { CatalogueService } from 'src/app/services/catalogue.service';
+import { FormationService } from 'src/app/services/formation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,17 @@ export class DashboardComponent implements OnInit {
   formations!: Formation[];
   sessions!: Session[];
 
+  /*
+  get isAdmin(): boolean {
+    return true
+  }
+  get isDashCatalogue(): boolean {
+    return !this.route.url.startsWith('/dashboard')
+  }
+  */
+
   constructor(
+    private route: Router,
     private serviceCatalogue: CatalogueService,
     private serviceFormations: FormationService,
     private serviceSession: SessionService

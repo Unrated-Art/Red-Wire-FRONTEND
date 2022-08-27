@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { FormationService } from 'src/services/formation.service';
+import { FormationService } from 'src/app/services/formation.service';
 
 // Formation (model) != des parametres GET/POST
 interface FormationType {

@@ -26,7 +26,8 @@ import { EditFormationComponent } from './pages/formation/edit-formation/edit-fo
 import { ContentComponent } from './layouts/content/content.component';
 import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-catalogue.component';
 import { SessionComponent } from './components/session/session.component';
-import { FormComponent } from './components/session/form/form.component';
+import { FormComponent as SessionFormComponent } from './components/session/form/form.component';
+import { OverviewComponent as DashboardOverviewComponent } from './pages/dashboard/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -52,17 +53,23 @@ import { FormComponent } from './components/session/form/form.component';
     FormationComponent,
     ErrorComponent,
     EditFormationComponent,
+
     ContentComponent,
     FormCatalogueComponent,
     SessionComponent,
-    FormComponent,
+    SessionFormComponent,
+
+    FormCatalogueComponent,
+    ContentComponent,
+    DashboardOverviewComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [FormationService, CatalogueService],
   bootstrap: [AppComponent],
