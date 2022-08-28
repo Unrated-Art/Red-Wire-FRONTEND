@@ -9,11 +9,11 @@ import { AuthRegisterType } from 'src/models/auth-register';
 })
 export class RegisterComponent implements OnInit {
   form = new FormGroup({
-    firstName: new FormControl(null, Validators.required),
-    lastName: new FormControl(null, Validators.required),
+    firstName: new FormControl(null, [Validators.required]),
+    lastName: new FormControl(null, [Validators.required]),
     email: new FormControl(null, [Validators.required, Validators.email]),
-    password: new FormControl(null, Validators.required),
-    passwordConfirmation: new FormControl(null, Validators.required),
+    password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+    passwordConfirmation: new FormControl(null, [Validators.required, Validators.minLength(5)]),
   });
 
   @Output() registerEvent = new EventEmitter<AuthRegisterType>();

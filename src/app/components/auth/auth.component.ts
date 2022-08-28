@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit, OnDestroy {
       this.login.resetForm()
       this.register.resetForm()
     })
-    this.auth.isLoggedIn$.subscribe({
+    const sub = this.auth.isLoggedIn$.subscribe({
       next: (value: boolean) => {
         if (value) {
           this.wasLoggedIn = true
@@ -44,6 +44,7 @@ export class AuthComponent implements OnInit, OnDestroy {
         }
       }
     })
+    this.subs.push(sub)
   }
 
   public userLogin(data: AuthLoginType) {

@@ -3,7 +3,7 @@
     <i class="fas fa-user"></i>
   </a>
   <ul class="dropdown-menu dropdown-custom" aria-labelledby="dropdownAuth">
-    <li><button class="dropdown-item">Mon profil</button></li>
+    <li><button class="dropdown-item" routerLink="/profile">Mon profil</button></li>
     <li><hr class="dropdown-divider" /></li>
     <li><button class="dropdown-item" (click)="auth.logout()">Sign out</button></li>
   </ul>
@@ -42,6 +42,14 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="modal-footer">
+      <pre>
+        Role ADMIN: admin@redwire.com
+      </pre>
+      <pre>
+        Role STAGIAIRE: stag@redwire.com
+      </pre>
     </div>
   </div>
 </div>

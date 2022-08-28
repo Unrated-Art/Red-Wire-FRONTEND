@@ -10,7 +10,7 @@ import { AuthLoginType } from 'src/models/auth-login';
 export class LoginComponent implements OnInit {
   form = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
-    password: new FormControl(null, Validators.required),
+    password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
   });
 
   @Output() loginEvent = new EventEmitter<AuthLoginType>();
