@@ -27,6 +27,9 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
 import { SessionComponent } from './components/session/session.component';
 import { FormComponent as SessionFormComponent } from './components/session/form/form.component';
 import { OverviewComponent as DashboardOverviewComponent } from './pages/dashboard/overview/overview.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { EditComponent } from './pages/profile/edit/edit.component';
+import { OverviewComponent } from './pages/profile/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,9 @@ import { OverviewComponent as DashboardOverviewComponent } from './pages/dashboa
     FormCatalogueComponent,
     ContentComponent,
     DashboardOverviewComponent,
+    ProfileComponent,
+    EditComponent,
+    OverviewComponent,
   ],
   imports: [
     BrowserModule,

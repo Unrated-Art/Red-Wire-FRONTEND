@@ -11,6 +11,11 @@ import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ListFormationsComponent } from './pages/formation/list-formations/list-formations.component';
 import { ListCataloguesComponent } from './pages/catalogue/list-catalogues/list-catalogues.component';
 import { OverviewComponent as DashboardOverviewComponent } from './pages/dashboard/overview/overview.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { IsAuthGuard } from './guard/is-auth.guard';
+import { EditComponent as ProfileEditComponent } from './pages/profile/edit/edit.component';
+import { OverviewComponent as ProfileOverviewComponent } from './pages/profile/overview/overview.component';
+import { HasRoleGuard } from './guard/has-role.guard';
 
 const routes: Routes = [
   // Si vide --(redirection)-> '/formation'
@@ -23,27 +28,51 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ListFormationsComponent,
+        component: ListFormationsComponent
       },
       {
         path: 'detail/:id',
-        component: DetailFormationComponent,
+        component: DetailFormationComponent
+      }
+    ]
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [IsAuthGuard, HasRoleGuard],
+    data: {
+      role: 'STAGIAIRE'
+    },
+    children: [
+      {
+        path: '',
+        component: ProfileOverviewComponent
       },
-    ],
+      {
+        path: 'edit',
+        component: ProfileEditComponent
+      }
+    ]
   },
   // Dashboard
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [IsAuthGuard, HasRoleGuard],
+    data: {
+      role: 'ADMIN'
+    },
     children: [
       {
         path: '',
-        component: DashboardOverviewComponent,
+        component: DashboardOverviewComponent
       },
       {
         path: 'catalogue',
         component: CatalogueComponent,
-        children: [{ path: '', component: ListCataloguesComponent }],
+        children: [
+          { path: '', component: ListCataloguesComponent }
+        ],
       },
       {
         path: 'formation',
@@ -51,20 +80,20 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            component: ListFormationsComponent,
+            component: ListFormationsComponent
           },
           {
             path: 'add',
-            component: AddFormationComponent,
+            component: AddFormationComponent
           },
           {
             path: 'edit/:id',
-            component: EditFormationComponent,
-          },
-        ],
-      },
-    ],
-  },
+            component: EditFormationComponent
+          }
+        ]
+      }
+    ]
+  }
   // any other URL --(redirect)--> Error Page
   // { path: '**', component: ErrorComponent },
 ];
