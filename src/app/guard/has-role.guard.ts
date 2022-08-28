@@ -25,5 +25,4 @@ export class HasRoleGuard implements CanActivate, CanActivateChild {
     }
     return isAuthorized
   }
-
 }
