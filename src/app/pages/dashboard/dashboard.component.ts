@@ -6,6 +6,7 @@ import { Session } from 'src/models/session';
 import { CatalogueService } from 'src/app/services/catalogue.service';
 import { FormationService } from 'src/app/services/formation.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,7 +31,8 @@ export class DashboardComponent implements OnInit {
     private route: Router,
     private serviceCatalogue: CatalogueService,
     private serviceFormations: FormationService,
-    private serviceSession: SessionService
+    private serviceSession: SessionService,
+    public auth: AuthService
   ) {}
 
   ngOnInit(): void {

@@ -13,9 +13,6 @@ interface NavType {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  get isAdmin(): boolean {
-    return true
-  }
   get isNotDashboard(): boolean {
     return !this.route.url.startsWith('/dashboard')
   }

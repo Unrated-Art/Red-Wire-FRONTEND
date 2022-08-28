@@ -1,4 +1,4 @@
-<header *ngIf="isAdmin && isNotDashboard" class="p-3 mb-3 border-bottom">
+<header *ngIf="isNotDashboard" class="p-3 mb-3 border-bottom">
     <nav class="navbar navbar-expand-lg ">
       <div class="container-fluid">
         <a href="index.html" class="navbar-brand" label="Saturne"><img src="assets/images/header__logo.ico"/> </a>
@@ -37,24 +37,7 @@
         </div>
       </div>
 
-        <div class="dropdown text-end">
-          <a><i class="far fa-user-alien dropdown-toggle d-flex align-items-center"
-              id="dropdownUser1"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            ></i
-          ></a>
-
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">Mon compte</a></li>
-            <li><a class="dropdown-item" href="#">Modifier mon compte</a></li>
-            <li><a class="dropdown-item" href="#">Déconnection</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-
-        </div>
+      <app-auth></app-auth>
 
     </nav>
 
