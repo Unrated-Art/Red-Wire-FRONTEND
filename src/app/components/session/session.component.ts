@@ -1,4 +1,12 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SessionService } from 'src/app/services/session.service';
 import { Session } from 'src/models/session';
@@ -19,7 +27,17 @@ export class SessionComponent implements OnInit, OnDestroy {
   public currentIdSession: number = 0;
   public currentSession?: Session | undefined = undefined;
 
-  constructor(private sessionService: SessionService) {}
+  selectedSessionId: number = 0;
+
+  @Output() sendPriceEvent = new EventEmitter<number>();
+
+  @Output() sendSelectedIdEvent = new EventEmitter<number>();
+
+  constructor(private sessionService: SessionService, private router: Router) {}
+
+  get isNotDetail(): boolean {
+    return !this.router.url.startsWith('/formation/detail');
+  }
 
   ngOnInit(): void {
     this.modalFormAdEdit = document.getElementById('addEditSessionModal');
@@ -33,15 +51,15 @@ export class SessionComponent implements OnInit, OnDestroy {
       this.currentSession = undefined;
     });
     this.loadSessions();
+    this.loadSessionPrice();
   }
 
   public loadSessions(): void {
     const subGetSessions: Subscription = this.sessionService
       .getSessions(this.idTraining)
       .subscribe({
-        next: (response: any) => {
-          this.sessions = [];
-          Object.assign(this.sessions, response);
+        next: (response: Session[]) => {
+          this.sessions = response;
           console.log(this.sessions);
         },
         error: (err: any) => {
@@ -49,6 +67,21 @@ export class SessionComponent implements OnInit, OnDestroy {
         },
       });
     this.subs.push(subGetSessions);
+  }
+
+  public loadSessionPrice(): void {
+    const subGetSessionPrice: Subscription = this.sessionService
+      .getSessions(this.idTraining)
+      .subscribe({
+        next: (response: Session[]) => {
+          const price = response.shift()?.prix;
+          this.sendPriceEvent.emit(price || 0);
+        },
+        error: (err: any) => {
+          console.error('ERROR: ', err);
+        },
+      });
+    this.subs.push(subGetSessionPrice);
   }
 
   addEditSession(data: any) {

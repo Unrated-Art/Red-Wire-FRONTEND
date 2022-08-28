@@ -140,48 +140,6 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Détail formation</h5>
-        <!-- <div class="bd-example">
-          <nav>
-            <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
-              <button
-                class="nav-link active"
-                id="nav-inter-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#nav_inter"
-                type="button"
-                role="tab"
-                aria-controls="nav-inter"
-                aria-selected="true"
-              >
-                Inter
-              </button>
-              <button
-                class="nav-link"
-                id="nav-intra-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#nav_intra"
-                type="button"
-                role="tab"
-                aria-controls="nav-intra"
-                aria-selected="false"
-              >
-                Intra
-              </button>
-            </div>
-          </nav>
-          <p class="card-text" #nav_inter>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <p class="card-text" #nav_intra>
-            <strong
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptate, quos perferendis tempora officia ullam iure quam maxime
-              aperiam harum ipsa ipsum dignissimos, neque non laudantium
-              assumenda rerum a amet. Odio?</strong
-            >
-          </p>
-        </div> -->
 
         <!-- begin region TEst-->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -237,14 +195,22 @@
               <li class="list-group-item">
                 <i>Référence: </i> {{ formation.reference }}
               </li>
-              <app-session-list
+              <app-session
                 [idTraining]="identifiant"
                 (sendPriceEvent)="setSessionPrice($event)"
-              ></app-session-list>
+                (sendSelectedIdEvent)="setSelectedSessionId($event)"
+              ></app-session>
               <!-- ( -->
               <!-- button s'incrire -->
               <div class="card-body">
-                <button type="button" class="btn btn-light">S'inscrire</button>
+                <button
+                  type="submit"
+                  class="btn btn-light"
+                  [disabled]="!selectedSessionId"
+                  (click)="onRegisterClick()"
+                >
+                  S'inscrire
+                </button>
               </div>
             </ul>
           </div>

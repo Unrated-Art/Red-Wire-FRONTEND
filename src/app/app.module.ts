@@ -27,7 +27,6 @@ import { FormCatalogueComponent } from './pages/catalogue/form-catalogue/form-ca
 import { SessionComponent } from './components/session/session.component';
 import { FormComponent as SessionFormComponent } from './components/session/form/form.component';
 import { OverviewComponent as DashboardOverviewComponent } from './pages/dashboard/overview/overview.component';
-import { SessionListComponent } from './components/session-list/session-list.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +38,8 @@ import { SessionListComponent } from './components/session-list/session-list.com
     AuthComponent,
     LoginComponent,
     RegisterComponent,
+    SessionComponent,
+    SessionFormComponent,
     // pages
     AppComponent,
     AccueilComponent,
@@ -52,16 +53,11 @@ import { SessionListComponent } from './components/session-list/session-list.com
     FormationComponent,
     ErrorComponent,
     EditFormationComponent,
-
     ContentComponent,
     FormCatalogueComponent,
-    SessionComponent,
-    SessionFormComponent,
-
     FormCatalogueComponent,
     ContentComponent,
     DashboardOverviewComponent,
-    SessionListComponent,
   ],
   imports: [
     BrowserModule,
