@@ -32,6 +32,7 @@ import { AuthInterceptorProvider } from './interceptor/auth.interceptor';
 import { SessionService } from './services/session.service';
 import { EditComponent } from './pages/profile/edit/edit.component';
 import { OverviewComponent } from './pages/profile/overview/overview.component';
+import { SessionsComponent } from './pages/profile/sessions/sessions.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,8 @@ import { OverviewComponent } from './pages/profile/overview/overview.component';
     ProfileComponent,
     EditComponent,
     OverviewComponent,
+    SessionsComponent,
+
   ],
   imports: [
     BrowserModule,
