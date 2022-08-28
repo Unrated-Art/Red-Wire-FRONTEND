@@ -1,8 +1,16 @@
 @import url(https://use.fontawesome.com/releases/v5.14.0/css/all.css);
 
+nav ul li a:hover {
+  border-bottom: 2px solid #02399f;
+  color: #02399f;
+  transition: 0.6s;
+  font-size: 19px;
+}
+
 .header {
   padding: 1rem;
   position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
   &__logo {
     margin: 0;
@@ -19,6 +27,7 @@
     width: 20%;
   }
 
+ // nav { //nav charline
   .navbar-nav {
     &__link {
       color: white;
@@ -29,4 +38,9 @@
       }
     }
   }
+  
+  header: {
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+  }
+
 }
