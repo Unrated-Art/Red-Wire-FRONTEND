@@ -29,6 +29,8 @@ export class SessionListComponent implements OnInit, OnDestroy {
 
   @Output() sendPriceEvent = new EventEmitter<number>();
 
+  @Output() sendSelectedIdEvent = new EventEmitter<number>();
+
   constructor(private sessionService: SessionService, private router: Router) {}
 
   get isNotDetail(): boolean {
@@ -78,6 +80,23 @@ export class SessionListComponent implements OnInit, OnDestroy {
         },
       });
     this.subs.push(subGetSessionPrice);
+  }
+
+  public sendSelectedSessionId(): void {
+    alert("selected session id's sent to next page -mon compte-");
+    /*const subGetSelectedSession: Subscription = this.sessionService
+      .getSessions(this.idTraining)
+      .subscribe({
+        next: (response: number) => {
+          const selectedSessionId = response;
+          this.sendSelectedIdEvent.emit(selectedSessionId || 0);
+        },
+        error: (err: any) => {
+          console.error('ERROR: ', err);
+        },
+      });
+    this.subs.push(subGetSelectedSession);
+    */
   }
 
   addEditSession(data: any) {

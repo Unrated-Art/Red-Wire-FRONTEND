@@ -191,8 +191,6 @@
                 >
                   {{ theme.nomTheme }}
                 </option>
-                <!-- #comment the next line when decommenting the rest of the section
-                 <option *ngFor="let theme of themes; index i;" value={{theme.nomTheme}}>{{theme.nomTheme}}</option>-->
               </select>
             </div>
 
@@ -219,6 +217,7 @@
         </div>
       </div>
     </article>
-    <app-session [idTraining]="identifiant"></app-session>
+    <app-session-list [idTraining]="identifiant"></app-session-list>
+    <!-- <app-session [idTraining]="identifiant"></app-session> -->
   </div>
 </div>
