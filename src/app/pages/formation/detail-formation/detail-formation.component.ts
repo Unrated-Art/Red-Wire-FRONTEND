@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Formation } from 'src/models/formation';
 import { FormationService } from 'src/app/services/formation.service';
+import { Session } from 'src/models/session';
 
 @Component({
   selector: 'app-detail-formation',
@@ -14,8 +15,17 @@ export class DetailFormationComponent implements OnInit {
   openAccordion3 = false;
   openAccordion4 = false;
 
+  openTabInter = true;
+  openTabIntra = true;
+
   formation!: Formation;
   identifiant!: number;
+  firstSessionPrice: number = 0;
+
+  public setSessionPrice(price: number): void {
+    console.log(price, ' <= inflation is REAL');
+    this.firstSessionPrice = price;
+  }
 
   constructor(
     private serviceFormation: FormationService,

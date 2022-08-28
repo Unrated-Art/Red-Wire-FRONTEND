@@ -27,7 +27,8 @@ nav ul li a:hover {
     width: 20%;
   }
 
-  nav {
+ // nav { //nav charline
+  .navbar-nav {
     &__link {
       color: white;
       text-decoration: none;
@@ -37,7 +38,9 @@ nav ul li a:hover {
       }
     }
   }
+  
   header: {
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
   }
+
 }
