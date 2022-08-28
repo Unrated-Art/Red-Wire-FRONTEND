@@ -78,7 +78,7 @@ import { OverviewComponent } from './pages/profile/overview/overview.component';
     AuthInterceptorProvider,
     FormationService,
     CatalogueService,
-    SessionService
+    SessionService,
   ],
   bootstrap: [AppComponent],
 })
