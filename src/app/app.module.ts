@@ -62,14 +62,13 @@ import { OverviewComponent as DashboardOverviewComponent } from './pages/dashboa
     FormCatalogueComponent,
     ContentComponent,
     DashboardOverviewComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [FormationService, CatalogueService],
   bootstrap: [AppComponent],

@@ -1,8 +1,13 @@
-<div class="grid-row row-cols-1 row-cols-md-2 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col">
-    <div class="card" style="width: 18rem">
-      <div class="card-header">Catalogues</div>
-      <ul class="list-group list-group-flush">
+    <div class="card text-center" style="width: 18rem">
+      <div
+        class="card text-white shadow p-5 bg-primary"
+        routerLink="/dashboard/catalogue"
+      >
+        <h3>Catalogues</h3>
+      </div>
+      <!-- <ul class="list-group list-group-flush">
         <li routerLink="/dashboard/catalogue" class="list-group-item">
           Ajouter catalogue
         </li>
@@ -12,61 +17,96 @@
         <li routerLink="/dashboard/catalogue" class="list-group-item">
           Supprimer catalogue
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 
   <div class="col">
-    <div class="card" style="width: 18rem">
-      <div class="card-header">Formations</div>
-      <ul class="list-group list-group-flush">
-        <li routerLink="/dashboard/formation/add" class="list-group-item">
-          Ajouter formation
-        </li>
-        <li routerLink="/dashboard/formation/edit/:id" class="list-group-item">
-          Modifier formation
-        </li>
-        <li
-          routerLink="/dashboard/formation/delete/${formationId}"
-          class="list-group-item"
-        >
-          Supprimer formation
-        </li>
-      </ul>
+    <div class="card text-center" style="width: 18rem">
+      <div
+        class="card text-white shadow p-5 bg-warning"
+        routerLink="/dashboard/formation"
+      >
+        <h3>Formations</h3>
+      </div>
     </div>
   </div>
 
   <div class="col">
-    <div class="card" style="width: 18rem">
-      <div class="card-header">Session</div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Ajouter session</li>
-        <li class="list-group-item">Modifier session</li>
-        <li class="list-group-item">Supprimer session</li>
-      </ul>
+    <div class="card text-center" style="width: 18rem">
+      <div class="card text-white shadow p-5 bg-info"><h3>Sessions</h3></div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card text-center" style="width: 18rem">
+      <div class="card text-white shadow p-5 bg-dark"><h3>Stagiaires</h3></div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card text-center" style="width: 18rem">
+      <div class="card text-white shadow p-5 bg-success">
+        <h3>Evaluations</h3>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="barre ">
-<div class="barre-title pt-10">
-  <h3>Progression validation session </h3>
+<div class="barre">
+  <div class="barre-title pt-10">
+    <h3>Progression validation session</h3>
   </div>
 
-<div class="progress">
-<br>
-  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-<div class="progress">
-  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-<div class="progress">
-  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-<div class="progress">
-  <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-<div class="progress">
-  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
+  <div class="progress">
+    <br />
+    <div
+      class="progress-bar progress-bar-striped"
+      role="progressbar"
+      style="width: 10%"
+      aria-valuenow="10"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    ></div>
+  </div>
+  <div class="progress">
+    <div
+      class="progress-bar progress-bar-striped bg-success"
+      role="progressbar"
+      style="width: 25%"
+      aria-valuenow="25"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    ></div>
+  </div>
+  <div class="progress">
+    <div
+      class="progress-bar progress-bar-striped bg-info"
+      role="progressbar"
+      style="width: 50%"
+      aria-valuenow="50"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    ></div>
+  </div>
+  <div class="progress">
+    <div
+      class="progress-bar progress-bar-striped bg-warning"
+      role="progressbar"
+      style="width: 75%"
+      aria-valuenow="75"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    ></div>
+  </div>
+  <div class="progress">
+    <div
+      class="progress-bar progress-bar-striped bg-danger"
+      role="progressbar"
+      style="width: 100%"
+      aria-valuenow="100"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    ></div>
+  </div>
 </div>

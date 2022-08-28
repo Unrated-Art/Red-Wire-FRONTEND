@@ -1,5 +1,7 @@
 <body>
-  <h1>Catalogues</h1>
+  <div class="title-catalogue">
+    <h1>Catalogues</h1>
+  </div>
   <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" style="color:white;">Employee Manager</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,14 +23,15 @@
 
     <div class="collapse navbar-collapse" id="navbarColor02">
     > -->
-      <!-- <span class="navbar-toggler-icon"></span>
+    <!-- <span class="navbar-toggler-icon"></span>
     </button> -->
 
     <div class="navbar" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <button
-            class="nav-link"
+            class="btn btn-outline-primary"
+            type="button"
             data-bs-toggle="modal"
             data-bs-target="#formCatalogueModal"
             data-original-title="Add"
@@ -47,27 +50,26 @@
           name="key"
           id="searchName"
           class="form-control mr-sm-2"
-          placeholder="Search catalogues..."
+          placeholder="Rechercher catalogues..."
           required
         />
       </form>
     </div>
   </nav>
   <!-- </nav> -->
-  {{ tmpIdCatalogue }}
-  DISPLAY
 
   <div class="container" id="main-container">
     <div class="row">
-      <div *ngFor="let catalogue of catalogues" class="col-md-6 col-xl-3">
-        <div *ngIf="!!catalogue" class="card m-b-30">
+      <div *ngFor="let catalogue of catalogues" class="col-md-6 col-xl-4">
+        <div *ngIf="!!catalogue" class="card bg-light m-b-30 shadow p-3">
           <div class="card-body row">
             <!-- <div class="col-6">
                 <a href=""><img src="{{catalogue?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
             </div> -->
-            <div class="col-6 card-title align-self-center mb-0">
+            <div class="col card-title align-self-center mb-0">
               <h5>{{ catalogue.titre }}</h5>
-              <p class="m-0">{{ catalogue.auteur }}</p>
+              <p class="m-0">Auteur: {{ catalogue.auteur }}</p>
+              <span>Date de création: {{ catalogue.dateCreation }}</span>
             </div>
           </div>
           <!-- <ul class="list-group list-group-flush">
@@ -85,7 +87,7 @@
                 data-id="{{ catalogue.idCatalogue }}"
                 (click)="setTmpIdCatalogue(catalogue.idCatalogue)"
               >
-                <i class="fa fa-pencil"></i>
+                modifier
               </button>
               <button
                 class="btn btn-secondary tooltips"
@@ -96,7 +98,6 @@
               >
                 <i class="fa fa-times"></i>
               </button>
-              <span>{{ catalogue.dateCreation }}</span>
             </div>
           </div>
         </div>

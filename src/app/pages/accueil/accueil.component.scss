@@ -17,19 +17,31 @@
 }
 
 .card {
-//   @media (min-width: 64rem) {
-//     display: flex;
-//     align-content: flex-start;
-//     justify-content: space-between;
-//   }
-//   width: 30%;
-//   background-color: white;
-//   border-radius: 1rem;
-//   position: relative;
+  //   @media (min-width: 64rem) {
+  //     display: flex;
+  //     align-content: flex-start;
+  //     justify-content: space-between;
+  //   }
+  //   width: 30%;
+  //   background-color: white;
+  //   border-radius: 1rem;
+  //   position: relative;
   text-decoration: none;
   color: inherit;
-//   display: block;
+  //   display: block;
 
+  figure {
+    background: #1abc9c;
+    img {
+      opacity: 1;
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+    }
+  }
+  figure:hover img {
+    opacity: 0.5;
+  }
+}
 //   &img {
 //     height: 12rem;
 //     width: 100%;
@@ -62,4 +74,3 @@
 // &content {
 //   flex: 1;
 // }
-}
