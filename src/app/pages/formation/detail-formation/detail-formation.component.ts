@@ -69,10 +69,11 @@ export class DetailFormationComponent implements OnInit {
   }
 
   onRegisterClick(): void {
-    alert(this.selectedSessionId);
     // this.router.navigate([
     //   `formation/${this.formation.idFormation}/inscription/${this.selectedSessionId}`,
     // ]);
+    this.router.navigate([`/profile`]);
+
     // this.sessionService.postTrainee()
   }
 }
