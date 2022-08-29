@@ -19,18 +19,11 @@ export class StagiaireService {
   }
 
   public getUserSessions(): Observable<Session[]> {
-    // return this.http.get<Session[]>(`${this.apiServerUrl}/api/stagiaire/list`);
-    const idTraining: number = 2;
-    return this.http.get<Session[]>(`${this.apiServerUrl}/api/session/`, {
-      params: { idTraining },
-    });
+    return this.http.get<Session[]>(`${this.apiServerUrl}/api/stagiaire/list`);
   }
 
-  public update(data: Stagiaire): Observable<Stagiaire> {
-    return this.http.post<Stagiaire>(
-      `${this.apiServerUrl}/api/stagiaire`,
-      data
-    );
+  public update(data: any): Observable<Stagiaire> {
+    return this.http.post<any>(`${this.apiServerUrl}/api/stagiaire`, data);
   }
 
   public desinscription(idSession: number): Observable<boolean> {

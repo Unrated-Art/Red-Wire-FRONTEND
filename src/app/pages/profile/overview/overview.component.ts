@@ -48,5 +48,14 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.stagiaireService.getUser();
+
+    this.nom.setValue('Mon Nom Est Groot!');
+    this.prenom.setValue('');
+    this.email.setValue('');
+    this.mpass.setValue('');
+    this.adresse.setValue('');
+    this.numTelephone.setValue('');
+    this.entreprise.setValue('');
+    this.coordonneesEntre.setValue('');
   }
 }

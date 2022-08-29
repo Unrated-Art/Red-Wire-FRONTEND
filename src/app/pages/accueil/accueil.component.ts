@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 interface SectionType {
-  href: string
-  src: string
-  title: string
-  subtitle: string
+  href: string;
+  src: string;
+  title: string;
+  subtitle: string;
 }
 
 @Component({
@@ -13,29 +13,28 @@ interface SectionType {
   styleUrls: ['./accueil.component.scss'],
 })
 export class AccueilComponent implements OnInit {
+  constructor() {}
+
+  ngOnInit(): void {}
 
   sections: SectionType[] = [
     {
       href: 'Types de Formations',
       src: '../assets/images/001.jpg',
       title: 'Toutes nos formations',
-      subtitle: ''
+      subtitle: '',
     },
     {
       href: './formationsIntra.html',
       src: '../assets/images/002.jpg',
       title: 'Formation entreprise',
-      subtitle: 'Sélectionnez votre lieu'
+      subtitle: 'Sélectionnez votre lieu',
     },
     {
       href: './contact.html',
       src: '../assets/images/003.jpg',
       title: 'Formations personnalisée',
-      subtitle: 'Contactez-nous'
+      subtitle: 'Contactez-nous',
     },
-  ]
-
-  constructor() {}
-
-  ngOnInit(): void {}
+  ];
 }

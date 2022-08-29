@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="form">
   <div class="form-group mb-3 mt-3">
     <input
       class="text-center form-control"
@@ -6,6 +6,7 @@
       placeholder="Nom"
       aria-label=""
       [disabled]="true"
+      [value]="nom.value"
     />
   </div>
 
@@ -71,18 +72,20 @@
       type="checkbox"
       placeholder="Entreprise"
       aria-label=""
+      [disabled]="true"
     />
   </div>
 
   <div class="form-group mb-3 mt-3">
-    <input
+    <textarea
       class="text-center form-control"
       type="text"
       placeholder="Coordonnées Entreprise"
       aria-label=""
       value="TEST coordonnées entreprise"
       [disabled]="true"
-    />
+    >
+    </textarea>
   </div>
 
   <button class="btn btn-primary" routerLink="/profile/edit">Edit</button>
