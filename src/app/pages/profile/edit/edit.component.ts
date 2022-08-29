@@ -1,35 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { StagiaireService } from 'src/app/services/stagiaire.service';
+import { Stagiaire } from 'src/models/stagiaire';
 
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
 })
-export class EditComponent implements OnInit {
-  constructor(private stagiaireService: StagiaireService) {}
+export class EditComponent implements OnInit, OnDestroy {
+  public subs: Subscription[] = [];
+  stagiaire!: Stagiaire
+
+  constructor(private stagiaireService: StagiaireService, private route: Router) {}
 
   form = new FormGroup({
     lastName: new FormControl(null, [
-      Validators.minLength(5),
+      Validators.minLength(3),
       Validators.required,
     ]),
     firstName: new FormControl(null, [
-      Validators.minLength(5),
+      Validators.minLength(3),
       Validators.required,
     ]),
-    email: new FormControl(null, [Validators.minLength(5), Validators.email]),
+    email: new FormControl(null, [Validators.minLength(3), Validators.email]),
     password: new FormControl(null, [
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(3),
     ]),
     adresse: new FormControl(null, [
-      Validators.minLength(5),
+      Validators.minLength(3),
       Validators.required,
     ]),
     numTelephone: new FormControl(null, [
-      Validators.minLength(5),
+      Validators.minLength(3),
       Validators.required,
     ]),
     entreprise: new FormControl(false),
@@ -58,22 +65,32 @@ export class EditComponent implements OnInit {
     return this.form.get('entreprise');
   }
   get coordonneesEntre(): any {
-    return this.form.get('coordonnees');
+    return this.form.get('coordonneesEntre');
   }
 
   ngOnInit(): void {
-    this.nom?.setValue('Mon Nom Est Groot!');
-    this.prenom?.setValue('');
-    this.email?.setValue('');
-    this.mpass?.setValue('');
-    this.adresse?.setValue('');
-    this.numTelephone?.setValue('');
-    this.entreprise?.setValue('');
-    this.coordonneesEntre?.setValue('');
+    const sub = this.stagiaireService.getUser().subscribe({
+      next: (s: Stagiaire) => {
+        this.stagiaire = s
+        this.nom.setValue(this.stagiaire.nom || '')
+        this.prenom.setValue(this.stagiaire.prenom || '')
+        this.email.setValue(this.stagiaire.email || '')
+        this.mpass.setValue(this.stagiaire.mpass || '')
+        this.adresse.setValue(this.stagiaire.adresse || '')
+        this.numTelephone.setValue(this.stagiaire.numTelephone || '')
+        this.entreprise.setValue(this.stagiaire.entreprise || false)
+        this.coordonneesEntre.setValue(this.stagiaire.coordonneesEntre || '')
+      },
+      error(err: HttpErrorResponse) {
+          console.error(err)
+      },
+    })
+    this.subs.push(sub)
   }
 
   public editUser(): void {
     if (this.form.invalid) {
+      console.log('NOT VALID')
       return;
     }
     const data: any = {
@@ -86,6 +103,15 @@ export class EditComponent implements OnInit {
       entreprise: this.entreprise.value,
       coordonneesEntre: this.coordonneesEntre.value,
     };
-    this.stagiaireService.update(data);
+    console.log('EXECUTE')
+    this.stagiaireService.update(data).subscribe({
+      next: (_value: Stagiaire) => {
+        this.route.navigate(['/profile'])
+      },
+    })
+  }
+
+  public ngOnDestroy(): void {
+    this.subs.forEach((s) => s.unsubscribe());
   }
 }

@@ -22,8 +22,11 @@ export class StagiaireService {
     return this.http.get<Session[]>(`${this.apiServerUrl}/api/stagiaire/list`);
   }
 
-  public update(data: any): Observable<Stagiaire> {
-    return this.http.post<any>(`${this.apiServerUrl}/api/stagiaire`, data);
+  public update(data: Stagiaire): Observable<Stagiaire> {
+    return this.http.put<Stagiaire>(
+      `${this.apiServerUrl}/api/stagiaire`,
+      data
+    );
   }
 
   public desinscription(idSession: number): Observable<boolean> {
