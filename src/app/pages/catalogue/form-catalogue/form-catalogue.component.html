@@ -39,6 +39,39 @@
     />
   </div>
 
+  <!-- <div class="container container-md border rounded rounded-md px-3 m-3">
+    <table class="table table-striped table-hover">
+    <label for="formations">Formations</label>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titre formation</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="formations && formations.length">
+      <tr *ngFor="let formation of formations; let i = index">
+        <th class="custom-control custom-checkbox">
+          <input
+            type="radio"
+            name="formationId[]"
+            class="custom-control-input"
+            id="'fid'+i"
+            value="{{ formation.idFormation }}"
+            (change)="sendSelectedIdEvent.emit(formation.idFormation)"
+            required
+          />
+          <label
+            *ngIf="isNotDetail"
+            class="custom-control-label"
+            for="'customCheck'+i"
+            >&nbsp;{{ formation.idFormation }}</label>
+            <label class="custom-control-label" for="'customCheck'+i"></label>
+        </th>
+        <td>{{ formation.titref }}</td>
+    </tbody>
+    </table>
+  </div> -->
+
   <button type="submit" class="btn btn-primary">
     {{ idCatalogue === 0 ? 'Ajouter' : 'Editer' }}
   </button>

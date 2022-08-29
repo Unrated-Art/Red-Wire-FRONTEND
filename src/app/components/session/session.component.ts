@@ -30,7 +30,6 @@ export class SessionComponent implements OnInit, OnDestroy {
   selectedSessionId: number = 0;
 
   @Output() sendPriceEvent = new EventEmitter<number>();
-
   @Output() sendSelectedIdEvent = new EventEmitter<number>();
 
   constructor(private sessionService: SessionService, private router: Router) {}
