@@ -13,6 +13,7 @@ export class FormCatalogueComponent implements OnInit {
 
   @Output() sendAddData = new EventEmitter<any>();
   @Output() sendEditData = new EventEmitter<any>();
+  @Output() sendSelectedIdEvent = new EventEmitter<number>();
 
   form = new FormGroup({
     titre: new FormControl(null),
