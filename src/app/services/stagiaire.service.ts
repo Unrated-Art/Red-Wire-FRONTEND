@@ -27,7 +27,7 @@ export class StagiaireService {
   }
 
   public update(data: Stagiaire): Observable<Stagiaire> {
-    return this.http.post<Stagiaire>(
+    return this.http.put<Stagiaire>(
       `${this.apiServerUrl}/api/stagiaire`,
       data
     );

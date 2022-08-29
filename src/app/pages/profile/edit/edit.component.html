@@ -38,6 +38,7 @@
       }}"
       type="email"
       placeholder="Email"
+      autocomplete="off"
       aria-label=""
       required
     />
@@ -55,6 +56,7 @@
       }}"
       type="password"
       placeholder="Mot de passe"
+      autocomplete="off"
       aria-label=""
       required
     />
@@ -110,6 +112,9 @@
       placeholder="Entreprise"
       aria-label=""
     />
+    <span *ngIf="entreprise.touched && entreprise.invalid" class="text-danger">
+      Invalid address
+    </span>
   </div>
 
   <!-- coordonnées entreprise -->
@@ -121,6 +126,9 @@
       placeholder="Coordonnées Entreprise"
       aria-label=""
     />
+    <span *ngIf="coordonneesEntre.touched && coordonneesEntre.invalid" class="text-danger">
+      Invalid Coordonnées Entreprise
+    </span>
   </div>
 
   <button class="btn btn-info" routerLink="/profile">Apercu</button>
