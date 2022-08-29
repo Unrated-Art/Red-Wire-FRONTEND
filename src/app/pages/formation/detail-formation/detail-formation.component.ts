@@ -86,7 +86,7 @@ export class DetailFormationComponent implements OnInit {
     const sub = this.auth.isLoggedIn$.subscribe({
       next: (isConnected: boolean) => {
         if (!isConnected) {
-          //
+          alert("Connectez-vous s'il vous plait. Avant de proceder.")
         } else {
           const sub = this.stagiaireService
             .inscriptionSession(this.selectedSessionId)

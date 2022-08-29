@@ -24,8 +24,8 @@
           class="btn btn-danger btn-sm"
           data-bs-toggle="modal"
           data-bs-target="#unsubscribeSessionModal"
-          (click)="desinscription(session.idSession)"
-        >
+          (click)="selectedIdSession = session.idSession"
+          >
           <i class="fas fa-trash-alt"></i>
         </button>
       </td>
@@ -63,7 +63,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="desinscription(selectedIdSession)">
           Confirmer
         </button>
       </div>

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthLoginType } from 'src/models/auth-login';
 import { AuthRegisterType } from 'src/models/auth-register';
@@ -24,6 +24,10 @@ export class AuthComponent implements OnInit, OnDestroy {
   public subs: Subscription[] = [];
 
   constructor(public auth: AuthService, private router: Router) {}
+
+  get isAdmin(): boolean {
+    return this.auth.user.role.includes('ADMIN') || false
+  }
 
   ngOnInit(): void {
     this.modalClose = document.getElementById('modalClose');
@@ -76,7 +80,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.subs.push(sub);
   }
 
-  public auth.user.role
+  // public auth.user.role
 
   public ngOnDestroy(): void {
     this.subs.forEach((s) => s.unsubscribe());

@@ -9,8 +9,10 @@ import { Session } from 'src/models/session';
   styleUrls: ['./sessions.component.scss'],
 })
 export class SessionsComponent implements OnInit, OnDestroy {
+  selectedIdSession: number = 0
   subs: Subscription[] = [];
   sessions: Session[] = [];
+  modalDelete: any;
 
   constructor(private stagiareService: StagiaireService) {}
 
@@ -21,13 +23,27 @@ export class SessionsComponent implements OnInit, OnDestroy {
       },
     });
     this.subs.push(sub);
+    this.modalDelete?.addEventListener(
+      'hidden.bs.modal',
+      () => (this.selectedIdSession = 0)
+    );
   }
 
   public desinscription(idSession: number) {
-    this.stagiareService.desinscriptionSession(idSession);
+    const sub = this.stagiareService.desinscriptionSession(idSession).subscribe({
+      next: (_value) => {
+        console.log('DELETED')
+        location.reload()
+      },
+    });
+    this.subs.push(sub)
   }
 
   public ngOnDestroy(): void {
     this.subs.forEach((s) => s.unsubscribe());
+    this.modalDelete?.removeEventListener(
+      'hidden.bs.modal',
+      () => (this.selectedIdSession = 0)
+    );
   }
 }
