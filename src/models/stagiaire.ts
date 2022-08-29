@@ -1,2 +1,1 @@
-export interface Stagiaire {
-}
+export interface Stagiaire {}

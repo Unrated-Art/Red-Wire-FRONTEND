@@ -7,10 +7,9 @@ import { Stagiaire } from 'src/models/stagiaire';
 import { AuthService } from './auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StagiaireService {
-
   private apiServerUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient, private auth: AuthService) {}
@@ -28,6 +27,8 @@ export class StagiaireService {
   }
 
   public desinscription(idSession: number): Observable<boolean> {
-    return this.http.delete<boolean>(`${this.apiServerUrl}/api/stagiaire/${idSession}`);
+    return this.http.delete<boolean>(
+      `${this.apiServerUrl}/api/stagiaire/${idSession}`
+    );
   }
 }
