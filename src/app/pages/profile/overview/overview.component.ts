@@ -12,7 +12,7 @@ import { Stagiaire } from 'src/models/stagiaire';
 })
 export class OverviewComponent implements OnInit, OnDestroy {
   public subs: Subscription[] = [];
-  stagiaire!: Stagiaire
+  stagiaire!: Stagiaire;
 
   constructor(private stagiaireService: StagiaireService) {}
 
@@ -55,20 +55,21 @@ export class OverviewComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const sub = this.stagiaireService.getUser().subscribe({
       next: (s: Stagiaire) => {
-        this.stagiaire = s
-        this.nom.setValue(this.stagiaire.nom || '')
-        this.prenom.setValue(this.stagiaire.prenom || '')
-        this.email.setValue(this.stagiaire.email || '')
-        this.mpass.setValue(this.stagiaire.mpass || '')
-        this.adresse.setValue(this.stagiaire.adresse || '')
-        this.numTelephone.setValue(this.stagiaire.numTelephone || '')
-        this.entreprise.setValue(this.stagiaire.entreprise || false)
-        this.coordonneesEntre.setValue(this.stagiaire.coordonneesEntre || '')
-      }, error: (err: HttpErrorResponse) => {
-        console.error(err)
-      }
-    })
-    this.subs.push(sub)
+        this.stagiaire = s;
+        this.nom.setValue(this.stagiaire.nom || '');
+        this.prenom.setValue(this.stagiaire.prenom || '');
+        this.email.setValue(this.stagiaire.email || '');
+        this.mpass.setValue(this.stagiaire.mpass || '');
+        this.adresse.setValue(this.stagiaire.adresse || '');
+        this.numTelephone.setValue(this.stagiaire.numTelephone || '');
+        this.entreprise.setValue(this.stagiaire.entreprise || false);
+        this.coordonneesEntre.setValue(this.stagiaire.coordonneesEntre || '');
+      },
+      error: (err: HttpErrorResponse) => {
+        console.error(err);
+      },
+    });
+    this.subs.push(sub);
   }
 
   public ngOnDestroy(): void {

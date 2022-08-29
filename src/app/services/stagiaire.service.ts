@@ -22,14 +22,18 @@ export class StagiaireService {
     return this.http.get<Session[]>(`${this.apiServerUrl}/api/stagiaire/list`);
   }
 
-  public update(data: Stagiaire): Observable<Stagiaire> {
-    return this.http.put<Stagiaire>(
-      `${this.apiServerUrl}/api/stagiaire`,
-      data
+  public updateProfile(data: Stagiaire): Observable<Stagiaire> {
+    return this.http.put<Stagiaire>(`${this.apiServerUrl}/api/stagiaire`, data);
+  }
+
+  public inscriptionSession(idSession: number): Observable<boolean> {
+    return this.http.post<boolean>(
+      `${this.apiServerUrl}/api/stagiaire/${idSession}`,
+      {}
     );
   }
 
-  public desinscription(idSession: number): Observable<boolean> {
+  public desinscriptionSession(idSession: number): Observable<boolean> {
     return this.http.delete<boolean>(
       `${this.apiServerUrl}/api/stagiaire/${idSession}`
     );

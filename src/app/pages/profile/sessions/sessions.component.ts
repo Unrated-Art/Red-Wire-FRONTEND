@@ -24,7 +24,7 @@ export class SessionsComponent implements OnInit, OnDestroy {
   }
 
   public desinscription(idSession: number) {
-    this.stagiareService.desinscription(idSession);
+    this.stagiareService.desinscriptionSession(idSession);
   }
 
   public ngOnDestroy(): void {

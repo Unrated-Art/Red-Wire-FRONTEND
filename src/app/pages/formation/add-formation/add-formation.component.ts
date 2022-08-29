@@ -23,7 +23,7 @@ interface FormationType {
   styleUrls: ['./add-formation.component.scss'],
 })
 export class AddFormationComponent implements OnInit, OnDestroy {
-  sub?: Subscription;
+  subs: Subscription[] = [];
 
   themeChoices: string[] = [
     'Développement',
@@ -111,22 +111,26 @@ export class AddFormationComponent implements OnInit, OnDestroy {
       programmeDetaille: this.details.value,
       theme: this.theme.value,
     };
-    this.sub = this.formationService.addFormation(data).subscribe({
-      next: (response: any) => {
-        console.log(response);
-        this.addForm.reset();
-      },
-      error: (httpErrorResponse) => {
-        // this.errorMessage = httpErrorResponse.message;
-        alert(httpErrorResponse.message);
-      },
-      complete: () => {
-        console.log(data);
-        console.log('DONE!');
-      },
-    });
+    const sub: Subscription = this.formationService
+      .addFormation(data)
+      .subscribe({
+        next: (response: any) => {
+          console.log(response);
+          this.addForm.reset();
+        },
+        error: (httpErrorResponse) => {
+          // this.errorMessage = httpErrorResponse.message;
+          alert(httpErrorResponse.message);
+        },
+        complete: () => {
+          console.log(data);
+          console.log('DONE!');
+        },
+      });
+    this.subs.push(sub);
   }
+
   ngOnDestroy(): void {
-    this.sub?.unsubscribe();
+    this.subs.forEach((s) => s.unsubscribe());
   }
 }

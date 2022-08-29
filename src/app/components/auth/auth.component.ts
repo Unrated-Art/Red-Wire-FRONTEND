@@ -76,6 +76,8 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.subs.push(sub);
   }
 
+  public auth.user.role
+
   public ngOnDestroy(): void {
     this.subs.forEach((s) => s.unsubscribe());
   }
