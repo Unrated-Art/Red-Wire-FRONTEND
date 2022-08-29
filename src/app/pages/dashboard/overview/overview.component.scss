@@ -1,13 +1,20 @@
 .col {
   margin-top: 100px;
   :hover {
-    box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 5px 5px 10px 5px #808080;
     transition: 0.6s;
   }
 }
 
 .card {
   height: 10rem;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    86deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(26, 188, 157, 0.61) 33%,
+    rgba(0, 212, 255, 1) 94%
+  );
 
   :hover {
     box-shadow: none;

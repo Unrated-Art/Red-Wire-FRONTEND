@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Formation } from 'src/models/formation';
 import { FormationService } from 'src/app/services/formation.service';
 import { SessionService } from 'src/app/services/session.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-detail-formation',
   templateUrl: './detail-formation.component.html',
   styleUrls: ['./detail-formation.component.scss'],
 })
-export class DetailFormationComponent implements OnInit {
+export class DetailFormationComponent implements OnInit, OnDestroy {
+  subs: Subscription[] = [];
   openAccordion1 = false;
   openAccordion2 = false;
   openAccordion3 = false;
@@ -38,7 +41,8 @@ export class DetailFormationComponent implements OnInit {
     private serviceFormation: FormationService,
     private sessionService: SessionService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {
     this.route.params.subscribe((params) => {
       console.log(params); //log the entire params object
@@ -69,10 +73,24 @@ export class DetailFormationComponent implements OnInit {
   }
 
   onRegisterClick(): void {
-    alert(this.selectedSessionId);
+    const sub = this.auth.isLoggedIn$.subscribe({
+      next: (isConnected: boolean) => {
+        if (!isConnected) {
+          alert("Vous n'etes pas connecte! Connectez-vous!");
+        } else {
+          alert('Work In Progress');
+          this.router.navigate(['/profile']);
+        }
+      },
+    });
+    //alert(this.selectedSessionId);
     // this.router.navigate([
     //   `formation/${this.formation.idFormation}/inscription/${this.selectedSessionId}`,
     // ]);
     // this.sessionService.postTrainee()
+  }
+
+  ngOnDestroy(): void {
+    this.subs.forEach((s) => s.unsubscribe());
   }
 }

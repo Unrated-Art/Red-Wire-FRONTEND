@@ -23,10 +23,7 @@ export class StagiaireService {
   }
 
   public update(data: Stagiaire): Observable<Stagiaire> {
-    return this.http.put<Stagiaire>(
-      `${this.apiServerUrl}/api/stagiaire`,
-      data
-    );
+    return this.http.put<Stagiaire>(`${this.apiServerUrl}/api/stagiaire`, data);
   }
 
   public desinscription(idSession: number): Observable<boolean> {

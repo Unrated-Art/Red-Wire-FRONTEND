@@ -12,11 +12,18 @@ export class SessionService {
 
   constructor(private http: HttpClient) {}
 
+  /*
   public getSessions(idTraining?: number | undefined): Observable<Session[]> {
     return this.http.get<Session[]>(
       `${this.apiServerUrl}/api/session/`,
       !!idTraining ? { params: { idTraining } } : {}
     );
+  }
+  */
+  public getSessions(_idTraining?: number | undefined): Observable<Session[]> {
+    return this.http.get<Session[]>(`${this.apiServerUrl}/api/session/`, {
+      params: { idTraining: 2 },
+    });
   }
 
   public getSession(idSession: number): Observable<Session> {

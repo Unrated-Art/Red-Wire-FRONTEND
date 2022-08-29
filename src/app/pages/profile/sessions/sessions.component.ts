@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+// import { SessionService } from 'src/app/services/session.service';
 import { StagiaireService } from 'src/app/services/stagiaire.service';
 import { Session } from 'src/models/session';
 
@@ -16,6 +17,7 @@ export class SessionsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const sub = this.stagiareService.getUserSessions().subscribe({
+      // const sub = this.sessionService.getSessions().subscribe({ // TEST
       next: (response: any) => {
         this.sessions = response;
       },

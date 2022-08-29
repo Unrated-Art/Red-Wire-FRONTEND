@@ -13,9 +13,12 @@ import { Stagiaire } from 'src/models/stagiaire';
 })
 export class EditComponent implements OnInit, OnDestroy {
   public subs: Subscription[] = [];
-  stagiaire!: Stagiaire
+  stagiaire!: Stagiaire;
 
-  constructor(private stagiaireService: StagiaireService, private route: Router) {}
+  constructor(
+    private stagiaireService: StagiaireService,
+    private route: Router
+  ) {}
 
   form = new FormGroup({
     lastName: new FormControl(null, [
@@ -71,26 +74,26 @@ export class EditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const sub = this.stagiaireService.getUser().subscribe({
       next: (s: Stagiaire) => {
-        this.stagiaire = s
-        this.nom.setValue(this.stagiaire.nom || '')
-        this.prenom.setValue(this.stagiaire.prenom || '')
-        this.email.setValue(this.stagiaire.email || '')
-        this.mpass.setValue(this.stagiaire.mpass || '')
-        this.adresse.setValue(this.stagiaire.adresse || '')
-        this.numTelephone.setValue(this.stagiaire.numTelephone || '')
-        this.entreprise.setValue(this.stagiaire.entreprise || false)
-        this.coordonneesEntre.setValue(this.stagiaire.coordonneesEntre || '')
+        this.stagiaire = s;
+        this.nom.setValue(this.stagiaire.nom || '');
+        this.prenom.setValue(this.stagiaire.prenom || '');
+        this.email.setValue(this.stagiaire.email || '');
+        this.mpass.setValue(this.stagiaire.mpass || '');
+        this.adresse.setValue(this.stagiaire.adresse || '');
+        this.numTelephone.setValue(this.stagiaire.numTelephone || '');
+        this.entreprise.setValue(this.stagiaire.entreprise || false);
+        this.coordonneesEntre.setValue(this.stagiaire.coordonneesEntre || '');
       },
       error(err: HttpErrorResponse) {
-          console.error(err)
+        console.error(err);
       },
-    })
-    this.subs.push(sub)
+    });
+    this.subs.push(sub);
   }
 
   public editUser(): void {
     if (this.form.invalid) {
-      console.log('NOT VALID')
+      console.log('NOT VALID');
       return;
     }
     const data: any = {
@@ -103,12 +106,12 @@ export class EditComponent implements OnInit, OnDestroy {
       entreprise: this.entreprise.value,
       coordonneesEntre: this.coordonneesEntre.value,
     };
-    console.log('EXECUTE')
+    console.log('EXECUTE');
     this.stagiaireService.update(data).subscribe({
       next: (_value: Stagiaire) => {
-        this.route.navigate(['/profile'])
+        this.route.navigate(['/profile']);
       },
-    })
+    });
   }
 
   public ngOnDestroy(): void {
