@@ -68,6 +68,7 @@ import { SessionsComponent } from './pages/profile/sessions/sessions.component';
     EditComponent,
     OverviewComponent,
     SessionsComponent,
+
   ],
   imports: [
     BrowserModule,

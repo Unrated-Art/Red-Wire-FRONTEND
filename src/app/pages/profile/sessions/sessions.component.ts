@@ -6,28 +6,29 @@ import { Session } from 'src/models/session';
 @Component({
   selector: 'app-profile-sessions',
   templateUrl: './sessions.component.html',
-  styleUrls: ['./sessions.component.scss'],
+  styleUrls: ['./sessions.component.scss']
 })
 export class SessionsComponent implements OnInit, OnDestroy {
-  subs: Subscription[] = [];
-  sessions: Session[] = [];
+
+  subs: Subscription[] = []
+  sessions: Session[] = []
 
   constructor(private stagiareService: StagiaireService) {}
 
   ngOnInit(): void {
     const sub = this.stagiareService.getUserSessions().subscribe({
       next: (response: any) => {
-        this.sessions = response;
+          this.sessions = response
       },
-    });
-    this.subs.push(sub);
+    })
+    this.subs.push(sub)
   }
 
   public desinscription(idSession: number) {
-    this.stagiareService.desinscription(idSession);
+    this.stagiareService.desinscription(idSession)
   }
 
   public ngOnDestroy(): void {
-    this.subs.forEach((s) => s.unsubscribe());
+    this.subs.forEach((s) => s.unsubscribe())
   }
 }
