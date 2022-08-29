@@ -1,0 +1,129 @@
+<form (ngSubmit)="editUser()" [formGroup]="form">
+  <!-- nom -->
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="lastName"
+      class="text-center form-control {{
+        nom.untouched ? '' : nom.invalid ? 'is-invalid' : 'is-valid'
+      }}"
+      type="text"
+      placeholder="Nom"
+      aria-label=""
+    />
+    <span *ngIf="nom.touched && nom.invalid" class="text-danger"
+      >Invalid Last Name</span
+    >
+  </div>
+  <!-- prénom -->
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="firstName"
+      class="text-center form-control {{
+        prenom.untouched ? '' : prenom.invalid ? 'is-invalid' : 'is-valid'
+      }}"
+      type="text"
+      placeholder="Prénom"
+      aria-label=""
+    />
+    <span *ngIf="prenom.touched && prenom.invalid" class="text-danger"
+      >Invalid First Name</span
+    >
+  </div>
+  <!-- email -->
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="email"
+      class="text-center form-control {{
+        email.untouched ? '' : email.invalid ? 'is-invalid' : 'is-valid'
+      }}"
+      type="email"
+      placeholder="Email"
+      aria-label=""
+      required
+    />
+    <span *ngIf="email.touched && email.invalid" class="text-danger"
+      >Invalid Email</span
+    >
+  </div>
+
+  <!-- mot de passe -->
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="password"
+      class="text-center form-control {{
+        mpass.untouched ? '' : mpass.invalid ? 'is-invalid' : 'is-valid'
+      }}"
+      type="password"
+      placeholder="Mot de passe"
+      aria-label=""
+      required
+    />
+    <span *ngIf="mpass.touched && mpass.invalid" class="text-danger"
+      >Invalid Password</span
+    >
+  </div>
+
+  <!-- numTelephone -->
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="numTelephone"
+      class="text-center form-control {{
+        numTelephone.untouched
+          ? ''
+          : numTelephone.invalid
+          ? 'is-invalid'
+          : 'is-valid'
+      }}"
+      type="text"
+      placeholder="Téléphone"
+      aria-label=""
+    />
+    <span
+      *ngIf="numTelephone.touched && numTelephone.invalid"
+      class="text-danger"
+      >Invalid Phone number</span
+    >
+  </div>
+  <!-- adresse -->
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="adresse"
+      class="text-center form-control {{
+        adresse.untouched ? '' : adresse.invalid ? 'is-invalid' : 'is-valid'
+      }}"
+      type="text"
+      placeholder="Adresse"
+      aria-label=""
+    />
+    <span *ngIf="adresse.touched && adresse.invalid" class="text-danger"
+      >Invalid address</span
+    >
+  </div>
+
+  <!-- entreprise -->
+  <div class="form-check">
+    <label for="entreprise" class="form-check-label">Entreprise</label>
+    <input
+      formControlName="entreprise"
+      class="form-check-input"
+      type="checkbox"
+      placeholder="Entreprise"
+      aria-label=""
+    />
+  </div>
+
+  <!-- coordonnées entreprise -->
+  <div class="form-group mb-3 mt-3">
+    <input
+      formControlName="coordonneesEntre"
+      class="text-center form-control"
+      type="text"
+      placeholder="Coordonnées Entreprise"
+      aria-label=""
+    />
+  </div>
+
+  <button class="btn btn-info" routerLink="/profile">Apercu</button>
+  &nbsp;
+  <button class="btn btn-success" type="submit">Sauvegarder</button>
+</form>

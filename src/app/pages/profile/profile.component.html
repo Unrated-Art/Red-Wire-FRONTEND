@@ -1,0 +1,19 @@
+<h1>
+  Profile de
+  <strong>
+    <em> {{ auth.user.firstName }}&nbsp;{{ auth.user.lastName }} </em>
+  </strong>
+</h1>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <app-profile-sessions></app-profile-sessions>
+    </div>
+  </div>
+</div>
