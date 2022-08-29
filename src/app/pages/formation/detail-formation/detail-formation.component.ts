@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Formation } from 'src/models/formation';
 import { FormationService } from 'src/app/services/formation.service';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-detail-formation',
@@ -14,12 +15,30 @@ export class DetailFormationComponent implements OnInit {
   openAccordion3 = false;
   openAccordion4 = false;
 
+  openTabInter = true;
+  openTabIntra = true;
+
   formation!: Formation;
   identifiant!: number;
+  firstSessionPrice: number = 0;
+
+  selectedSessionId: number = 0;
+
+  public setSessionPrice(price: number): void {
+    console.log(price, ' <= inflation is REAL');
+    this.firstSessionPrice = price;
+  }
+
+  public setSelectedSessionId(id: number): void {
+    console.log(id);
+    this.selectedSessionId = id;
+  }
 
   constructor(
     private serviceFormation: FormationService,
-    private route: ActivatedRoute
+    private sessionService: SessionService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.route.params.subscribe((params) => {
       console.log(params); //log the entire params object
@@ -47,5 +66,14 @@ export class DetailFormationComponent implements OnInit {
         console.log('GetFormationById OK :)');
       },
     });
+  }
+
+  onRegisterClick(): void {
+    // this.router.navigate([
+    //   `formation/${this.formation.idFormation}/inscription/${this.selectedSessionId}`,
+    // ]);
+    this.router.navigate([`/profile`]);
+
+    // this.sessionService.postTrainee()
   }
 }

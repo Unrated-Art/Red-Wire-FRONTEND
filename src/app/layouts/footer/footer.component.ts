@@ -7,12 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-
   get isAdmin(): boolean {
-    return true
+    return true;
   }
   get isNotDashboard(): boolean {
-    return !this.route.url.startsWith('/dashboard')
+    return !this.route.url.startsWith('/dashboard');
   }
 
   constructor(private route: Router) {}

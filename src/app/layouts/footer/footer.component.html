@@ -1,4 +1,7 @@
-<footer *ngIf="isAdmin && isNotDashboard" class="footer">
+<footer
+  *ngIf="isAdmin && isNotDashboard"
+  class="footer fixed-buttom sticky-top"
+>
   <div class="container">
     <span class="footer__logo">Saturne Formation</span>
     <ul class="footer__tab">
@@ -16,7 +19,7 @@
         <a class="footer__link" href="#">Mentions légales</a>
       </li>
       <li class="footer__tabInfo">
-        <a class="footer__link" href="mailto:contact@it.training.com"
+        <a class="footer__link" href="mailto:contact@saturne.formation.com"
           >Contact</a
         >
       </li>

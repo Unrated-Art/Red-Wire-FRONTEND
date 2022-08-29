@@ -17,7 +17,6 @@ import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ListFormationsComponent } from './pages/formation/list-formations/list-formations.component';
 import { DetailFormationComponent } from './pages/formation/detail-formation/detail-formation.component';
 import { AccountComponent } from './pages/account/account.component';
-import { ListSessionsComponent } from './pages/list-sessions/list-sessions.component';
 import { ListCataloguesComponent } from './pages/catalogue/list-catalogues/list-catalogues.component';
 import { AddFormationComponent } from './pages/formation/add-formation/add-formation.component';
 import { FormationComponent } from './pages/formation/formation.component';
@@ -45,6 +44,8 @@ import { SessionsComponent } from './pages/profile/sessions/sessions.component';
     AuthComponent,
     LoginComponent,
     RegisterComponent,
+    SessionComponent,
+    SessionFormComponent,
     // pages
     AppComponent,
     AccueilComponent,
@@ -52,19 +53,14 @@ import { SessionsComponent } from './pages/profile/sessions/sessions.component';
     ListFormationsComponent,
     DetailFormationComponent,
     AccountComponent,
-    ListSessionsComponent,
     ListCataloguesComponent,
     AddFormationComponent,
     CatalogueComponent,
     FormationComponent,
     ErrorComponent,
     EditFormationComponent,
-
     ContentComponent,
     FormCatalogueComponent,
-    SessionComponent,
-    SessionFormComponent,
-
     FormCatalogueComponent,
     ContentComponent,
     DashboardOverviewComponent,
@@ -72,20 +68,19 @@ import { SessionsComponent } from './pages/profile/sessions/sessions.component';
     EditComponent,
     OverviewComponent,
     SessionsComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     AuthInterceptorProvider,
     FormationService,
     CatalogueService,
-    SessionService
+    SessionService,
   ],
   bootstrap: [AppComponent],
 })

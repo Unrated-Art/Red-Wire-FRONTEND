@@ -178,63 +178,6 @@ export class EditFormationComponent implements OnInit {
         alert('failed to update training due to: ' + err);
       },
     });
-    /*
-    this.formationService
-      .getFormationById(this.identifiant)
-      .subscribe({
-        next: (formation: Formation) => {
-          dataU = formation
-          formation = dataU;
-          this.formationService
-            .updateFormation(formation, this.identifiant)
-            .subscribe({
-              next(updatedTraining: Formation) {
-                console.log('UPDATE OK=> '
-                + updatedTraining.idFormation
-                +";"+updatedTraining.reference
-                +";"+updatedTraining.titref
-                +";"+updatedTraining.lieu
-                +";"+updatedTraining.interFormation
-                +";"+updatedTraining.duree
-                +";"+updatedTraining.prerequis
-                +";"+updatedTraining.objectif
-                +";"+updatedTraining.publicVise
-                +";"+updatedTraining.programmeDetaille
-                );
-                confirm("La formation a été mise à jour");
-              },
-              error(httpErrorResponse) {
-                alert('failed to update training due to: ' + httpErrorResponse);
-              },
-            });
-          console.log('id of the training to update: ' + formation.idFormation);
-          this.editForm.reset();
-        },
-        error: (httpErrorResponse) => {
-          alert('GetTrainingById failed due to: ' + httpErrorResponse.message);
-        },
-        complete: () => {
-          console.error('BLABLABLA in COMPLETE of parentSubscribe');
-          // console.log(
-          //   'newFContentDetails:' +
-          //     dataU.reference +
-          //     ';' +
-          //     dataU.lieu +
-          //     ';' +
-          //     dataU.duree +
-          //     ';' +
-          //     dataU.interFormation +
-          //     ';' +
-          //     dataU.programmeDetaille +
-          //     ';' +
-          //     dataU.objectif
-          // );
-          // console.log('newFContent:' + dataU);
-          console.log('DONE!');
-          this.editForm.reset();
-        },
-      });
-      */
   }
 
   public showMessage(message: string) {

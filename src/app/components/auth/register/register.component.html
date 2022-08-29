@@ -4,56 +4,82 @@
   <div class="form-group mb-3 mt-3">
     <input
       formControlName="firstName"
-      class="text-center form-control {{ firstName.untouched ? '' : firstName.invalid ? 'is-invalid' : 'is-valid' }}"
+      class="text-center form-control {{
+        firstName.untouched ? '' : firstName.invalid ? 'is-invalid' : 'is-valid'
+      }}"
       type="text"
       placeholder="Name"
       aria-label=""
     />
-    <span *ngIf="firstName.touched && firstName.invalid" class="text-danger">Invalid First Name</span>
+    <span *ngIf="firstName.touched && firstName.invalid" class="text-danger"
+      >Invalid First Name</span
+    >
   </div>
 
   <div class="form-group mb-3 mt-3">
     <input
       formControlName="lastName"
-      class="text-center form-control {{ lastName.untouched ? '' : lastName.invalid ? 'is-invalid' : 'is-valid' }}"
+      class="text-center form-control {{
+        lastName.untouched ? '' : lastName.invalid ? 'is-invalid' : 'is-valid'
+      }}"
       type="text"
       placeholder="Surname"
       aria-label=""
     />
-    <span *ngIf="lastName.touched && lastName.invalid" class="text-danger">Invalid Last Name</span>
+    <span *ngIf="lastName.touched && lastName.invalid" class="text-danger"
+      >Invalid Last Name</span
+    >
   </div>
 
   <div class="form-group mb-3 mt-3">
     <input
       formControlName="email"
-      class="text-center form-control {{ email.untouched ? '' : email.invalid ? 'is-invalid' : 'is-valid' }}"
+      class="text-center form-control {{
+        email.untouched ? '' : email.invalid ? 'is-invalid' : 'is-valid'
+      }}"
       type="email"
       placeholder="Email"
       aria-label=""
     />
-    <span *ngIf="email.touched && email.invalid" class="text-danger">Invalid Email</span>
+    <span *ngIf="email.touched && email.invalid" class="text-danger"
+      >Invalid Email</span
+    >
   </div>
 
   <div class="form-group mb-3 mt-3">
     <input
       formControlName="password"
-      class="text-center form-control {{ password.untouched ? '' : password.invalid ? 'is-invalid' : 'is-valid' }}"
+      class="text-center form-control {{
+        password.untouched ? '' : password.invalid ? 'is-invalid' : 'is-valid'
+      }}"
       type="password"
       placeholder="Password"
       aria-label=""
     />
-    <span *ngIf="password.touched && password.invalid" class="text-danger">Invalid Password</span>
+    <span *ngIf="password.touched && password.invalid" class="text-danger"
+      >Invalid Password</span
+    >
   </div>
 
   <div class="form-group mb-3 mt-3">
     <input
       formControlName="passwordConfirmation"
-      class="text-center form-control {{ passwordConfirmation.untouched ? '' : passwordConfirmation.invalid ? 'is-invalid' : 'is-valid' }}"
+      class="text-center form-control {{
+        passwordConfirmation.untouched
+          ? ''
+          : passwordConfirmation.invalid
+          ? 'is-invalid'
+          : 'is-valid'
+      }}"
       type="password"
       placeholder="Password Confirmation"
       aria-label=""
     />
-    <span *ngIf="passwordConfirmation.touched && passwordConfirmation.invalid" class="text-danger">Invalid Password</span>
+    <span
+      *ngIf="passwordConfirmation.touched && passwordConfirmation.invalid"
+      class="text-danger"
+      >Invalid Password</span
+    >
   </div>
 
   <button class="btn btn-primary" type="submit">Register</button>

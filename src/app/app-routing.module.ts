@@ -28,31 +28,31 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ListFormationsComponent
+        component: ListFormationsComponent,
       },
       {
         path: 'detail/:id',
-        component: DetailFormationComponent
-      }
-    ]
+        component: DetailFormationComponent,
+      },
+    ],
   },
   {
     path: 'profile',
     component: ProfileComponent,
     canActivate: [IsAuthGuard, HasRoleGuard],
     data: {
-      role: 'STAGIAIRE'
+      role: 'STAGIAIRE',
     },
     children: [
       {
         path: '',
-        component: ProfileOverviewComponent
+        component: ProfileOverviewComponent,
       },
       {
         path: 'edit',
-        component: ProfileEditComponent
-      }
-    ]
+        component: ProfileEditComponent,
+      },
+    ],
   },
   // Dashboard
   {
@@ -60,19 +60,17 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [IsAuthGuard, HasRoleGuard],
     data: {
-      role: 'ADMIN'
+      role: 'ADMIN',
     },
     children: [
       {
         path: '',
-        component: DashboardOverviewComponent
+        component: DashboardOverviewComponent,
       },
       {
         path: 'catalogue',
         component: CatalogueComponent,
-        children: [
-          { path: '', component: ListCataloguesComponent }
-        ],
+        children: [{ path: '', component: ListCataloguesComponent }],
       },
       {
         path: 'formation',
@@ -80,20 +78,20 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            component: ListFormationsComponent
+            component: ListFormationsComponent,
           },
           {
             path: 'add',
-            component: AddFormationComponent
+            component: AddFormationComponent,
           },
           {
             path: 'edit/:id',
-            component: EditFormationComponent
-          }
-        ]
-      }
-    ]
-  }
+            component: EditFormationComponent,
+          },
+        ],
+      },
+    ],
+  },
   // any other URL --(redirect)--> Error Page
   // { path: '**', component: ErrorComponent },
 ];

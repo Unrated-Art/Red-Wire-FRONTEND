@@ -1,16 +1,40 @@
-<div *ngIf="auth.isLoggedIn$ | async; else showAuthBtn" class="dropdown dropstart">
-  <a class="btn btn-sm dropdown-toggle" href="#" role="button" id="dropdownAuth" data-bs-toggle="dropdown" aria-expanded="false">
+<div
+  *ngIf="auth.isLoggedIn$ | async; else showAuthBtn"
+  class="dropdown dropstart"
+>
+  <a
+    class="btn btn-sm dropdown-toggle"
+    href="#"
+    role="button"
+    id="dropdownAuth"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
     <i class="fas fa-user"></i>
   </a>
   <ul class="dropdown-menu dropdown-custom" aria-labelledby="dropdownAuth">
-    <li><button class="dropdown-item" routerLink="/profile">Mon profil</button></li>
+    <li>
+      <button class="dropdown-item" routerLink="/profile">Mon profil</button>
+    </li>
+    <li>
+      <button class="dropdown-item" routerLink="/profile/edit">
+        Modifier mon profil
+      </button>
+    </li>
     <li><hr class="dropdown-divider" /></li>
-    <li><button class="dropdown-item" (click)="auth.logout()">Sign out</button></li>
+    <li>
+      <button class="dropdown-item" (click)="auth.logout()">Déconnexion</button>
+    </li>
   </ul>
 </div>
 
 <ng-template #showAuthBtn>
-  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#authModal">
+  <button
+    type="button"
+    class="btn"
+    data-bs-toggle="modal"
+    data-bs-target="#authModal"
+  >
     <i class="far fa-user"></i>
   </button>
 </ng-template>
@@ -24,32 +48,41 @@
   aria-labelledby="authModal"
   aria-hidden="true"
 >
-<div class="modal-dialog modal-dialog-centered">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button id="modalClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-      <div class="container">
-        <div class="row">
-          <div class="col-6 text-center separator">
-            <app-auth-login (loginEvent)="userLogin($event)"></app-auth-login>
-          </div>
-          <div class="col-6 text-center">
-            <app-auth-register
-              (registerEvent)="userRegister($event)"
-            ></app-auth-register>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          id="modalClose"
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 text-center separator">
+              <app-auth-login (loginEvent)="userLogin($event)"></app-auth-login>
+            </div>
+            <div class="col-6 text-center">
+              <app-auth-register
+                (registerEvent)="userRegister($event)"
+              ></app-auth-register>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="modal-footer">
-      <pre>
+      <div class="modal-footer">
+        <pre>
         Role ADMIN: admin@redwire.com
-      </pre>
-      <pre>
+      </pre
+        >
+        <pre>
         Role STAGIAIRE: stag@redwire.com
-      </pre>
+      </pre
+        >
+      </div>
     </div>
   </div>
 </div>

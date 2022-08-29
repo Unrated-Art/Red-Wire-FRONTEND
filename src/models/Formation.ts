@@ -1,4 +1,5 @@
 import { PreTest } from './preTest';
+import { Session } from './session';
 import { Theme } from './theme';
 
 export interface Formation {
@@ -14,6 +15,6 @@ export interface Formation {
   programmeDetaille: string;
   themes?: Theme[];
   chapitres?: [];
-  sessions?: [];
+  sessions?: Session[];
   pretest?: PreTest;
 }

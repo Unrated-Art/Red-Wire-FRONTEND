@@ -7,10 +7,9 @@ import { Stagiaire } from 'src/models/stagiaire';
 import { AuthService } from './auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StagiaireService {
-
   private apiServerUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient, private auth: AuthService) {}
@@ -20,14 +19,23 @@ export class StagiaireService {
   }
 
   public getUserSessions(): Observable<Session[]> {
-    return this.http.get<Session[]>(`${this.apiServerUrl}/api/stagiaire/list`);
+    // return this.http.get<Session[]>(`${this.apiServerUrl}/api/stagiaire/list`);
+    const idTraining: number = 2;
+    return this.http.get<Session[]>(`${this.apiServerUrl}/api/session/`, {
+      params: { idTraining },
+    });
   }
 
-  public update(data: any): Observable<Stagiaire> {
-    return this.http.post<any>(`${this.apiServerUrl}/api/stagiaire`, data);
+  public update(data: Stagiaire): Observable<Stagiaire> {
+    return this.http.post<Stagiaire>(
+      `${this.apiServerUrl}/api/stagiaire`,
+      data
+    );
   }
 
   public desinscription(idSession: number): Observable<boolean> {
-    return this.http.delete<boolean>(`${this.apiServerUrl}/api/stagiaire/${idSession}`);
+    return this.http.delete<boolean>(
+      `${this.apiServerUrl}/api/stagiaire/${idSession}`
+    );
   }
 }

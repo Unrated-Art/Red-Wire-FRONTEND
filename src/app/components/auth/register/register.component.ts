@@ -12,8 +12,14 @@ export class RegisterComponent implements OnInit {
     firstName: new FormControl(null, [Validators.required]),
     lastName: new FormControl(null, [Validators.required]),
     email: new FormControl(null, [Validators.required, Validators.email]),
-    password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
-    passwordConfirmation: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+    password: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
+    passwordConfirmation: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
   });
 
   @Output() registerEvent = new EventEmitter<AuthRegisterType>();
@@ -23,23 +29,23 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   get firstName(): any {
-    return this.form.get('firstName')
+    return this.form.get('firstName');
   }
   get lastName(): any {
-    return this.form.get('lastName')
+    return this.form.get('lastName');
   }
   get email(): any {
-    return this.form.get('email')
+    return this.form.get('email');
   }
   get password(): any {
-    return this.form.get('password')
+    return this.form.get('password');
   }
   get passwordConfirmation(): any {
-    return this.form.get('passwordConfirmation')
+    return this.form.get('passwordConfirmation');
   }
 
   public resetForm() {
-    this.form.reset()
+    this.form.reset();
   }
 
   public userRegister(): void {

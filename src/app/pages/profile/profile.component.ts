@@ -4,13 +4,10 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  constructor(public auth: AuthService) {}
 
-  constructor(public auth: AuthService) { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
