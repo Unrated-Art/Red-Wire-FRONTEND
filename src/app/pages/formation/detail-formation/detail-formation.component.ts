@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Formation } from 'src/models/formation';
 import { FormationService } from 'src/app/services/formation.service';
-import { SessionService } from 'src/app/services/session.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { ErrorObserver, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { StagiaireService } from 'src/app/services/stagiaire.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { StagiaireService } from 'src/app/services/stagiaire.service';
   templateUrl: './detail-formation.component.html',
   styleUrls: ['./detail-formation.component.scss'],
 })
-export class DetailFormationComponent implements OnInit {
+export class DetailFormationComponent implements OnInit, OnDestroy {
   subs: Subscription[] = [];
   openAccordion1 = false;
   openAccordion2 = false;
