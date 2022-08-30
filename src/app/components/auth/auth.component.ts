@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthLoginType } from 'src/models/auth-login';
 import { AuthRegisterType } from 'src/models/auth-register';
@@ -26,7 +26,11 @@ export class AuthComponent implements OnInit, OnDestroy {
   constructor(public auth: AuthService, private router: Router) {}
 
   get isAdmin(): boolean {
-    return this.auth.user.role.includes('ADMIN') || false
+    return this.auth.user?.role?.includes('ADMIN') || false;
+  }
+
+  get role(): string {
+    return this.auth.user.role
   }
 
   ngOnInit(): void {
@@ -61,7 +65,8 @@ export class AuthComponent implements OnInit, OnDestroy {
         }
       },
       error: (err: any) => {
-        console.error('ERROR: ', err);
+        console.error('ERROR: ', err.messages);
+        alert("Invalid Email or Password");
       },
     });
     this.subs.push(sub);
@@ -74,7 +79,8 @@ export class AuthComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('dashboard');
       },
       error: (err: any) => {
-        console.error('ERROR: ', err);
+        console.error('ERROR: ', err.messages);
+        alert("Invalid Email or Password");
       },
     });
     this.subs.push(sub);

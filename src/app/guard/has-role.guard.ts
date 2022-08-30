@@ -23,7 +23,7 @@ export class HasRoleGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const isAuthorized: boolean = this.auth.user.role.includes(
+    const isAuthorized: boolean = this.auth.user.role?.includes(
       route.data['role']
     );
     if (!isAuthorized) {
@@ -41,7 +41,7 @@ export class HasRoleGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const isAuthorized: boolean = this.auth.user.role.includes(
+    const isAuthorized: boolean = this.auth.user.role?.includes(
       childRoute.data['role']
     );
     if (!isAuthorized) {
