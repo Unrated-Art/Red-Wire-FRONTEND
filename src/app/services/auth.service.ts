@@ -47,18 +47,20 @@ export class AuthService {
   public login(data: AuthLoginType): Observable<any> {
     return this.apiLogin(data).pipe(
       tap((response: any) => {
-        localStorage.setItem(this.TOKEN_NAME, response.token);
-        this.user = this.getUser(response.token);
-        this._isLoggedIn$.next(true);
-        switch (this.user.role) {
-          case 'ADMIN':
-            this.router.navigate(['dashboard']);
-            break;
-          case 'STAGIAIRE':
-            this.router.navigate(['profile']);
-            break;
-          default:
-            break;
+        if (response && response.token) {
+          localStorage.setItem(this.TOKEN_NAME, response.token);
+          this.user = this.getUser(response.token);
+          this._isLoggedIn$.next(true);
+          switch (this.user.role) {
+            case 'ADMIN':
+              this.router.navigate(['dashboard']);
+              break;
+            case 'STAGIAIRE':
+              this.router.navigate(['profile']);
+              break;
+            default:
+              break;
+          }
         }
       })
     );
