@@ -14,7 +14,7 @@
           <button
             class="accordion-button"
             type="button"
-            (click)="openAccordion1 = !openAccordion1"
+            (click)="openAccObj = !openAccObj"
             data-bs-toggle="collapse"
             [attr.data-target]="'#collapse' + 1"
             aria-expanded="true"
@@ -26,7 +26,7 @@
         <div
           [attr.id]="'collapse' + 1"
           class="accordion-collapse collapse"
-          [class.show]="openAccordion1"
+          [class.show]="openAccObj"
           [attr.aria-labelledby]="'heading' + 1"
           data-bs-parent="#accordionExample"
         >
@@ -46,7 +46,7 @@
           <button
             class="accordion-button"
             type="button"
-            (click)="openAccordion2 = !openAccordion2"
+            (click)="openAccPublic = !openAccPublic"
             data-bs-toggle="collapse"
             [attr.data-target]="'#collapse' + 2"
             aria-expanded="true"
@@ -58,7 +58,7 @@
         <div
           [attr.id]="'collapse' + 2"
           class="accordion-collapse collapse"
-          [class.show]="openAccordion2"
+          [class.show]="openAccPublic"
           [attr.aria-labelledby]="'heading' + 2"
           data-bs-parent="#accordionExample"
         >
@@ -78,7 +78,7 @@
           <button
             class="accordion-button"
             type="button"
-            (click)="openAccordion3 = !openAccordion3"
+            (click)="openAccPrerequis = !openAccPrerequis"
             data-bs-toggle="collapse"
             [attr.data-target]="'#collapse' + 3"
             aria-expanded="true"
@@ -90,7 +90,7 @@
         <div
           [attr.id]="'collapse' + 3"
           class="accordion-collapse collapse"
-          [class.show]="openAccordion3"
+          [class.show]="openAccPrerequis"
           [attr.aria-labelledby]="'heading' + 3"
           data-bs-parent="#accordionExample"
         >
@@ -110,7 +110,7 @@
           <button
             class="accordion-button"
             type="button"
-            (click)="openAccordion4 = !openAccordion4"
+            (click)="openAccDetails = !openAccDetails"
             data-bs-toggle="collapse"
             [attr.data-target]="'#collapse' + 4"
             aria-expanded="true"
@@ -122,7 +122,7 @@
         <div
           [attr.id]="'collapse' + 4"
           class="accordion-collapse collapse"
-          [class.show]="openAccordion4"
+          [class.show]="openAccDetails"
           [attr.aria-labelledby]="'heading' + 4"
           data-bs-parent="#accordionExample"
         >
@@ -155,7 +155,7 @@
               aria-controls="inter"
               aria-selected="true"
               (click)="
-                openTabInter = !openTabInter; openTabIntra = !openTabIntra
+                openTabInter = true; openTabIntra = false
               "
             >
               Inter
@@ -172,7 +172,7 @@
               aria-controls="intra"
               aria-selected="false"
               (click)="
-                openTabIntra = !openTabIntra; openTabInter = !openTabInter
+                openTabIntra = true; openTabInter = false
               "
             >
               Intra

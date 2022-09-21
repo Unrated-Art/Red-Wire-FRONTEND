@@ -13,13 +13,13 @@ import { StagiaireService } from 'src/app/services/stagiaire.service';
 })
 export class DetailFormationComponent implements OnInit, OnDestroy {
   subs: Subscription[] = [];
-  openAccordion1 = false;
-  openAccordion2 = false;
-  openAccordion3 = false;
-  openAccordion4 = false;
+  openAccObj = false;
+  openAccPublic = false;
+  openAccPrerequis = false;
+  openAccDetails = false;
 
-  openTabInter = true;
-  openTabIntra = true;
+  openTabInter = false;
+  openTabIntra = false;
 
   formation!: Formation;
   identifiant!: number;
