@@ -8,7 +8,7 @@ import { Formation } from 'src/models/Formation';
   providedIn: 'root',
 })
 export class FormationService {
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = environment.production ? '' : environment.apiBaseUrl;
 
   constructor(private http: HttpClient) {}
 

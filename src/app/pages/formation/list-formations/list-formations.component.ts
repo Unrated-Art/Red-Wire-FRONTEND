@@ -74,8 +74,8 @@ export class ListFormationsComponent implements OnInit {
 
   public getFormations(): void {
     this.formationService.getFormations().subscribe({
-      next: (response: Formation[]) => {
-        this.formations = response;
+      next: (response: any) => {
+        this.formations = response.data;
         console.log(this.formations);
         //#region alimenter la liste 'allThemes' (tous les thèmes de toutes les formations)
         this.formations!.forEach((f) => {
