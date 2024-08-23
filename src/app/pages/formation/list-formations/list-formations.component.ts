@@ -2,8 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormationService } from 'src/app/services/formation.service';
 import { NgForm } from '@angular/forms';
-import { Formation } from 'src/models/formation';
-import { Theme } from 'src/models/theme';
+import { Formation } from 'src/models/Formation';
+import { Theme } from 'src/models/Theme';
 import { Router } from '@angular/router';
 
 @Component({
@@ -58,13 +58,14 @@ export class ListFormationsComponent implements OnInit {
     });
   }
 
+
   public onShowDetails(i: number, _id?: number) {
     //alert("Button "+i +" clicked");
-    this.router.navigate([`formation/detail/${_id}`]);
+    this.router.navigate([`training/detail/${_id}`]);
   }
   public onShowEditPage(i: number, _id?: number) {
     //alert("Button "+i +" clicked");
-    this.router.navigate([`dashboard/formation/edit/${_id}`]);
+    this.router.navigate([`dashboard/training/edit/${_id}`]);
   }
 
   public showMessage(idBtn: string): void {

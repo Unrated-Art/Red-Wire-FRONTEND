@@ -1,6 +1,6 @@
-import { PreTest } from './preTest';
+import { PreTest } from '../models/PreTest';
 import { Session } from './session';
-import { Theme } from './theme';
+import { Theme } from '../models/Theme';
 
 export interface Formation {
   idFormation?: number;

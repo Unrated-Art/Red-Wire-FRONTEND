@@ -1,4 +1,4 @@
-import { Formation } from './formation';
+import { Formation } from '../models/Formation';
 
 export interface Session {
   idSession: number;

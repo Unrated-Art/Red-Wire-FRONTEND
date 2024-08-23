@@ -1,13 +1,13 @@
-<section class="list-formations" id="list-formations">
+<!-- <section class="list-formations" id="list-formations">
   <app-formation-list></app-formation-list>
-</section>
+</section> -->
 
 <section class="formations" id="formations">
   <div class="container">
     <h2 class="formations__title">Types de Formations</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col">
-        <a class="card h-100" href="./list-formations.component.html">
+        <a class="card h-100" (click)="goToListFormations()">
           <figure>
             <img
               src="../assets/images/scott-graham-5fNmWej4tAA-unsplash.jpg"

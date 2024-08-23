@@ -23,11 +23,11 @@ const routes: Routes = [
   { path: '', component: AccueilComponent },
   // Formation
   {
-    path: 'formation',
+    path: 'training',
     component: FormationComponent,
     children: [
       {
-        path: '',
+        path: 'all',
         component: ListFormationsComponent,
       },
       {
@@ -73,11 +73,11 @@ const routes: Routes = [
         children: [{ path: '', component: ListCataloguesComponent }],
       },
       {
-        path: 'formation',
+        path: 'training',
         component: FormationComponent,
         children: [
           {
-            path: '',
+            path: 'all',
             component: ListFormationsComponent,
           },
           {

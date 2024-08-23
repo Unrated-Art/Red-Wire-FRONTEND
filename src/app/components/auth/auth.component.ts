@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { AuthLoginType } from 'src/models/auth-login';
-import { AuthRegisterType } from 'src/models/auth-register';
-import { AuthToken } from 'src/models/auth-token';
+import { AuthLoginType } from '../../../models/auth-login';
+import { AuthRegisterType } from '../../../models/auth-register';
+import { AuthToken } from '../../../models/auth-token';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 

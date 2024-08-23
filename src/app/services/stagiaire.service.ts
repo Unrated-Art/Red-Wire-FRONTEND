@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { Session } from 'src/models/session';
-import { Stagiaire } from 'src/models/stagiaire';
+import { environment } from '../../environments/environment';
+import { Session } from '../../models/session';
+import { Stagiaire } from '../../models/stagiaire';
 import { AuthService } from './auth.service';
 
 @Injectable({

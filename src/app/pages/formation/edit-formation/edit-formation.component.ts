@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Formation } from 'src/models/formation';
-import { Theme } from 'src/models/theme';
+import { Formation } from 'src//models/Formation';
+import { Theme } from 'src/models/Theme';
 import { FormationService } from 'src/app/services/formation.service';
 
 @Component({

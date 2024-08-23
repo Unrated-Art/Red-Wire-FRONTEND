@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from 'src/app/services/session.service';
 import { Catalogue } from 'src/models/catalogue';
-import { Formation } from 'src/models/formation';
+import { Formation } from 'src/models/Formation';
 import { Session } from 'src/models/session';
 import { CatalogueService } from 'src/app/services/catalogue.service';
 import { FormationService } from 'src/app/services/formation.service';
